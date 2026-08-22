@@ -476,8 +476,9 @@
     .phonics-table th, .phonics-table td { padding: 8px 10px; }
     .word-table {
       display: table;
-      width: 760px;
-      min-width: 760px;
+      width: 100%;
+      min-width: 0;
+      table-layout: fixed;
       overflow: visible;
       font-size: 13px;
     }
@@ -486,8 +487,25 @@
       width: auto;
       min-width: 0;
     }
-    .word-table th, .word-table td { padding: 7px 8px; }
-    .word-table .example { font-size: 12px; min-width: 140px; }
+    .word-table-scroll {
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: auto;
+    }
+    .word-table th, .word-table td {
+      padding: 7px 6px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .word-table th:nth-child(1), .word-table td:nth-child(1) { width: 16%; }
+    .word-table th:nth-child(2), .word-table td:nth-child(2) { width: 22%; }
+    .word-table th:nth-child(3), .word-table td:nth-child(3) { width: 10%; }
+    .word-table th:nth-child(4), .word-table td:nth-child(4) { width: 22%; }
+    .word-table th:nth-child(5), .word-table td:nth-child(5) { width: 30%; }
+    .word-table .word,
+    .word-table .phonetic,
+    .word-table .pos { white-space: normal; }
+    .word-table .example { font-size: 12px; min-width: 0; }
     .phrases-box, .sentences-box { margin-bottom: 22px; }
     .sentence-card { padding: 11px 13px; }
     .sentence-pattern { font-size: 12px; line-height: 1.55; }
