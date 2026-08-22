@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外研社Join In 剑桥小学英语 四年级上册（2024新版）单词句型汇总</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 40px 30px;
+    text-align: center;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 10px; }
+  .header .subtitle { font-size: 16px; opacity: 0.9; }
+  .header .info { font-size: 13px; opacity: 0.7; margin-top: 8px; }
+
+  /* Navigation */
+  .nav {
+    background: #f8f8f8;
+    padding: 15px 30px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .nav a {
+    text-decoration: none;
+    color: #667eea;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: #667eea; color: #fff; border-color: #667eea; }
+
+  /* Unit Section */
+  .unit-section { padding: 30px; border-bottom: 1px solid #f0f0f0; }
+  .unit-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 5px;
+    padding-left: 15px;
+    border-left: 5px solid #667eea;
+  }
+  .unit-topic { font-size: 14px; color: #888; margin-bottom: 20px; padding-left: 20px; }
+
+  /* Phonics */
+  .phonics-box {
+    background: #f8f9fa;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+  }
+  .phonics-box h3 { font-size: 16px; color: #555; margin-bottom: 10px; }
+  .phonics-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .phonics-table th { background: #667eea; color: #fff; padding: 8px 12px; text-align: left; font-weight: normal; }
+  .phonics-table td { padding: 8px 12px; border-bottom: 1px solid #eee; }
+  .phonics-table tr:nth-child(even) td { background: #fafafa; }
+
+  /* Word Table */
+  .word-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    font-size: 14px;
+  }
+  .word-table th {
+    background: #667eea;
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .word-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+  .word-table tr:nth-child(even) td { background: #fafafa; }
+  .word-table tr:hover td { background: #f0f4ff; }
+  .word-table .word { font-weight: 600; color: #333; white-space: nowrap; }
+  .word-table .phonetic { color: #e74c3c; font-family: "Segoe UI", "Lucida Sans Unicode", sans-serif; font-size: 13px; white-space: nowrap; }
+  .word-table .pos { color: #8e44ad; font-style: italic; white-space: nowrap; }
+  .word-table .meaning { color: #2c3e50; }
+  .word-table .example { color: #555; font-size: 13px; }
+  .word-table .example em { color: #999; font-style: normal; }
+
+  /* ===== 点击发音样式 ===== */
+  .word-table td.word, .word-table td.example { cursor: pointer; position: relative; }
+  .word-table td.word { color: #4a5fd9; text-decoration: underline dotted #b9c1f0; text-underline-offset: 4px; }
+  .word-table td.word:hover { color: #2d3fae; background: #eef0ff; }
+  .word-table td.word:hover::after { content: " 🔊"; font-size: 12px; }
+  .word-table td.example .en-part:hover { color: #4a5fd9; background: #eef0ff; border-radius: 3px; }
+  .word-table td.example .en-part { padding: 2px 4px; margin: -2px -4px; border-radius: 3px; transition: background 0.15s; }
+  .speak-hint {
+    display: inline-block; margin-left: 6px; font-size: 12px; opacity: 0.55; font-weight: normal;
+  }
+  .speaking-flash { animation: speakFlash 0.9s ease; }
+  @keyframes speakFlash {
+    0% { background: #ffe9b8; } 100% { background: transparent; }
+  }
+  .tts-bar {
+    position: fixed; right: 18px; bottom: 18px; z-index: 99;
+    background: #fff; border: 1px solid #e0e0e0; border-radius: 30px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+    padding: 8px 16px; font-size: 13px; color: #555;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .tts-bar button {
+    border: 1px solid #d5d9f5; background: #f4f5ff; color: #4a5fd9;
+    border-radius: 16px; padding: 4px 12px; font-size: 12px; cursor: pointer;
+  }
+  .tts-bar button:hover { background: #667eea; color: #fff; }
+  .tts-bar button.active { background: #667eea; color: #fff; }
+
+  /* Phrases */
+  .phrases-box { margin-bottom: 25px; }
+  .phrases-box h3 { font-size: 16px; color: #555; margin-bottom: 10px; }
+  .phrase-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .phrase-item {
+    background: #eef2ff;
+    color: #4338ca;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+
+  /* Sentences */
+  .sentences-box { margin-bottom: 15px; }
+  .sentences-box h3 { font-size: 16px; color: #555; margin-bottom: 10px; }
+  .sentence-card {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 18px;
+    margin-bottom: 12px;
+  }
+  .sentence-pattern { font-size: 12px; color: #888; margin-bottom: 4px; }
+  .sentence-en { font-size: 15px; color: #333; margin-bottom: 4px; }
+  .sentence-cn { font-size: 13px; color: #666; }
+  .sentence-dialog {
+    background: #f0f4ff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-top: 5px;
+  }
+  .sentence-dialog .q { color: #e74c3c; font-weight: 600; }
+  .sentence-dialog .a { color: #27ae60; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 25px;
+    background: #f8f8f8;
+    color: #999;
+    font-size: 13px;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .container { box-shadow: none; border-radius: 0; }
+    .nav { display: none; }
+    .unit-section { page-break-inside: avoid; }
+    .word-table tr:hover td { background: #fafafa; }
+    .tts-bar { display: none; }
+    .word-table td.word { color: #333; text-decoration: none; }
+    .word-table td.example .en-part:hover { background: transparent; }
+  }
+
+  /* Section number badge */
+  .unit-badge {
+    display: inline-block;
+    background: #667eea;
+    color: #fff;
+    font-size: 13px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .pos-legend {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: #fffbeb;
+    border-radius: 6px;
+  }
+
+  /* ===== 学习工具视觉升级 ===== */
+  :root {
+    --ink: #16324f;
+    --muted: #64748b;
+    --line: #dbe4ee;
+    --soft-blue: #edf6ff;
+    --blue: #1769aa;
+    --blue-dark: #0d4776;
+    --coral: #ef765f;
+    --gold: #f5b942;
+  }
+  body {
+    background: #eaf0f6;
+    color: var(--ink);
+    padding: 24px;
+  }
+  .container {
+    max-width: 1180px;
+    border: 1px solid #d9e3ec;
+    border-radius: 14px;
+    box-shadow: 0 18px 48px rgba(22, 50, 79, 0.12);
+  }
+  .header {
+    background: var(--ink);
+    padding: 42px 46px 38px;
+    text-align: left;
+    border-bottom: 5px solid var(--coral);
+  }
+  .header h1 {
+    font-size: clamp(24px, 3vw, 34px);
+    letter-spacing: 0;
+    margin-bottom: 8px;
+  }
+  .header .subtitle { font-size: 17px; color: #d8e9f7; opacity: 1; }
+  .header .info { color: #aac1d4; opacity: 1; margin-top: 12px; }
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.96);
+    padding: 14px 30px;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 4px 14px rgba(22, 50, 79, 0.06);
+  }
+  .nav a {
+    color: var(--blue-dark);
+    background: #f5f9fd;
+    border-color: #d6e4f0;
+    border-radius: 8px;
+    padding: 7px 12px;
+    font-weight: 600;
+  }
+  .nav a:hover, .nav a:focus-visible {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+  }
+  .page-legend {
+    margin: 20px 30px 0;
+    color: #52677c;
+    background: #fff8e6;
+    border: 1px solid #f3dfaa;
+  }
+  .unit-section { padding: 36px 42px; }
+  .unit-section:nth-of-type(even) { background: #fbfdff; }
+  .unit-title {
+    color: var(--ink);
+    font-size: 25px;
+    border-left-color: var(--coral);
+  }
+  .unit-topic { color: var(--muted); }
+  .unit-badge {
+    background: var(--coral);
+    border-radius: 6px;
+    padding: 3px 9px;
+  }
+  .phonics-box {
+    background: #f8fbfe;
+    border-color: var(--line);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .phonics-box h3, .phrases-box h3, .sentences-box h3 { color: var(--ink); }
+  .phonics-table th, .word-table th {
+    background: var(--blue);
+  }
+  .phonics-table td { border-bottom-color: var(--line); }
+  .word-table {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .word-table td { border-bottom-color: #e7eef5; }
+  .word-table tr:nth-child(even) td { background: #f8fbfe; }
+  .word-table tr:hover td { background: #edf6ff; }
+  .word-table td.word { color: var(--blue-dark); }
+  .word-table td.word:hover { color: var(--coral); background: #fff3ef; }
+  .word-table td.example .en-part:hover { color: var(--blue-dark); background: #dceeff; }
+  .phrase-item {
+    background: #edf6ff;
+    color: var(--blue-dark);
+    border: 1px solid #d4e7f7;
+    border-radius: 6px;
+  }
+  .phrase-item.speak-control {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid #d4e7f7;
+    background: #edf6ff;
+    color: var(--blue-dark);
+    text-align: left;
+  }
+  .phrase-item.speak-control:hover,
+  .phrase-item.speak-control:focus-visible {
+    border-color: #9fc8e5;
+    background: #dceeff;
+    color: var(--blue-dark);
+  }
+  .sentence-card {
+    background: #f8fbfe;
+    border-left-color: var(--blue);
+    border-top: 1px solid #e4edf5;
+    border-right: 1px solid #e4edf5;
+    border-bottom: 1px solid #e4edf5;
+  }
+  .sentence-dialog { background: #edf6ff; }
+  .footer { background: #f3f7fa; color: #71849a; }
+
+  .tts-bar button {
+    border: 1px solid #b9d2e5;
+    background: #fff;
+    color: var(--blue-dark);
+    border-radius: 7px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .18s, color .18s, border-color .18s, transform .18s;
+  }
+  .tts-bar button:hover, .tts-bar button:focus-visible {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+  }
+  .tts-bar button:active { transform: translateY(1px); }
+  .speak-control, .speakable, .phonics-speakable {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline dotted #a8c5dc;
+    text-underline-offset: 4px;
+    color: inherit;
+    text-align: left;
+    transition: color .15s, background .15s;
+  }
+  .speak-control:hover, .speak-control:focus-visible,
+  .speakable:hover, .phonics-speakable:hover {
+    color: var(--blue);
+    background: #dceeff;
+    outline: none;
+    border-radius: 4px;
+  }
+  .word-table td.example .speak-control {
+    display: inline;
+    padding: 2px 4px;
+    margin: -2px -4px;
+  }
+  .sentence-control {
+    display: block;
+    width: 100%;
+    padding: 2px 5px;
+    margin: -2px -5px 4px;
+    font-size: 15px;
+  }
+  .dialog-control {
+    display: inline;
+    padding: 2px 4px;
+    margin: -2px -4px;
+  }
+  .sentence-dialog .q .dialog-control { color: #e74c3c; font-weight: 600; }
+  .sentence-dialog .a .dialog-control { color: #27ae60; font-weight: 400; }
+  .phonics-table .speak-control {
+    display: inline;
+    padding: 2px 4px;
+    margin: -2px -4px;
+  }
+  .phonics-table .phonics-example-control {
+    color: var(--blue-dark);
+  }
+  .speaking-flash { animation: speakFlash 0.9s ease; }
+  .tts-bar {
+    right: 24px;
+    bottom: 24px;
+    border-color: #cbdce9;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(22, 50, 79, 0.18);
+    padding: 10px 12px 10px 16px;
+    color: #496178;
+  }
+  .tts-bar button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .tts-bar button.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .tts-status { white-space: nowrap; }
+
+  /* ===== 手机端适配 ===== */
+  @media (max-width: 640px) {
+    body { padding: 8px; line-height: 1.6; }
+    body { padding-bottom: 76px; }
+    .container { border-radius: 8px; }
+    .header { padding: 28px 18px 26px; }
+    .header h1 { font-size: 20px; }
+    .header .subtitle { font-size: 13px; }
+    .nav {
+      padding: 9px 8px;
+      gap: 7px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+      scrollbar-width: none;
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+    .page-legend { margin: 14px 12px 0; }
+    .unit-section { padding: 24px 12px; }
+    .unit-title { font-size: 19px; line-height: 1.45; }
+    .unit-topic { padding-left: 12px; margin-bottom: 16px; }
+    .phonics-box {
+      padding: 14px 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .phonics-box h3 { font-size: 15px; }
+    .phonics-table {
+      display: table;
+      min-width: 520px;
+      font-size: 12px;
+    }
+    .phonics-table th, .phonics-table td { padding: 8px 10px; }
+    .word-table {
+      display: block;
+      min-width: 760px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 13px;
+    }
+    .word-table th, .word-table td { padding: 7px 8px; }
+    .word-table .example { font-size: 12px; min-width: 140px; }
+    .phrases-box, .sentences-box { margin-bottom: 22px; }
+    .sentence-card { padding: 11px 13px; }
+    .sentence-pattern { font-size: 12px; line-height: 1.55; }
+    .sentence-control { font-size: 14px; line-height: 1.55; }
+    .sentence-cn { font-size: 13px; }
+    .sentence-dialog { padding: 9px 11px; }
+    .tts-bar { left: 8px; right: 8px; bottom: 8px; justify-content: center; flex-wrap: nowrap; font-size: 11px; padding: 7px 8px; gap: 7px; }
+    .tts-status { width: auto; max-width: 150px; white-space: normal; text-align: left; line-height: 1.3; }
+    .tts-bar button { padding: 5px 7px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>外研社 Join In 剑桥小学英语</h1>
+  <div class="subtitle">四年级上册（2024新版）单词 · 句型 汇总</div>
+  <div class="info">教材主编：刘兆义 | 出版社：外语教学与研究出版社 | 适用年级：四年级上学期</div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <a href="#u1">Unit 1 I love sports!</a>
+  <a href="#u2">Unit 2 In town</a>
+  <a href="#u3">Unit 3 Cool jobs</a>
+  <a href="#u4">Unit 4 Let's shop!</a>
+  <a href="#u5">Unit 5 Shapes are fun!</a>
+  <a href="#u6">Unit 6 Our animal friends</a>
+  <a href="#plays">Plays 故事词汇</a>
+  <a href="#writing">写作金句</a>
+</div>
+
+<div class="pos-legend page-legend">
+  <b>词性说明：</b> n.=名词 | v.=动词 | adj.=形容词 | adv.=副词 | prep.=介词 | pron.=代词 | conj.=连词 | num.=数词 | excl.=感叹词 | art.=冠词 | phr.=短语
+</div>
+
+<!-- ===================== Unit 1 ===================== -->
+<div class="unit-section" id="u1">
+  <div class="unit-title"><span class="unit-badge">Unit 1</span>I love sports!</div>
+  <div class="unit-topic">话题：体育运动与能力 | 核心语法：can / can't 表示能力</div>
+
+  <!-- Phonics -->
+  <div class="phonics-box">
+    <h3>语音规则 — 字母组合发音</h3>
+    <table class="phonics-table">
+      <tr><th>字母组合</th><th>发音</th><th>例词</th></tr>
+      <tr><td>ar</td><td>/ɑː/</td><td>far 远, car 小汽车, park 公园</td></tr>
+      <tr><td>er</td><td>/ə/</td><td>sister 姐姐, tiger 老虎, teacher 教师</td></tr>
+      <tr><td>ir</td><td>/ɜː/</td><td>bird 鸟, shirt 衬衫, skirt 半身裙</td></tr>
+      <tr><td>ur</td><td>/ɜː/</td><td>nurse 护士, turn 转弯, Thursday 星期四</td></tr>
+      <tr><td>or</td><td>/ɔː/</td><td>horse 马, shorts 短裤, sport 体育运动</td></tr>
+    </table>
+  </div>
+
+  <!-- Words -->
+  <table class="word-table">
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
+    <tr><td class="word">star</td><td class="phonetic">/stɑː(r)/</td><td class="pos">n.</td><td class="meaning">明星，名角</td><td class="example">Toby is a ball game star. 托比是球类运动明星。</td></tr>
+    <tr><td class="word">ping-pong</td><td class="phonetic">/ˈpɪŋpɒŋ/</td><td class="pos">n.</td><td class="meaning">乒乓球运动</td><td class="example">I can play ping-pong. 我会打乒乓球。</td></tr>
+    <tr><td class="word">fast</td><td class="phonetic">/fɑːst/</td><td class="pos">adv.</td><td class="meaning">快地，快速地</td><td class="example">Linlin can run very fast! 琳琳能跑得非常快！</td></tr>
+    <tr><td class="word">ride</td><td class="phonetic">/raɪd/</td><td class="pos">v.</td><td class="meaning">骑，骑自行车</td><td class="example">I can ride a bike. 我会骑自行车。</td></tr>
+    <tr><td class="word">report</td><td class="phonetic">/rɪˈpɔːt/</td><td class="pos">n.</td><td class="meaning">报告，汇报</td><td class="example">This is my sports report. 这是我的体育报告。</td></tr>
+    <tr><td class="word">wheelchair</td><td class="phonetic">/ˈwiːltʃeə(r)/</td><td class="pos">n.</td><td class="meaning">轮椅</td><td class="example">She can ride her wheelchair very fast. 她能把轮椅驶得很快。</td></tr>
+    <tr><td class="word">far</td><td class="phonetic">/fɑː(r)/</td><td class="pos">adv.</td><td class="meaning">远</td><td class="example">He can walk very far. 他能走很远。</td></tr>
+    <tr><td class="word">from</td><td class="phonetic">/frɒm/</td><td class="pos">prep.</td><td class="meaning">来自</td><td class="example">I am from China. 我来自中国。</td></tr>
+    <tr><td class="word">band</td><td class="phonetic">/bænd/</td><td class="pos">n.</td><td class="meaning">圈，箍，带</td><td class="example">Put on this magic band. 戴上这条魔法腕带。</td></tr>
+    <tr><td class="word">very</td><td class="phonetic">/ˈveri/</td><td class="pos">adv.</td><td class="meaning">很，非常</td><td class="example">She runs very fast. 她跑得非常快。</td></tr>
+    <tr><td class="word">sure</td><td class="phonetic">/ʃʊə(r)/</td><td class="pos">adj.</td><td class="meaning">肯定的，确信的，有把握的</td><td class="example">Are you sure? 你确定吗？</td></tr>
+    <tr><td class="word">hurt</td><td class="phonetic">/hɜːt/</td><td class="pos">v.</td><td class="meaning">（身体部位）感到疼痛</td><td class="example">My legs hurt. 我的腿疼。</td></tr>
+    <tr><td class="word">think</td><td class="phonetic">/θɪŋk/</td><td class="pos">v.</td><td class="meaning">想，思考</td><td class="example">I think I can do it. 我想我能做到。</td></tr>
+    <tr><td class="word">really</td><td class="phonetic">/ˈriːəli/</td><td class="pos">adv.</td><td class="meaning">真的</td><td class="example">Can you really swim? 你真的会游泳吗？</td></tr>
+    <tr><td class="word">wind</td><td class="phonetic">/wɪnd/</td><td class="pos">n.</td><td class="meaning">风</td><td class="example">It's windy today. 今天有风。</td></tr>
+    <tr><td class="word">tired</td><td class="phonetic">/ˈtaɪəd/</td><td class="pos">adj.</td><td class="meaning">累的</td><td class="example">I'm tired and my legs hurt. 我累了，腿也疼。</td></tr>
+    <tr><td class="word">favourite</td><td class="phonetic">/ˈfeɪvərɪt/</td><td class="pos">adj.</td><td class="meaning">最喜欢的</td><td class="example">What's your favourite sport? 你最喜欢的运动是什么？</td></tr>
+    <tr><td class="word">sport</td><td class="phonetic">/spɔːt/</td><td class="pos">n.</td><td class="meaning">体育运动</td><td class="example">I love sports! 我爱运动！</td></tr>
+    <tr><td class="word">kung fu</td><td class="phonetic">/ˌkʌŋˈfuː/</td><td class="pos">n.</td><td class="meaning">中国功夫</td><td class="example">I can do kung fu. 我会练功夫。</td></tr>
+    <tr><td class="word">magic</td><td class="phonetic">/ˈmædʒɪk/</td><td class="pos">adj.</td><td class="meaning">魔法的</td><td class="example">This is a magic band. 这是一条魔法腕带。</td></tr>
+    <tr><td class="word">run</td><td class="phonetic">/rʌn/</td><td class="pos">v.</td><td class="meaning">跑</td><td class="example">I can run fast. 我能跑得快。</td></tr>
+    <tr><td class="word">swim</td><td class="phonetic">/swɪm/</td><td class="pos">v.</td><td class="meaning">游泳</td><td class="example">Can you swim? 你会游泳吗？</td></tr>
+    <tr><td class="word">jump</td><td class="phonetic">/dʒʌmp/</td><td class="pos">v.</td><td class="meaning">跳</td><td class="example">I can jump really high. 我能跳得很高。</td></tr>
+    <tr><td class="word">kick</td><td class="phonetic">/kɪk/</td><td class="pos">v.</td><td class="meaning">踢</td><td class="example">I can kick. 我会踢腿。</td></tr>
+    <tr><td class="word">ski</td><td class="phonetic">/skiː/</td><td class="pos">v.</td><td class="meaning">滑雪</td><td class="example">I can't ski. 我不会滑雪。</td></tr>
+    <tr><td class="word">football</td><td class="phonetic">/ˈfʊtbɔːl/</td><td class="pos">n.</td><td class="meaning">足球</td><td class="example">He can play football. 他会踢足球。</td></tr>
+    <tr><td class="word">basketball</td><td class="phonetic">/ˈbɑːskɪtbɔːl/</td><td class="pos">n.</td><td class="meaning">篮球</td><td class="example">I can play basketball. 我会打篮球。</td></tr>
+  </table>
+
+  <!-- Phrases -->
+  <div class="phrases-box">
+    <h3>重点短语</h3>
+    <div class="phrase-list">
+      <span class="phrase-item">run fast 跑得快</span>
+      <span class="phrase-item">ride a bike 骑自行车</span>
+      <span class="phrase-item">fly a kite 放风筝</span>
+      <span class="phrase-item">play basketball 打篮球</span>
+      <span class="phrase-item">do kung fu 练功夫</span>
+      <span class="phrase-item">play ping-pong 打乒乓球</span>
+      <span class="phrase-item">play football 踢足球</span>
+      <span class="phrase-item">favourite sport 最喜欢的运动</span>
+      <span class="phrase-item">turn off 关掉</span>
+      <span class="phrase-item">a kung fu star 一个功夫明星</span>
+      <span class="phrase-item">put on 穿上，戴上</span>
+      <span class="phrase-item">a magic band 一条魔法腕带</span>
+      <span class="phrase-item">stand on one's hands 倒立</span>
+      <span class="phrase-item">ball game star 球类运动明星</span>
+      <span class="phrase-item">try one's best 尽最大努力</span>
+    </div>
+  </div>
+
+  <!-- Sentences -->
+  <div class="sentences-box">
+    <h3>重点句型</h3>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 1：描述某人会/不会做某事 — 主语 + can / can't + 动词原形</div>
+      <div class="sentence-en">I can play ping-pong.</div>
+      <div class="sentence-cn">我会打乒乓球。</div>
+      <div class="sentence-en" style="margin-top:6px;">He can't see, but he can play football.</div>
+      <div class="sentence-cn">他看不见，但是他会踢足球。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 2：描述某人的身体状态</div>
+      <div class="sentence-en">I'm tired and my legs hurt.</div>
+      <div class="sentence-cn">我累了，并且我的腿疼。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 3：询问某人是否会做某事 — Can you + 动词原形?</div>
+      <div class="sentence-dialog">
+        <div class="q">— Can you swim? 你会游泳吗？</div>
+        <div class="a">— Yes, I can. 是的，我会。 / No, I can't. 不，我不会。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 4：确认信息 — Are you sure?</div>
+      <div class="sentence-dialog">
+        <div class="q">— Are you sure? 你确定吗？</div>
+        <div class="a">— Yes, I'm sure. 是的，我确定。 / No, I'm not. 不，我不确定。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 5：询问某人会做什么 — What can you do?</div>
+      <div class="sentence-dialog">
+        <div class="q">— What can you do? 你会做什么？</div>
+        <div class="a">— Run and swim. 跑步和游泳。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 6：询问最喜欢的运动 — What's your favourite sport?</div>
+      <div class="sentence-dialog">
+        <div class="q">— What's your favourite sport? 你最喜欢的体育运动是什么？</div>
+        <div class="a">— Kung fu. 功夫。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 7：鼓励用语</div>
+      <div class="sentence-en">Try your best! You can make it!</div>
+      <div class="sentence-cn">尽你最大努力！你能做到的！</div>
+      <div class="sentence-en" style="margin-top:6px;">Well done!</div>
+      <div class="sentence-cn">做得好！/ 真棒！</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Unit 2 ===================== -->
+<div class="unit-section" id="u2">
+  <div class="unit-title"><span class="unit-badge">Unit 2</span>In town</div>
+  <div class="unit-topic">话题：城镇场所与问路指路 | 核心语法：方位介词与祈使句</div>
+
+  <!-- Phonics -->
+  <div class="phonics-box">
+    <h3>语音规则 — 字母组合发音</h3>
+    <table class="phonics-table">
+      <tr><th>字母组合</th><th>发音</th><th>例词</th></tr>
+      <tr><td>ai</td><td>/eɪ/</td><td>wait 等, train 火车, rain 雨</td></tr>
+      <tr><td>ay</td><td>/eɪ/</td><td>day 一天, away 移走, play 玩</td></tr>
+      <tr><td>oi</td><td>/ɔɪ/</td><td>join 加入, oil 油, point 指</td></tr>
+      <tr><td>oy</td><td>/ɔɪ/</td><td>boy 男孩, joy 愉快, toy 玩具</td></tr>
+    </table>
+  </div>
+
+  <!-- Words -->
+  <table class="word-table">
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
+    <tr><td class="word">town</td><td class="phonetic">/taʊn/</td><td class="pos">n.</td><td class="meaning">镇，城镇，市镇</td><td class="example">This is a map of our town. 这是我们镇的地图。</td></tr>
+    <tr><td class="word">map</td><td class="phonetic">/mæp/</td><td class="pos">n.</td><td class="meaning">地图</td><td class="example">Look at the map. 看这张地图。</td></tr>
+    <tr><td class="word">shop</td><td class="phonetic">/ʃɒp/</td><td class="pos">n.</td><td class="meaning">商店</td><td class="example">The shop is next to the school. 商店紧挨着学校。</td></tr>
+    <tr><td class="word">stop</td><td class="phonetic">/stɒp/</td><td class="pos">n.</td><td class="meaning">车站</td><td class="example">He lives next to the bus stop. 他住在公交车站旁边。</td></tr>
+    <tr><td class="word">bus</td><td class="phonetic">/bʌs/</td><td class="pos">n.</td><td class="meaning">公交车，公共汽车</td><td class="example">I go to school by bus. 我坐公交车上学。</td></tr>
+    <tr><td class="word">cinema</td><td class="phonetic">/ˈsɪnəmə/</td><td class="pos">n.</td><td class="meaning">电影院</td><td class="example">The cinema is on your left. 电影院在你的左边。</td></tr>
+    <tr><td class="word">restaurant</td><td class="phonetic">/ˈrestrɒnt/</td><td class="pos">n.</td><td class="meaning">饭店，餐馆</td><td class="example">Let's eat at the restaurant. 我们在餐厅吃饭吧。</td></tr>
+    <tr><td class="word">station</td><td class="phonetic">/ˈsteɪʃn/</td><td class="pos">n.</td><td class="meaning">车站；所；局</td><td class="example">Walk to the train station. 走到火车站。</td></tr>
+    <tr><td class="word">supermarket</td><td class="phonetic">/ˈsuːpəmɑːkɪt/</td><td class="pos">n.</td><td class="meaning">超级市场，超市</td><td class="example">Turn right at the supermarket. 在超市右转。</td></tr>
+    <tr><td class="word">hospital</td><td class="phonetic">/ˈhɒspɪtl/</td><td class="pos">n.</td><td class="meaning">医院</td><td class="example">Turn left at the hospital. 在医院左转。</td></tr>
+    <tr><td class="word">police</td><td class="phonetic">/pəˈliːs/</td><td class="pos">n.</td><td class="meaning">警察</td><td class="example">The police station is over there. 派出所在那边。</td></tr>
+    <tr><td class="word">street</td><td class="phonetic">/striːt/</td><td class="pos">n.</td><td class="meaning">大街，街道</td><td class="example">Walk down the street. 沿着街道走。</td></tr>
+    <tr><td class="word">way</td><td class="phonetic">/weɪ/</td><td class="pos">n.</td><td class="meaning">路，道路</td><td class="example">Can you tell me the way to the bookshop? 你能告诉我去书店的路吗？</td></tr>
+    <tr><td class="word">place</td><td class="phonetic">/pleɪs/</td><td class="pos">n.</td><td class="meaning">地方，地点，场所</td><td class="example">This is a nice place. 这是一个好地方。</td></tr>
+    <tr><td class="word">train</td><td class="phonetic">/treɪn/</td><td class="pos">n.</td><td class="meaning">火车，列车</td><td class="example">I go by train. 我坐火车去。</td></tr>
+    <tr><td class="word">writer</td><td class="phonetic">/ˈraɪtə(r)/</td><td class="pos">n.</td><td class="meaning">作家；作者</td><td class="example">She is our favourite writer. 她是我们最喜欢的作家。</td></tr>
+    <tr><td class="word">surprise</td><td class="phonetic">/səˈpraɪz/</td><td class="pos">n.</td><td class="meaning">意想不到的事；不同寻常的事</td><td class="example">What a surprise! 真是个惊喜！</td></tr>
+    <tr><td class="word">turn</td><td class="phonetic">/tɜːn/</td><td class="pos">v.</td><td class="meaning">转弯；（使）改变方向</td><td class="example">Turn right at the supermarket. 在超市右转。</td></tr>
+    <tr><td class="word">buy</td><td class="phonetic">/baɪ/</td><td class="pos">v.</td><td class="meaning">买，购买</td><td class="example">I want to buy a book. 我想买一本书。</td></tr>
+    <tr><td class="word">live</td><td class="phonetic">/lɪv/</td><td class="pos">v.</td><td class="meaning">住，居住</td><td class="example">Mr Blue lives next to the bus stop. 布卢先生住在公交车站旁。</td></tr>
+    <tr><td class="word">left</td><td class="phonetic">/left/</td><td class="pos">adv.</td><td class="meaning">向左，朝左</td><td class="example">Go left first. 先左转。</td></tr>
+    <tr><td class="word">straight</td><td class="phonetic">/streɪt/</td><td class="pos">adv.</td><td class="meaning">笔直地，成直线地</td><td class="example">Go straight on. 直走。</td></tr>
+    <tr><td class="word">then</td><td class="phonetic">/ðen/</td><td class="pos">adv.</td><td class="meaning">接下来，然后</td><td class="example">Then go straight on. 然后直走。</td></tr>
+    <tr><td class="word">there</td><td class="phonetic">/ðeə(r)/</td><td class="pos">adv.</td><td class="meaning">在那里</td><td class="example">The hospital is there. 医院在那边。</td></tr>
+    <tr><td class="word">often</td><td class="phonetic">/ˈɒfn/</td><td class="pos">adv.</td><td class="meaning">经常，时常</td><td class="example">I often go to the cinema. 我经常去电影院。</td></tr>
+    <tr><td class="word">first</td><td class="phonetic">/fɜːst/</td><td class="pos">adv.</td><td class="meaning">先，首先</td><td class="example">First you go left. 你先左转。</td></tr>
+    <tr><td class="word">near</td><td class="phonetic">/nɪə(r)/</td><td class="pos">adv.</td><td class="meaning">接近（地），靠近（地）</td><td class="example">The shop is near the school. 商店在学校附近。</td></tr>
+    <tr><td class="word">us</td><td class="phonetic">/ʌs/</td><td class="pos">pron.</td><td class="meaning">我们</td><td class="example">Excuse me, can you help us? 劳驾，你能帮帮我们吗？</td></tr>
+    <tr><td class="word">our</td><td class="phonetic">/ˈaʊə(r)/</td><td class="pos">pron.</td><td class="meaning">我们的</td><td class="example">This is our town. 这是我们的城镇。</td></tr>
+    <tr><td class="word">thanks</td><td class="phonetic">/θæŋks/</td><td class="pos">excl.</td><td class="meaning">谢谢你，多谢</td><td class="example">Thanks for your help. 谢谢你的帮助。</td></tr>
+  </table>
+
+  <!-- Phrases -->
+  <div class="phrases-box">
+    <h3>重点短语</h3>
+    <div class="phrase-list">
+      <span class="phrase-item">turn right 右转</span>
+      <span class="phrase-item">go straight on 直走</span>
+      <span class="phrase-item">excuse me 劳驾</span>
+      <span class="phrase-item">train station 火车站</span>
+      <span class="phrase-item">on your left 在你的左边</span>
+      <span class="phrase-item">the way to... 去……的路</span>
+      <span class="phrase-item">next to 紧挨着</span>
+      <span class="phrase-item">bus stop 公交车站</span>
+      <span class="phrase-item">police station 警察局/派出所</span>
+      <span class="phrase-item">cake shop 蛋糕店</span>
+      <span class="phrase-item">favourite writer 最喜欢的作家</span>
+    </div>
+  </div>
+
+  <!-- Sentences -->
+  <div class="sentences-box">
+    <h3>重点句型</h3>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 1：描述最喜欢的作家</div>
+      <div class="sentence-en">She is our favourite writer.</div>
+      <div class="sentence-cn">她是我们最喜欢的作家。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 2：描述地点和位置</div>
+      <div class="sentence-en">The bookshop is on your left.</div>
+      <div class="sentence-cn">书店在你的左边。</div>
+      <div class="sentence-en" style="margin-top:6px;">Mr Blue lives next to the bus stop.</div>
+      <div class="sentence-cn">布卢先生住在公交车站旁边。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 3：询问如何去某地 — Can you tell me the way to...?</div>
+      <div class="sentence-dialog">
+        <div class="q">— Can you tell me the way to the Rainbow Bookshop, please? 请问你能告诉我去彩虹书店的路吗？</div>
+        <div class="a">— Sure. Walk to the supermarket and turn right. 当然可以。走到超市，然后右转。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 4：询问如何到达某地 — How can I get to...?</div>
+      <div class="sentence-dialog">
+        <div class="q">— How can I get to the supermarket? 我怎么去超市？</div>
+        <div class="a">— First you go left, and then go straight on. 你先左转，然后直走。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 5：描述行走路线（祈使句）</div>
+      <div class="sentence-en">Walk to the supermarket and turn right.</div>
+      <div class="sentence-cn">走到超市，然后右转。</div>
+      <div class="sentence-en" style="margin-top:6px;">First you go right. Then go straight on. And turn left at the hospital.</div>
+      <div class="sentence-cn">你先右转，然后直走，接着在医院左转。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Unit 3 ===================== -->
+<div class="unit-section" id="u3">
+  <div class="unit-title"><span class="unit-badge">Unit 3</span>Cool jobs</div>
+  <div class="unit-topic">话题：职业与梦想 | 核心语法：询问职业 What does...do? / want to be</div>
+
+  <!-- Phonics -->
+  <div class="phonics-box">
+    <h3>语音规则 — 字母组合发音</h3>
+    <table class="phonics-table">
+      <tr><th>字母组合</th><th>发音</th><th>例词</th></tr>
+      <tr><td>ea</td><td>/iː/</td><td>eat 吃, tea 茶, meat 肉, teacher 教师</td></tr>
+      <tr><td>ee</td><td>/iː/</td><td>tree 树, feet 脚, bee 蜜蜂, street 街道</td></tr>
+    </table>
+  </div>
+
+  <!-- Words -->
+  <table class="word-table">
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
+    <tr><td class="word">teacher</td><td class="phonetic">/ˈtiːtʃə(r)/</td><td class="pos">n.</td><td class="meaning">教师</td><td class="example">She is a teacher. 她是一名教师。</td></tr>
+    <tr><td class="word">doctor</td><td class="phonetic">/ˈdɒktə(r)/</td><td class="pos">n.</td><td class="meaning">医生，大夫</td><td class="example">He is a doctor. 他是一名医生。</td></tr>
+    <tr><td class="word">nurse</td><td class="phonetic">/nɜːs/</td><td class="pos">n.</td><td class="meaning">护士</td><td class="example">My sister is a nurse. 我姐姐是护士。</td></tr>
+    <tr><td class="word">driver</td><td class="phonetic">/ˈdraɪvə(r)/</td><td class="pos">n.</td><td class="meaning">司机，驾驶员</td><td class="example">I want to be a taxi driver. 我想成为一名出租车司机。</td></tr>
+    <tr><td class="word">firefighter</td><td class="phonetic">/ˈfaɪəfaɪtə(r)/</td><td class="pos">n.</td><td class="meaning">消防队员</td><td class="example">The dog is a firefighter. 狗是消防员。</td></tr>
+    <tr><td class="word">policeman</td><td class="phonetic">/pəˈliːsmən/</td><td class="pos">n.</td><td class="meaning">男警察</td><td class="example">I want to be a policeman. 我想成为一名警察。</td></tr>
+    <tr><td class="word">worker</td><td class="phonetic">/ˈwɜːkə(r)/</td><td class="pos">n.</td><td class="meaning">工作人员</td><td class="example">He is a worker in a factory. 他是一名工厂工人。</td></tr>
+    <tr><td class="word">farmer</td><td class="phonetic">/ˈfɑːmə(r)/</td><td class="pos">n.</td><td class="meaning">农民</td><td class="example">The farmer grows vegetables. 农民种蔬菜。</td></tr>
+    <tr><td class="word">gardener</td><td class="phonetic">/ˈɡɑːdənə(r)/</td><td class="pos">n.</td><td class="meaning">园丁，花匠</td><td class="example">The crab is a gardener. 螃蟹是园丁。</td></tr>
+    <tr><td class="word">cleaner</td><td class="phonetic">/ˈkliːnə(r)/</td><td class="pos">n.</td><td class="meaning">清洁工人</td><td class="example">The giraffe is a window cleaner. 长颈鹿是擦窗工。</td></tr>
+    <tr><td class="word">scientist</td><td class="phonetic">/ˈsaɪəntɪst/</td><td class="pos">n.</td><td class="meaning">科学家</td><td class="example">I like science. I want to be a scientist. 我喜欢科学，我想成为科学家。</td></tr>
+    <tr><td class="word">astronaut</td><td class="phonetic">/ˈæstrənɔːt/</td><td class="pos">n.</td><td class="meaning">宇航员，太空人</td><td class="example">I want to be an astronaut. 我想成为宇航员。</td></tr>
+    <tr><td class="word">keeper</td><td class="phonetic">/ˈkiːpə(r)/</td><td class="pos">n.</td><td class="meaning">饲养员</td><td class="example">Do you want to be a panda keeper? 你想成为大熊猫饲养员吗？</td></tr>
+    <tr><td class="word">taxi</td><td class="phonetic">/ˈtæksi/</td><td class="pos">n.</td><td class="meaning">出租车</td><td class="example">I like driving people around. 我喜欢开车送人。</td></tr>
+    <tr><td class="word">work</td><td class="phonetic">/wɜːk/</td><td class="pos">v.</td><td class="meaning">工作，干活</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
+    <tr><td class="word">teach</td><td class="phonetic">/tiːtʃ/</td><td class="pos">v.</td><td class="meaning">教授，讲授</td><td class="example">She teaches in a school. 她在学校教书。</td></tr>
+    <tr><td class="word">drive</td><td class="phonetic">/draɪv/</td><td class="pos">v.</td><td class="meaning">驾车送（人）</td><td class="example">I like driving people around. 我喜欢开车送人到处走。</td></tr>
+    <tr><td class="word">grow</td><td class="phonetic">/ɡrəʊ/</td><td class="pos">v.</td><td class="meaning">种植</td><td class="example">I like growing flowers. 我喜欢种花。</td></tr>
+    <tr><td class="word">ask</td><td class="phonetic">/ɑːsk/</td><td class="pos">v.</td><td class="meaning">问，提问</td><td class="example">I like asking questions. 我喜欢提问。</td></tr>
+    <tr><td class="word">learn</td><td class="phonetic">/lɜːn/</td><td class="pos">v.</td><td class="meaning">学习；学到；学会</td><td class="example">I love learning about space. 我喜欢学习太空知识。</td></tr>
+    <tr><td class="word">prepare</td><td class="phonetic">/prɪˈpeə(r)/</td><td class="pos">v.</td><td class="meaning">准备（食物、物品）</td><td class="example">You have to prepare food for the pandas. 你必须为大熊猫准备食物。</td></tr>
+    <tr><td class="word">question</td><td class="phonetic">/ˈkwestʃən/</td><td class="pos">n.</td><td class="meaning">问题；疑问</td><td class="example">I like asking questions. 我喜欢提问。</td></tr>
+    <tr><td class="word">science</td><td class="phonetic">/ˈsaɪəns/</td><td class="pos">n.</td><td class="meaning">科学</td><td class="example">I like science. 我喜欢科学。</td></tr>
+    <tr><td class="word">space</td><td class="phonetic">/speɪs/</td><td class="pos">n.</td><td class="meaning">太空</td><td class="example">I want to go to space. 我想去太空。</td></tr>
+    <tr><td class="word">moon</td><td class="phonetic">/muːn/</td><td class="pos">n.</td><td class="meaning">月亮，月球</td><td class="example">I want to go to the moon. 我想去月球。</td></tr>
+    <tr><td class="word">garden</td><td class="phonetic">/ˈɡɑːdn/</td><td class="pos">n.</td><td class="meaning">花园，园子</td><td class="example">I can make beautiful gardens. 我能打造漂亮的花园。</td></tr>
+    <tr><td class="word">centre</td><td class="phonetic">/ˈsentə(r)/</td><td class="pos">n.</td><td class="meaning">中心</td><td class="example">She works at a job centre. 她在就业中心工作。</td></tr>
+    <tr><td class="word">house</td><td class="phonetic">/haʊs/</td><td class="pos">n.</td><td class="meaning">房屋，房子</td><td class="example">The house is big. 这栋房子很大。</td></tr>
+    <tr><td class="word">panda</td><td class="phonetic">/ˈpændə/</td><td class="pos">n.</td><td class="meaning">大熊猫</td><td class="example">The panda is cute. 大熊猫很可爱。</td></tr>
+    <tr><td class="word">animal</td><td class="phonetic">/ˈænɪml/</td><td class="pos">n.</td><td class="meaning">动物</td><td class="example">I love animals. 我爱动物。</td></tr>
+    <tr><td class="word">fire</td><td class="phonetic">/ˈfaɪə(r)/</td><td class="pos">n.</td><td class="meaning">火；失火，火灾</td><td class="example">You help us put out fires! 你帮我们灭火！</td></tr>
+    <tr><td class="word">team</td><td class="phonetic">/tiːm/</td><td class="pos">n.</td><td class="meaning">工作队，工作组</td><td class="example">We are a good team. 我们是一个好团队。</td></tr>
+    <tr><td class="word">shape</td><td class="phonetic">/ʃeɪp/</td><td class="pos">n.</td><td class="meaning">形状，外形</td><td class="example">I can cut many shapes. 我能剪出很多形状。</td></tr>
+    <tr><td class="word">kind</td><td class="phonetic">/kaɪnd/</td><td class="pos">n.</td><td class="meaning">种，类</td><td class="example">What kind of job do you like? 你喜欢哪种工作？</td></tr>
+    <tr><td class="word">sick</td><td class="phonetic">/sɪk/</td><td class="pos">adj.</td><td class="meaning">生病的，患病的</td><td class="example">They help sick people. 他们帮助病人。</td></tr>
+    <tr><td class="word">healthy</td><td class="phonetic">/ˈhelθi/</td><td class="pos">adj.</td><td class="meaning">健康的，健壮的</td><td class="example">Pandas are healthy and strong. 大熊猫健康又强壮。</td></tr>
+    <tr><td class="word">strong</td><td class="phonetic">/strɒŋ/</td><td class="pos">adj.</td><td class="meaning">健壮的，力气大的</td><td class="example">He is very strong. 他非常强壮。</td></tr>
+    <tr><td class="word">tall</td><td class="phonetic">/tɔːl/</td><td class="pos">adj.</td><td class="meaning">高的，高大的</td><td class="example">The giraffe is tall. 长颈鹿很高。</td></tr>
+    <tr><td class="word">everyone</td><td class="phonetic">/ˈevriwʌn/</td><td class="pos">pron.</td><td class="meaning">每个人，人人</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
+    <tr><td class="word">because</td><td class="phonetic">/bɪˈkɒz/</td><td class="pos">conj.</td><td class="meaning">因为</td><td class="example">I like science because it's fun. 我喜欢科学因为很有趣。</td></tr>
+    <tr><td class="word">hard</td><td class="phonetic">/hɑːd/</td><td class="pos">adv.</td><td class="meaning">费劲地；费力地</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
+    <tr><td class="word">around</td><td class="phonetic">/əˈraʊnd/</td><td class="pos">adv.</td><td class="meaning">到处，四处</td><td class="example">I like driving people around. 我喜欢开车送人到处走。</td></tr>
+  </table>
+
+  <!-- Phrases -->
+  <div class="phrases-box">
+    <h3>重点短语</h3>
+    <div class="phrase-list">
+      <span class="phrase-item">be good at 擅长</span>
+      <span class="phrase-item">dream job 梦想中的工作</span>
+      <span class="phrase-item">work hard 努力工作</span>
+      <span class="phrase-item">ask questions 提问</span>
+      <span class="phrase-item">look for 寻找</span>
+      <span class="phrase-item">put out fire 灭火</span>
+      <span class="phrase-item">want to be 想要成为</span>
+      <span class="phrase-item">look after 照顾</span>
+      <span class="phrase-item">tell sb. about... 告诉某人关于……</span>
+      <span class="phrase-item">prepare...for... 为……准备……</span>
+      <span class="phrase-item">job centre 就业中心</span>
+      <span class="phrase-item">taxi driver 出租车司机</span>
+      <span class="phrase-item">panda keeper 大熊猫饲养员</span>
+      <span class="phrase-item">window cleaner 擦窗工</span>
+    </div>
+  </div>
+
+  <!-- Sentences -->
+  <div class="sentences-box">
+    <h3>重点句型</h3>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 1：描述某人在某地工作</div>
+      <div class="sentence-en">My mother works in a school.</div>
+      <div class="sentence-cn">我妈妈在一所学校工作。</div>
+      <div class="sentence-en" style="margin-top:6px;">My sister works in a hospital.</div>
+      <div class="sentence-cn">我姐姐在医院工作。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 2：询问某人职业 — What does...do?</div>
+      <div class="sentence-dialog">
+        <div class="q">— What does your mother do? 你妈妈是做什么的？</div>
+        <div class="a">— She is a teacher. 她是一名教师。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 3：询问某人的工作 — What's...job?</div>
+      <div class="sentence-dialog">
+        <div class="q">— What's your father's job? 你爸爸的工作是什么？</div>
+        <div class="a">— He is a doctor. 他是一名医生。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 4：询问对方喜欢做什么 — What do you like doing?</div>
+      <div class="sentence-dialog">
+        <div class="q">— What do you like doing? 你喜欢做什么？</div>
+        <div class="a">— I like helping people. 我喜欢帮助人们。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 5：询问某人想从事什么职业 — What does...want to be?</div>
+      <div class="sentence-dialog">
+        <div class="q">— What does Li Chen want to be? 李晨想成为什么？</div>
+        <div class="a">— He wants to be a doctor. 他想成为一名医生。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 6：表达自己的梦想职业</div>
+      <div class="sentence-en">I want to be a gardener.</div>
+      <div class="sentence-cn">我想成为一名园丁。</div>
+      <div class="sentence-en" style="margin-top:6px;">What is your dream job?</div>
+      <div class="sentence-cn">你梦想的工作是什么？</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 7：表达擅长某事 — be good at</div>
+      <div class="sentence-en">I'm good at cutting. I can cut many shapes.</div>
+      <div class="sentence-cn">我擅长剪。我能剪出很多形状。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Unit 4 ===================== -->
+<div class="unit-section" id="u4">
+  <div class="unit-title"><span class="unit-badge">Unit 4</span>Let's shop!</div>
+  <div class="unit-topic">话题：购物与数字 | 核心语法：How much 询问价格 + would like to 表达意愿</div>
+
+  <!-- Phonics -->
+  <div class="phonics-box">
+    <h3>语音规则 — 字母组合发音</h3>
+    <table class="phonics-table">
+      <tr><th>字母组合</th><th>发音</th><th>例词</th></tr>
+      <tr><td>aw</td><td>/ɔː/</td><td>draw 画, law 法律, strawberry 草莓</td></tr>
+      <tr><td>ew</td><td>/juː/</td><td>new 新的, Dew 迪尤, few 少量</td></tr>
+      <tr><td>ow</td><td>/aʊ/</td><td>cow 奶牛, how 怎样, brown 棕色</td></tr>
+      <tr><td>ow</td><td>/əʊ/</td><td>snow 雪, show 节目, know 知道</td></tr>
+    </table>
+  </div>
+
+  <!-- Words -->
+  <table class="word-table">
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
+    <tr><td class="word">money</td><td class="phonetic">/ˈmʌni/</td><td class="pos">n.</td><td class="meaning">钱</td><td class="example">Now I have the money to buy that skateboard. 现在我有钱买那个滑板了。</td></tr>
+    <tr><td class="word">yuan</td><td class="phonetic">/juˈɑːn/</td><td class="pos">n.</td><td class="meaning">元</td><td class="example">It's 80 yuan. 它是80元。</td></tr>
+    <tr><td class="word">toy</td><td class="phonetic">/tɔɪ/</td><td class="pos">n.</td><td class="meaning">玩具</td><td class="example">Let's buy a toy. 我们买个玩具吧。</td></tr>
+    <tr><td class="word">box</td><td class="phonetic">/bɒks/</td><td class="pos">n.</td><td class="meaning">盒；匣；箱</td><td class="example">I put money in the spend box. 我把钱放进花费盒里。</td></tr>
+    <tr><td class="word">pair</td><td class="phonetic">/peə(r)/</td><td class="pos">n.</td><td class="meaning">一双，一对</td><td class="example">I'd like to buy three pairs of socks. 我想买三双袜子。</td></tr>
+    <tr><td class="word">carrot</td><td class="phonetic">/ˈkærət/</td><td class="pos">n.</td><td class="meaning">胡萝卜</td><td class="example">I want to buy some carrots. 我想买一些胡萝卜。</td></tr>
+    <tr><td class="word">flower</td><td class="phonetic">/ˈflaʊə(r)/</td><td class="pos">n.</td><td class="meaning">花，花朵</td><td class="example">I'd like to buy some flowers for my mum. 我想为妈妈买一些花。</td></tr>
+    <tr><td class="word">bakery</td><td class="phonetic">/ˈbeɪkəri/</td><td class="pos">n.</td><td class="meaning">面包店</td><td class="example">I go to the bakery to buy a cake. 我去面包店买蛋糕。</td></tr>
+    <tr><td class="word">skateboard</td><td class="phonetic">/ˈskeɪtbɔːd/</td><td class="pos">n.</td><td class="meaning">滑板</td><td class="example">How much is the skateboard? 滑板多少钱？</td></tr>
+    <tr><td class="word">skateboarding</td><td class="phonetic">/ˈskeɪtbɔːdɪŋ/</td><td class="pos">n.</td><td class="meaning">滑板运动</td><td class="example">I love skateboarding. 我喜欢滑板运动。</td></tr>
+    <tr><td class="word">friend</td><td class="phonetic">/frend/</td><td class="pos">n.</td><td class="meaning">朋友，友人</td><td class="example">Let's buy a skateboard for a friend. 我们给朋友买个滑板吧。</td></tr>
+    <tr><td class="word">noon</td><td class="phonetic">/nuːn/</td><td class="pos">n.</td><td class="meaning">正午，中午</td><td class="example">I go shopping at noon. 我中午去购物。</td></tr>
+    <tr><td class="word">holiday</td><td class="phonetic">/ˈhɒlədeɪ/</td><td class="pos">n.</td><td class="meaning">假期，休假日</td><td class="example">Save it for holidays. 为假日存钱。</td></tr>
+    <tr><td class="word">zookeeper</td><td class="phonetic">/ˈzuːkiːpə(r)/</td><td class="pos">n.</td><td class="meaning">动物园饲养员</td><td class="example">The zookeeper feeds the animals. 饲养员喂动物。</td></tr>
+    <tr><td class="word">bee</td><td class="phonetic">/biː/</td><td class="pos">n.</td><td class="meaning">蜜蜂</td><td class="example">The bee is on the flower. 蜜蜂在花上。</td></tr>
+    <tr><td class="word">eleven</td><td class="phonetic">/ɪˈlevn/</td><td class="pos">num.</td><td class="meaning">十一</td><td class="example">I have eleven yuan. 我有11元。</td></tr>
+    <tr><td class="word">twelve</td><td class="phonetic">/twelv/</td><td class="pos">num.</td><td class="meaning">十二</td><td class="example">Twelve yuan for one book. 一本书12元。</td></tr>
+    <tr><td class="word">thirteen</td><td class="phonetic">/ˌθɜːˈtiːn/</td><td class="pos">num.</td><td class="meaning">十三</td><td class="example">It's thirteen yuan. 是13元。</td></tr>
+    <tr><td class="word">sixteen</td><td class="phonetic">/ˌsɪksˈtiːn/</td><td class="pos">num.</td><td class="meaning">十六</td><td class="example">I have sixteen yuan. 我有16元。</td></tr>
+    <tr><td class="word">eighteen</td><td class="phonetic">/ˌeɪˈtiːn/</td><td class="pos">num.</td><td class="meaning">十八</td><td class="example">They are eighteen yuan. 它们18元。</td></tr>
+    <tr><td class="word">nineteen</td><td class="phonetic">/ˌnaɪnˈtiːn/</td><td class="pos">num.</td><td class="meaning">十九</td><td class="example">It costs nineteen yuan. 它花费19元。</td></tr>
+    <tr><td class="word">twenty</td><td class="phonetic">/ˈtwenti/</td><td class="pos">num.</td><td class="meaning">二十</td><td class="example">Twenty yuan for two. 两本20元。</td></tr>
+    <tr><td class="word">thirty</td><td class="phonetic">/ˈθɜːti/</td><td class="pos">num.</td><td class="meaning">三十</td><td class="example">I have thirty yuan left. 我还剩30元。</td></tr>
+    <tr><td class="word">thirty-three</td><td class="phonetic">/ˌθɜːtiˈθriː/</td><td class="pos">num.</td><td class="meaning">三十三</td><td class="example">It's thirty-three yuan. 是33元。</td></tr>
+    <tr><td class="word">forty-three</td><td class="phonetic">/ˌfɔːtiˈθriː/</td><td class="pos">num.</td><td class="meaning">四十三</td><td class="example">It's forty-three yuan. 是43元。</td></tr>
+    <tr><td class="word">forty-four</td><td class="phonetic">/ˌfɔːtiˈfɔː(r)/</td><td class="pos">num.</td><td class="meaning">四十四</td><td class="example">It's forty-four yuan. 是44元。</td></tr>
+    <tr><td class="word">fifty</td><td class="phonetic">/ˈfɪfti/</td><td class="pos">num.</td><td class="meaning">五十</td><td class="example">Here is fifty yuan. 这是50元。</td></tr>
+    <tr><td class="word">sixty-six</td><td class="phonetic">/ˌsɪkstiˈsɪks/</td><td class="pos">num.</td><td class="meaning">六十六</td><td class="example">It's sixty-six yuan. 是66元。</td></tr>
+    <tr><td class="word">seventy</td><td class="phonetic">/ˈsevnti/</td><td class="pos">num.</td><td class="meaning">七十</td><td class="example">I have seventy yuan. 我有70元。</td></tr>
+    <tr><td class="word">eighty</td><td class="phonetic">/ˈeɪti/</td><td class="pos">num.</td><td class="meaning">八十</td><td class="example">It's 80 yuan. 它是80元。</td></tr>
+    <tr><td class="word">hundred</td><td class="phonetic">/ˈhʌndrəd/</td><td class="pos">num.</td><td class="meaning">一百</td><td class="example">I put one hundred yuan in the box. 我把100元放进盒子里。</td></tr>
+    <tr><td class="word">give</td><td class="phonetic">/ɡɪv/</td><td class="pos">v.</td><td class="meaning">赠送，给予</td><td class="example">I give a gift to my friend. 我给朋友一份礼物。</td></tr>
+    <tr><td class="word">use</td><td class="phonetic">/juːz/</td><td class="pos">v.</td><td class="meaning">使用</td><td class="example">I use money to buy gifts. 我用钱买礼物。</td></tr>
+    <tr><td class="word">spend</td><td class="phonetic">/spend/</td><td class="pos">v.</td><td class="meaning">花销，花费</td><td class="example">I spend money on books. 我花钱买书。</td></tr>
+    <tr><td class="word">save</td><td class="phonetic">/seɪv/</td><td class="pos">v.</td><td class="meaning">储蓄，存（钱）</td><td class="example">I put ten yuan in the save box. 我把10元放进储蓄盒。</td></tr>
+    <tr><td class="word">share</td><td class="phonetic">/ʃeə(r)/</td><td class="pos">v.</td><td class="meaning">共享</td><td class="example">Let's share the food. 我们分享食物吧。</td></tr>
+    <tr><td class="word">should</td><td class="phonetic">/ʃʊd/</td><td class="pos">v.</td><td class="meaning">应当，应该</td><td class="example">We should make good use of money. 我们应该好好使用钱。</td></tr>
+    <tr><td class="word">early</td><td class="phonetic">/ˈɜːli/</td><td class="pos">adv.</td><td class="meaning">在早期，在初期</td><td class="example">I get up early. 我起得早。</td></tr>
+  </table>
+
+  <!-- Phrases -->
+  <div class="phrases-box">
+    <h3>重点短语</h3>
+    <div class="phrase-list">
+      <span class="phrase-item">go shopping 去购物</span>
+      <span class="phrase-item">by the way 顺便问一下</span>
+      <span class="phrase-item">help people in need 帮助困难的人</span>
+      <span class="phrase-item">flea market 跳蚤市场</span>
+      <span class="phrase-item">buy some flowers for sb. 为某人买花</span>
+      <span class="phrase-item">work out 解决（问题）</span>
+      <span class="phrase-item">save it for holidays 为假日存钱</span>
+      <span class="phrase-item">make good use of money 充分利用钱</span>
+      <span class="phrase-item">would like to buy 想去买</span>
+      <span class="phrase-item">spend box 花费盒</span>
+      <span class="phrase-item">save box 储蓄盒</span>
+      <span class="phrase-item">a pair of 一双</span>
+      <span class="phrase-item">flower shop 花店</span>
+      <span class="phrase-item">bookshop 书店</span>
+      <span class="phrase-item">toy shop 玩具店</span>
+    </div>
+  </div>
+
+  <!-- Sentences -->
+  <div class="sentences-box">
+    <h3>重点句型</h3>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 1：描述自己有钱买某物</div>
+      <div class="sentence-en">Now I have the money to buy that skateboard.</div>
+      <div class="sentence-cn">现在我有钱去买那个滑板了。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 2：询问物品价格（单数）— How much is...?</div>
+      <div class="sentence-dialog">
+        <div class="q">— How much is the skateboard? 这个滑板多少钱？</div>
+        <div class="a">— It's 80 yuan. 它是80元。</div>
+      </div>
+      <div class="sentence-dialog" style="margin-top:8px;">
+        <div class="q">— How much is a pair of shoes? 一双鞋子多少钱？</div>
+        <div class="a">— It's 30 pounds. 它是30英镑。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 3：询问物品价格（复数）— How much are...?</div>
+      <div class="sentence-dialog">
+        <div class="q">— How much are five apples? 五个苹果多少钱？</div>
+        <div class="a">— They are 3 pounds. 它们3英镑。</div>
+      </div>
+      <div class="sentence-dialog" style="margin-top:8px;">
+        <div class="q">— How much are two pairs of shoes? 两双鞋子多少钱？</div>
+        <div class="a">— They are 60 pounds. 它们60英镑。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 4：表达购物意愿 — I'd like to... / I want to...</div>
+      <div class="sentence-en">I'd like to buy some flowers for my mum.</div>
+      <div class="sentence-cn">我想为妈妈买一些花。</div>
+      <div class="sentence-en" style="margin-top:6px;">I want to buy a new book.</div>
+      <div class="sentence-cn">我想买一本新书。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 5：表达应该做某事 — We should...</div>
+      <div class="sentence-en">We should make good use of money.</div>
+      <div class="sentence-cn">我们应该好好使用金钱。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 6：描述去哪里购物 — Where do you go?</div>
+      <div class="sentence-en">I want to buy some rice, eggs and vegetables. I go to the supermarket.</div>
+      <div class="sentence-cn">我想买米、蛋和蔬菜。我去超市。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Unit 5 ===================== -->
+<div class="unit-section" id="u5">
+  <div class="unit-title"><span class="unit-badge">Unit 5</span>Shapes are fun!</div>
+  <div class="unit-topic">话题：形状与数量 | 核心语法：There be 句型 + How many 询问数量</div>
+
+  <!-- Phonics -->
+  <div class="phonics-box">
+    <h3>语音规则 — 字母组合发音</h3>
+    <table class="phonics-table">
+      <tr><th>字母组合</th><th>发音</th><th>例词</th></tr>
+      <tr><td>oa</td><td>/əʊ/</td><td>boat 小船, coat 外套, coach 教练</td></tr>
+      <tr><td>oo</td><td>/uː/</td><td>cool 酷的, food 食物, moon 月亮</td></tr>
+      <tr><td>oo</td><td>/ʊ/</td><td>book 书, cook 烹调, look 看</td></tr>
+      <tr><td>ou</td><td>/aʊ/</td><td>house 房子, mouth 嘴, mouse 老鼠</td></tr>
+    </table>
+  </div>
+
+  <!-- Words -->
+  <table class="word-table">
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
+    <tr><td class="word">circle</td><td class="phonetic">/ˈsɜːkl/</td><td class="pos">n.</td><td class="meaning">圆（形）</td><td class="example">Its eyes are circles. 它的眼睛是圆形。</td></tr>
+    <tr><td class="word">square</td><td class="phonetic">/skweə(r)/</td><td class="pos">n.</td><td class="meaning">正方形，四方形</td><td class="example">The wheels are squares. 车轮是正方形。</td></tr>
+    <tr><td class="word">rectangle</td><td class="phonetic">/ˈrektæŋɡl/</td><td class="pos">n.</td><td class="meaning">长方形，矩形</td><td class="example">Its head is a rectangle. 它的头是长方形。</td></tr>
+    <tr><td class="word">triangle</td><td class="phonetic">/ˈtraɪæŋɡl/</td><td class="pos">n.</td><td class="meaning">三角形；三角形物体</td><td class="example">There are two triangles. 有两个三角形。</td></tr>
+    <tr><td class="word">line</td><td class="phonetic">/laɪn/</td><td class="pos">n.</td><td class="meaning">线，线条</td><td class="example">There are four lines in a square. 一个正方形有四条线。</td></tr>
+    <tr><td class="word">wheel</td><td class="phonetic">/wiːl/</td><td class="pos">n.</td><td class="meaning">车轮</td><td class="example">The wheels are circles. 车轮是圆形。</td></tr>
+    <tr><td class="word">chocolate</td><td class="phonetic">/ˈtʃɒklət/</td><td class="pos">n.</td><td class="meaning">巧克力糖；巧克力</td><td class="example">A big box of chocolates! 一大盒巧克力！</td></tr>
+    <tr><td class="word">tummy</td><td class="phonetic">/ˈtʌmi/</td><td class="pos">n.</td><td class="meaning">肚子</td><td class="example">From the box into my tummy. 从盒子里到我的肚子里。</td></tr>
+    <tr><td class="word">its</td><td class="phonetic">/ɪts/</td><td class="pos">pron.</td><td class="meaning">它的</td><td class="example">Its head is a rectangle. 它的头是长方形。</td></tr>
+    <tr><td class="word">into</td><td class="phonetic">/ˈɪntə/</td><td class="pos">prep.</td><td class="meaning">进入，到……里面</td><td class="example">From the box into my tummy. 从盒子进入我的肚子。</td></tr>
+    <tr><td class="word">another</td><td class="phonetic">/əˈnʌðə(r)/</td><td class="pos">adj.</td><td class="meaning">另一，又一</td><td class="example">Here is another shape. 这是另一个形状。</td></tr>
+    <tr><td class="word">yummy</td><td class="phonetic">/ˈjʌmi/</td><td class="pos">adj.</td><td class="meaning">美味的</td><td class="example">Chocolate... yummy! 巧克力……美味！</td></tr>
+    <tr><td class="word">a lot</td><td class="phonetic">/ə lɒt/</td><td class="pos">phr.</td><td class="meaning">大量，许多</td><td class="example">I know a lot about shapes. 我知道很多形状。</td></tr>
+  </table>
+
+  <!-- Phrases -->
+  <div class="phrases-box">
+    <h3>重点短语</h3>
+    <div class="phrase-list">
+      <span class="phrase-item">look at 看</span>
+      <span class="phrase-item">how many 多少</span>
+      <span class="phrase-item">get out 出来</span>
+      <span class="phrase-item">go fast 走得快</span>
+      <span class="phrase-item">from...into... 从……进入……</span>
+      <span class="phrase-item">go home 回家</span>
+      <span class="phrase-item">in one picture 在一幅图里</span>
+      <span class="phrase-item">its head 它的头</span>
+      <span class="phrase-item">so many shapes 如此多的形状</span>
+      <span class="phrase-item">a big box of 一大盒</span>
+      <span class="phrase-item">a lot 大量，许多</span>
+      <span class="phrase-item">know a lot about shapes 知道许多形状</span>
+    </div>
+  </div>
+
+  <!-- Sentences -->
+  <div class="sentences-box">
+    <h3>重点句型</h3>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 1：描述某处有某人或某物 — There be...</div>
+      <div class="sentence-en">Now there are so many circles!</div>
+      <div class="sentence-cn">现在这里有很多圆形！</div>
+      <div class="sentence-en" style="margin-top:6px;">There are two squares and three triangles.</div>
+      <div class="sentence-cn">有两个正方形和三个三角形。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 2：描述正在发生某事 — It's doing...</div>
+      <div class="sentence-en">It's raining triangles!</div>
+      <div class="sentence-cn">正在下三角形！</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 3：描述某物的形状</div>
+      <div class="sentence-en">The wheels are squares.</div>
+      <div class="sentence-cn">车轮是正方形。</div>
+      <div class="sentence-en" style="margin-top:6px;">Its head is a rectangle.</div>
+      <div class="sentence-cn">它的头是长方形。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 4：询问对方看到的形状 — What shapes do you see?</div>
+      <div class="sentence-dialog">
+        <div class="q">— What shapes do you see? 你看到了什么形状？</div>
+        <div class="a">— Its eyes are circles. 它的眼睛是圆形。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 5：询问数量 — How many...are there?</div>
+      <div class="sentence-dialog">
+        <div class="q">— How many lines are there in a square? 一个正方形里有多少条线？</div>
+        <div class="a">— There are four lines. 有四条。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Unit 6 ===================== -->
+<div class="unit-section" id="u6">
+  <div class="unit-title"><span class="unit-badge">Unit 6</span>Our animal friends</div>
+  <div class="unit-topic">话题：动物朋友 | 核心语法：Is it...? / Does it...? / Has it got...? 猜动物</div>
+
+  <!-- Phonics -->
+  <div class="phonics-box">
+    <h3>语音规则 — 字母组合发音</h3>
+    <table class="phonics-table">
+      <tr><th>字母组合</th><th>发音</th><th>例词</th></tr>
+      <tr><td>air</td><td>/eə/</td><td>chair 椅子, hair 头发, pair 一双</td></tr>
+      <tr><td>ear</td><td>/eə/</td><td>bear 熊, pear 梨, wear 穿</td></tr>
+      <tr><td>ear</td><td>/ɪə/</td><td>dear 亲爱的, year 年, near 接近</td></tr>
+      <tr><td>ear</td><td>/ɜː/</td><td>early 在早期, earth 地球, learn 学习</td></tr>
+      <tr><td>ere</td><td>/eə/</td><td>there 在那里, where 在哪里</td></tr>
+    </table>
+  </div>
+
+  <!-- Words -->
+  <table class="word-table">
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
+    <tr><td class="word">pig</td><td class="phonetic">/pɪɡ/</td><td class="pos">n.</td><td class="meaning">猪</td><td class="example">The pig is on the farm. 猪在农场里。</td></tr>
+    <tr><td class="word">cow</td><td class="phonetic">/kaʊ/</td><td class="pos">n.</td><td class="meaning">牛；奶牛</td><td class="example">The cow eats grass. 奶牛吃草。</td></tr>
+    <tr><td class="word">horse</td><td class="phonetic">/hɔːs/</td><td class="pos">n.</td><td class="meaning">马</td><td class="example">The horse can run fast. 马能跑得快。</td></tr>
+    <tr><td class="word">sheep</td><td class="phonetic">/ʃiːp/</td><td class="pos">n.</td><td class="meaning">羊，绵羊</td><td class="example">There are five sheep on the farm. 农场里有五只羊。</td></tr>
+    <tr><td class="word">lion</td><td class="phonetic">/ˈlaɪən/</td><td class="pos">n.</td><td class="meaning">狮子</td><td class="example">Is it a lion? 它是一头狮子吗？</td></tr>
+    <tr><td class="word">elephant</td><td class="phonetic">/ˈelɪfənt/</td><td class="pos">n.</td><td class="meaning">象</td><td class="example">The elephant is very heavy. 大象很重。</td></tr>
+    <tr><td class="word">giraffe</td><td class="phonetic">/dʒəˈrɑːf/</td><td class="pos">n.</td><td class="meaning">长颈鹿</td><td class="example">The giraffe has a long neck. 长颈鹿有长脖子。</td></tr>
+    <tr><td class="word">parrot</td><td class="phonetic">/ˈpærət/</td><td class="pos">n.</td><td class="meaning">鹦鹉</td><td class="example">The parrot can talk. 鹦鹉会说话。</td></tr>
+    <tr><td class="word">hamster</td><td class="phonetic">/ˈhæmstə(r)/</td><td class="pos">n.</td><td class="meaning">仓鼠</td><td class="example">I have a hamster. It's cute. 我有一只仓鼠，它很可爱。</td></tr>
+    <tr><td class="word">zoo</td><td class="phonetic">/zuː/</td><td class="pos">n.</td><td class="meaning">动物园</td><td class="example">Let's go to the zoo. 我们去动物园吧。</td></tr>
+    <tr><td class="word">farm</td><td class="phonetic">/fɑːm/</td><td class="pos">n.</td><td class="meaning">农场；养殖场</td><td class="example">Does it live on a farm? 它住在农场吗？</td></tr>
+    <tr><td class="word">sky</td><td class="phonetic">/skaɪ/</td><td class="pos">n.</td><td class="meaning">天，天空</td><td class="example">Look at the sky. 看天空。</td></tr>
+    <tr><td class="word">grass</td><td class="phonetic">/ɡrɑːs/</td><td class="pos">n.</td><td class="meaning">草，青草</td><td class="example">The sheep eats grass. 羊吃草。</td></tr>
+    <tr><td class="word">neck</td><td class="phonetic">/nek/</td><td class="pos">n.</td><td class="meaning">颈，脖子</td><td class="example">The giraffe has a long neck. 长颈鹿有长脖子。</td></tr>
+    <tr><td class="word">tail</td><td class="phonetic">/teɪl/</td><td class="pos">n.</td><td class="meaning">尾巴</td><td class="example">My favourite animal has got a long tail. 我最喜欢的动物有长尾巴。</td></tr>
+    <tr><td class="word">pet</td><td class="phonetic">/pet/</td><td class="pos">n.</td><td class="meaning">宠物</td><td class="example">Can I have a pet? 我可以养宠物吗？</td></tr>
+    <tr><td class="word">boy</td><td class="phonetic">/bɔɪ/</td><td class="pos">n.</td><td class="meaning">男孩，少年</td><td class="example">Is it a boy or a girl? 它是公的还是母的？</td></tr>
+    <tr><td class="word">girl</td><td class="phonetic">/ɡɜːl/</td><td class="pos">n.</td><td class="meaning">女孩，小姑娘</td><td class="example">It's a girl. 它是母的。</td></tr>
+    <tr><td class="word">heavy</td><td class="phonetic">/ˈhevi/</td><td class="pos">adj.</td><td class="meaning">重的</td><td class="example">The elephant is heavy. 大象很重。</td></tr>
+    <tr><td class="word">brave</td><td class="phonetic">/breɪv/</td><td class="pos">adj.</td><td class="meaning">勇敢的，无畏的</td><td class="example">Brave dog! 勇敢的狗！</td></tr>
+    <tr><td class="word">cute</td><td class="phonetic">/kjuːt/</td><td class="pos">adj.</td><td class="meaning">漂亮的，逗人喜爱的</td><td class="example">The hamster is very cute. 仓鼠很可爱。</td></tr>
+    <tr><td class="word">slow</td><td class="phonetic">/sləʊ/</td><td class="pos">adj.</td><td class="meaning">慢的，缓慢的</td><td class="example">The sheep is slow. 羊很慢。</td></tr>
+    <tr><td class="word">perfect</td><td class="phonetic">/ˈpɜːfɪkt/</td><td class="pos">adj.</td><td class="meaning">完美的</td><td class="example">You're a perfect friend! 你是一个完美的朋友！</td></tr>
+    <tr><td class="word">talk</td><td class="phonetic">/tɔːk/</td><td class="pos">v.</td><td class="meaning">说话</td><td class="example">Can the parrot talk? 鹦鹉会说话吗？</td></tr>
+    <tr><td class="word">climb</td><td class="phonetic">/klaɪm/</td><td class="pos">v.</td><td class="meaning">攀登，爬</td><td class="example">It can't climb trees. 它不会爬树。</td></tr>
+    <tr><td class="word">catch</td><td class="phonetic">/kætʃ/</td><td class="pos">v.</td><td class="meaning">接住；接（球等）</td><td class="example">Stormy, catch the ball! 斯托米，接球！</td></tr>
+  </table>
+
+  <!-- Phrases -->
+  <div class="phrases-box">
+    <h3>重点短语</h3>
+    <div class="phrase-list">
+      <span class="phrase-item">eat grass/meat 吃草/肉</span>
+      <span class="phrase-item">catch the ball 接住球</span>
+      <span class="phrase-item">run fast 跑得快</span>
+      <span class="phrase-item">climb trees 爬树</span>
+      <span class="phrase-item">live on a farm 住在农场</span>
+      <span class="phrase-item">look after 照顾</span>
+      <span class="phrase-item">a perfect friend 一个完美的朋友</span>
+      <span class="phrase-item">animal shelter 动物收容所</span>
+      <span class="phrase-item">favourite animal 最喜欢的动物</span>
+    </div>
+  </div>
+
+  <!-- Sentences -->
+  <div class="sentences-box">
+    <h3>重点句型</h3>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 1：描述最喜欢的动物的特征</div>
+      <div class="sentence-en">My favourite animal has got a long tail.</div>
+      <div class="sentence-cn">我最喜欢的动物有一条长尾巴。</div>
+      <div class="sentence-en" style="margin-top:6px;">It has got four legs and a tail.</div>
+      <div class="sentence-cn">它有四条腿和一条尾巴。</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 2：确认某动物或动物的颜色 — Is it...?</div>
+      <div class="sentence-dialog">
+        <div class="q">— Is it a lion? 它是一头狮子吗？</div>
+        <div class="a">— Yes, it is. 是的，它是。</div>
+      </div>
+      <div class="sentence-dialog" style="margin-top:8px;">
+        <div class="q">— Is it brown? 它是棕色的吗？</div>
+        <div class="a">— No, it isn't. 不，它不是。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 3：询问某动物能否做某事 — Can it + 动词原形?</div>
+      <div class="sentence-dialog">
+        <div class="q">— Can it run fast? 它能跑得快吗？</div>
+        <div class="a">— Yes, it can. 是的，它能。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 4：询问某动物是否做某事 — Does it + 动词原形?</div>
+      <div class="sentence-dialog">
+        <div class="q">— Does it live on a farm? 它住在农场吗？</div>
+        <div class="a">— Yes, it does. 是的，它住在农场。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 5：询问某动物是否具有某特征 — Has it got...?</div>
+      <div class="sentence-dialog">
+        <div class="q">— Has it got four legs? 它有四条腿吗？</div>
+        <div class="a">— Yes, it has. 是的，它有。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 6：选择疑问句 — Is it A or B?</div>
+      <div class="sentence-dialog">
+        <div class="q">— Is it a boy or a girl? 它是公的还是母的？</div>
+        <div class="a">— It's a boy. 它是公的。</div>
+      </div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 7：感叹句 — What a/an + 形容词 + 单数名词!</div>
+      <div class="sentence-en">What a lovely cat!</div>
+      <div class="sentence-cn">多么可爱的猫啊！</div>
+    </div>
+
+    <div class="sentence-card">
+      <div class="sentence-pattern">句型 8：表达照顾宠物</div>
+      <div class="sentence-en">You have to look after it.</div>
+      <div class="sentence-cn">你必须照顾它。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Plays ===================== -->
+<div class="unit-section" id="plays">
+  <div class="unit-title"><span class="unit-badge">Plays</span>故事词汇</div>
+  <div class="unit-topic">话题：课本故事/剧本部分词汇（拓展阅读）</div>
+
+  <!-- Words -->
+  <table class="word-table">
+    <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
+    <tr><td class="word">city</td><td class="phonetic">/ˈsɪti/</td><td class="pos">n.</td><td class="meaning">城市，都市</td><td class="example">I live in a big city. 我住在大城市。</td></tr>
+    <tr><td class="word">story</td><td class="phonetic">/ˈstɔːri/</td><td class="pos">n.</td><td class="meaning">故事</td><td class="example">This is a fun story. 这是一个有趣的故事。</td></tr>
+    <tr><td class="word">party</td><td class="phonetic">/ˈpɑːti/</td><td class="pos">n.</td><td class="meaning">聚会，宴会</td><td class="example">Let's have a party! 我们开个聚会吧！</td></tr>
+    <tr><td class="word">tie</td><td class="phonetic">/taɪ/</td><td class="pos">v.</td><td class="meaning">把……系起来</td><td class="example">Tie the bag. 把袋子系起来。</td></tr>
+    <tr><td class="word">gift</td><td class="phonetic">/ɡɪft/</td><td class="pos">n.</td><td class="meaning">礼物</td><td class="example">Here is a gift for you. 这是给你的礼物。</td></tr>
+    <tr><td class="word">never</td><td class="phonetic">/ˈnevə(r)/</td><td class="pos">adv.</td><td class="meaning">决不，永不</td><td class="example">Never trust a bad wolf. 永远不要信任坏狼。</td></tr>
+    <tr><td class="word">address</td><td class="phonetic">/əˈdres/</td><td class="pos">n.</td><td class="meaning">地址</td><td class="example">What's your address? 你的地址是什么？</td></tr>
+    <tr><td class="word">trust</td><td class="phonetic">/trʌst/</td><td class="pos">v.</td><td class="meaning">信任，信赖，相信</td><td class="example">Don't trust the bad guy. 不要信任坏人。</td></tr>
+    <tr><td class="word">snow</td><td class="phonetic">/snəʊ/</td><td class="pos">n.</td><td class="meaning">雪</td><td class="example">The snow is white. 雪是白色的。</td></tr>
+    <tr><td class="word">bad</td><td class="phonetic">/bæd/</td><td class="pos">adj.</td><td class="meaning">（道德品质）坏的，不好的</td><td class="example">The wolf is bad. 狼是坏的。</td></tr>
+    <tr><td class="word">knock</td><td class="phonetic">/nɒk/</td><td class="pos">v.</td><td class="meaning">敲门（窗）</td><td class="example">Someone is knocking at the door. 有人在敲门。</td></tr>
+    <tr><td class="word">wolf</td><td class="phonetic">/wʊlf/</td><td class="pos">n.</td><td class="meaning">狼</td><td class="example">The wolf is at the door. 狼在门口。</td></tr>
+    <tr><td class="word">guy</td><td class="phonetic">/ɡaɪ/</td><td class="pos">n.</td><td class="meaning">家伙</td><td class="example">He is a good guy. 他是个好家伙。</td></tr>
+    <tr><td class="word">paw</td><td class="phonetic">/pɔː/</td><td class="pos">n.</td><td class="meaning">（动物的）爪子</td><td class="example">The dog's paw is hurt. 狗的爪子受伤了。</td></tr>
+    <tr><td class="word">hunter</td><td class="phonetic">/ˈhʌntə(r)/</td><td class="pos">n.</td><td class="meaning">猎人</td><td class="example">The hunter saves them. 猎人救了他们。</td></tr>
+    <tr><td class="word">bag</td><td class="phonetic">/bæɡ/</td><td class="pos">n.</td><td class="meaning">袋；包；囊</td><td class="example">Put it in the bag. 把它放进袋子里。</td></tr>
+    <tr><td class="word">life</td><td class="phonetic">/laɪf/</td><td class="pos">n.</td><td class="meaning">生命</td><td class="example">They saved his life. 他们救了他的命。</td></tr>
+  </table>
+
+  <div class="phrases-box">
+    <h3>重点短语</h3>
+    <div class="phrase-list">
+      <span class="phrase-item">have a party 开聚会</span>
+      <span class="phrase-item">knock at the door 敲门</span>
+      <span class="phrase-item">trust sb. 信任某人</span>
+      <span class="phrase-item">save one's life 救某人的命</span>
+      <span class="phrase-item">a bad wolf 一只坏狼</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 书面表达金句 ===================== -->
+<div class="unit-section" id="writing">
+  <div class="unit-title"><span class="unit-badge">拓展</span>书面表达高分金句（按话题整理）</div>
+  <div class="unit-topic">以下句型是各单元话题写作的常用金句，建议熟记</div>
+
+  <div class="phonics-box">
+    <h3>一、介绍喜欢的运动（Unit 1）</h3>
+    <div style="font-size:14px; line-height:2.2;">
+      1. I love sports! 我爱运动！<br>
+      2. I can run fast. 我能跑得很快。<br>
+      3. I can't stand on my hands. 我不会倒立。<br>
+      4. I'm a ball game star. 我是一名球星。<br>
+      5. I can't play ping-pong. But I can play football. 我不会打乒乓球。但是我会踢足球。<br>
+      6. My favourite sport is football. 我最喜欢的运动是足球。
+    </div>
+  </div>
+
+  <div class="phonics-box">
+    <h3>二、路线及场所位置（Unit 2）</h3>
+    <div style="font-size:14px; line-height:2.2;">
+      1. This is a map of our town. 这是我们镇的地图。<br>
+      2. How can I get to the cinema? 我怎么去电影院？<br>
+      3. You come out of your home, and then walk to the bus stop. 你从家里出来，接着走到公交车站。<br>
+      4. First you go right. Then go straight on. And turn left at the hospital. 你先右转。然后直走。接着在医院左转。<br>
+      5. The cinema is on your right. 电影院在你的右边。<br>
+      6. Thank you for showing me the way. 谢谢你为我指路。
+    </div>
+  </div>
+
+  <div class="phonics-box">
+    <h3>三、描述梦想的职业（Unit 3）</h3>
+    <div style="font-size:14px; line-height:2.2;">
+      1. What do you want to be? 你想要成为什么？<br>
+      2. I like growing flowers and grass. 我喜欢种花种草。<br>
+      3. I'm good at cutting. I can cut many shapes. 我擅长剪。我能剪出很多形状。<br>
+      4. I can make beautiful gardens. 我可以打造出漂亮的花园。<br>
+      5. I want to be a gardener. 我想成为一名园丁。<br>
+      6. What a lovely job I've got! 我拥有一份如此美好的工作！
+    </div>
+  </div>
+
+  <div class="phonics-box">
+    <h3>四、去购物（Unit 4）</h3>
+    <div style="font-size:14px; line-height:2.2;">
+      1. I put one hundred yuan in the spend box. 我把100元放进花费盒里。<br>
+      2. I use it to buy some gifts for my family. 我用它为家人买一些礼物。<br>
+      3. I want to buy some flowers for my mum. 我想给妈妈买一些花。<br>
+      4. How much is the book? 这本书多少钱？<br>
+      5. Twelve yuan for one book. Twenty yuan for two. 一本12元。两本20元。<br>
+      6. I'd like to buy three pairs of socks for my brother. 我想给我弟弟买三双袜子。<br>
+      7. We should make good use of money. 我们应该好好使用金钱。
+    </div>
+  </div>
+
+  <div class="phonics-box">
+    <h3>五、描述形状和数量（Unit 5）</h3>
+    <div style="font-size:14px; line-height:2.2;">
+      1. Look at my little robot! 看我的小机器人！<br>
+      2. There are so many shapes! 有如此多的形状！<br>
+      3. There are two squares and three triangles. 有两个正方形和三个三角形。<br>
+      4. Its head is a rectangle. 它的头是一个长方形。<br>
+      5. Its ears are circles. 它的耳朵是圆形。
+    </div>
+  </div>
+
+  <div class="phonics-box">
+    <h3>六、我的动物朋友（Unit 6）</h3>
+    <div style="font-size:14px; line-height:2.2;">
+      1. I have got a yellow cat. 我有一只黄色的猫。<br>
+      2. Its favourite food is meat. 它最喜欢的食物是肉。<br>
+      3. It has got four legs and a tail. 它有四条腿和一条尾巴。<br>
+      4. It can run very fast, but it can't climb trees. 它能跑得非常快，但是它不会爬树。<br>
+      5. Because its legs hurt. 因为它的腿受伤了。<br>
+      6. It is my perfect friend! 它是我完美的朋友！
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>外研社 Join In 剑桥小学英语 四年级上册（2024新版）单词句型汇总</p>
+  <p>教材主编：刘兆义 | 外语教学与研究出版社</p>
+  <p style="margin-top:8px;">本资料基于2024修订版教材整理，供学习参考使用</p>
+</div>
+
+</div>
+
+<!-- ===== 点击发音控制栏 ===== -->
+<div class="tts-bar" id="ttsBar">
+  <span class="tts-status" id="ttsStatus" aria-live="polite">🔊 点击单词、例句或重点句型播放</span>
+  <button data-rate="0.7" title="慢速朗读">慢速</button>
+  <button data-rate="0.9" class="active" title="正常速度朗读">正常</button>
+  <button id="ttsStop" title="停止朗读">停止</button>
+</div>
+
+<script>
+(function () {
+  if (!('speechSynthesis' in window)) {
+    var bar = document.getElementById('ttsBar');
+    if (bar) bar.innerHTML = '<span>⚠️ 当前浏览器不支持语音朗读，请使用 Edge 或 Chrome 打开</span>';
+    return;
+  }
+
+  var currentRate = 0.9;
+  var voice = null;
+  var audioUrlCache = {};
+  var audioCache = {};
+  var phonemeAudioCache = {};
+  var currentAudio = null;
+  var phonemeAudioBase =
+    'https://thesoundofenglish.org/wp-content/uploads/in5-archives/interactive-ipa-chart-22/Interactive%20IPA%20Chart%2022/assets/media/';
+  var phonemeAudioMap = {
+    '/ɑː/': ['SOUND 10.mp3'],
+    '/ə/': ['SOUND 7.mp3'],
+    '/ɜː/': ['SOUND 8.mp3'],
+    '/ɔː/': ['SOUND 12.mp3'],
+    '/eɪ/': ['SOUND 15.mp3'],
+    '/ɔɪ/': ['SOUND 20.mp3'],
+    '/iː/': ['SOUND 1.mp3'],
+    '/juː/': ['SOUND 41.mp3', 'SOUND 6.mp3'],
+    '/aʊ/': ['SOUND 16.mp3'],
+    '/əʊ/': ['SOUND 17.mp3'],
+    '/uː/': ['SOUND 6.mp3'],
+    '/ʊ/': ['SOUND 11.mp3'],
+    '/eə/': ['SOUND 4.mp3'],
+    '/ɪə/': ['SOUND 14.mp3']
+  };
+  var phonemeAudioSegments = {
+    'SOUND 1.mp3': [0.6205, 1.3451],
+    'SOUND 4.mp3': [0.5512, 1.0421],
+    'SOUND 6.mp3': [0.5784, 1.2007],
+    'SOUND 7.mp3': [0.5709, 0.8559],
+    'SOUND 8.mp3': [0.2893, 0.9612],
+    'SOUND 10.mp3': [0.1849, 0.8070],
+    'SOUND 11.mp3': [0.4529, 0.7141],
+    'SOUND 12.mp3': [0.2484, 0.9816],
+    'SOUND 14.mp3': [0.2592, 0.6444],
+    'SOUND 15.mp3': [0.1756, 0.6877],
+    'SOUND 16.mp3': [0.2356, 0.8301],
+    'SOUND 17.mp3': [0.2920, 0.8122],
+    'SOUND 20.mp3': [0.3292, 0.6713],
+    'SOUND 41.mp3': [0.3873, 0.8107]
+  };
+
+  // 选择英语朗读 voice：优先英式（教材音标为英式），其次美式
+  function pickVoice() {
+    var voices = speechSynthesis.getVoices();
+    if (!voices.length) return;
+    voice =
+      voices.find(function (v) { return v.lang === 'en-GB'; }) ||
+      voices.find(function (v) { return /^en(-|_)/i.test(v.lang) && /female|zira|hazel|libby|sonia/i.test(v.name); }) ||
+      voices.find(function (v) { return v.lang === 'en-US'; }) ||
+      voices.find(function (v) { return /^en/i.test(v.lang); }) ||
+      null;
+  }
+  pickVoice();
+  speechSynthesis.onvoiceschanged = pickVoice;
+
+  function setStatus(text) {
+    var status = document.getElementById('ttsStatus');
+    if (status) status.textContent = text;
+  }
+
+  function findBritishAudio(phonetics) {
+    var items = (phonetics || []).filter(function (item) { return item.audio; });
+    return (
+      items.find(function (item) { return /_gb|en-gb|uk/i.test(item.audio); }) ||
+      items[0] ||
+      null
+    );
+  }
+
+  function loadWordAudio(word) {
+    var key = word.toLowerCase().trim();
+    if (audioUrlCache[key]) return Promise.resolve(audioUrlCache[key]);
+    return fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(key))
+      .then(function (response) {
+        if (!response.ok) throw new Error('audio lookup failed');
+        return response.json();
+      })
+      .then(function (entries) {
+        var item = findBritishAudio(entries[0] && entries[0].phonetics);
+        if (!item || !item.audio) throw new Error('audio unavailable');
+        var url = item.audio.indexOf('//') === 0 ? 'https:' + item.audio : item.audio;
+        audioUrlCache[key] = url;
+        return url;
+      });
+  }
+
+  function playWordAudio(word, button) {
+    var key = word.toLowerCase().trim();
+    setStatus('正在加载英式发音：' + word);
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+    }
+    loadWordAudio(word).then(function (url) {
+      var audio = audioCache[key] || new Audio();
+      audioCache[key] = audio;
+      audio.src = url;
+      audio.currentTime = 0;
+      currentAudio = audio;
+      flash(button);
+      setStatus('正在播放英式发音：' + word);
+      return audio.play();
+    }).catch(function () {
+      // 网络或词典音频不可用时，退回浏览器英语语音。
+      speak(word, button);
+    });
+  }
+
+  function loadPhonemeAudio(fileName) {
+    if (!phonemeAudioCache[fileName]) {
+      var url = phonemeAudioBase + encodeURIComponent(fileName);
+      var audio = new Audio(url);
+      audio.preload = 'auto';
+      phonemeAudioCache[fileName] = audio;
+    }
+    return phonemeAudioCache[fileName];
+  }
+
+  function playPhonemeAudio(pronunciation, button) {
+    var files = phonemeAudioMap[pronunciation];
+    if (!files || !files.length) {
+      setStatus('暂未找到音素音频：' + pronunciation);
+      return;
+    }
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+
+    var index = 0;
+    function playNext() {
+      if (index >= files.length) {
+        currentAudio = null;
+        return;
+      }
+      var audio = loadPhonemeAudio(files[index++]);
+      var segment = phonemeAudioSegments[files[index - 1]];
+      var segmentEndHandled = false;
+      currentAudio = audio;
+      function finishSegment() {
+        if (segmentEndHandled) return;
+        segmentEndHandled = true;
+        audio.removeEventListener('timeupdate', stopAtSegmentEnd);
+        audio.onended = null;
+        audio.pause();
+        audio.currentTime = 0;
+        playNext();
+      }
+      function stopAtSegmentEnd() {
+        if (segment && audio.currentTime >= segment[1]) {
+          finishSegment();
+        }
+      }
+      audio.onended = finishSegment;
+      audio.addEventListener('timeupdate', stopAtSegmentEnd);
+      audio.onerror = function () {
+        audio.removeEventListener('timeupdate', stopAtSegmentEnd);
+        currentAudio = null;
+        setStatus('音素音频加载失败，请检查网络：' + pronunciation);
+      };
+      audio.currentTime = segment ? segment[0] : 0;
+      flash(button);
+      setStatus('正在播放英式音素：' + pronunciation);
+      var playPromise = audio.play();
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(function () {
+          currentAudio = null;
+          setStatus('音素音频播放失败，请重新点击：' + pronunciation);
+        });
+      }
+    }
+    playNext();
+  }
+
+  // 提取例句中的英文部分（首个中文字符之前的内容）
+  function extractEnglish(text) {
+    var m = text.match(new RegExp('^[^\\u4e00-\\u9fff\\u3000-\\u303f\\uff00-\\uffef]+'));
+    return m ? m[0].trim() : text.trim();
+  }
+
+  function speechText(text) {
+    return text.replace(/^[\s—–-]+/, '').trim();
+  }
+
+  function createSpeakButton(text, className, speech, statusText) {
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'speak-control ' + className;
+    button.textContent = text;
+    button.dataset.speak = speechText(speech || text);
+    button.dataset.status = statusText || button.dataset.speak;
+    button.setAttribute('aria-label', '播放：' + button.dataset.speak);
+    return button;
+  }
+
+  // 把单词表中的英文例句变成明确的朗读按钮。
+  document.querySelectorAll('.word-table td.example').forEach(function (td) {
+    var text = td.textContent;
+    var en = extractEnglish(text);
+    if (!en) return;
+    var idx = text.indexOf(en);
+    td.replaceChildren(
+      createSpeakButton(en, 'en-part'),
+      document.createTextNode(text.slice(idx + en.length))
+    );
+  });
+
+  // 把重点句型中的英文变成明确的朗读按钮。
+  document.querySelectorAll('.sentence-en').forEach(function (el) {
+    var text = el.textContent.trim();
+    if (!text) return;
+    var button = createSpeakButton(text, 'sentence-control');
+    var style = el.getAttribute('style');
+    if (style) button.setAttribute('style', style);
+    el.replaceWith(button);
+  });
+
+  // 对话中的问句和答句也只让英文部分进入朗读按钮。
+  document.querySelectorAll('.sentence-dialog .q, .sentence-dialog .a').forEach(function (el) {
+    var text = el.textContent;
+    var en = extractEnglish(text);
+    if (!en) return;
+    var idx = text.indexOf(en);
+    el.replaceChildren(
+      createSpeakButton(en, 'dialog-control'),
+      document.createTextNode(text.slice(idx + en.length))
+    );
+  });
+
+  // 语音规则表：点击字母组合、音标或英文例词播放对应发音。
+  document.querySelectorAll('.phonics-table tr').forEach(function (row) {
+    var cells = row.querySelectorAll('td');
+    if (cells.length < 3) return;
+
+    var combination = cells[0].textContent.trim();
+    var pronunciation = cells[1].textContent.trim();
+    var examples = cells[2].textContent.trim();
+    var letterNames = combination.toUpperCase().split('').join(' ');
+
+    cells[0].replaceChildren(
+      createSpeakButton(
+        combination,
+        'phonics-combination-control',
+        letterNames,
+        '字母组合：' + letterNames
+      )
+    );
+    var pronunciationButton = createSpeakButton(
+      pronunciation,
+      'phonics-pronunciation-control',
+      pronunciation,
+      '播放音素：' + pronunciation
+    );
+    pronunciationButton.dataset.phoneme = pronunciation;
+    cells[1].replaceChildren(pronunciationButton);
+
+    cells[2].replaceChildren();
+    examples.split(/\s*,\s*/).forEach(function (part, index, parts) {
+      var en = extractEnglish(part);
+      var rest = en ? part.slice(part.indexOf(en) + en.length) : part;
+      if (en) cells[2].appendChild(createSpeakButton(en, 'phonics-example-control', en));
+      if (rest) cells[2].appendChild(document.createTextNode(rest));
+      if (index < parts.length - 1) cells[2].appendChild(document.createTextNode(', '));
+    });
+  });
+
+  // 把重点短语变成可点击朗读按钮，只朗读英文部分。
+  document.querySelectorAll('.phrase-item').forEach(function (item) {
+    var text = item.textContent.trim();
+    var en = extractEnglish(text);
+    if (!en) return;
+    var button = createSpeakButton(text, 'phrase-item phrase-control', en);
+    item.replaceWith(button);
+  });
+
+  function flash(el) {
+    if (!el) return;
+    el.classList.remove('speaking-flash');
+    void el.offsetWidth;
+    el.classList.add('speaking-flash');
+  }
+
+  function speak(text, el, onend) {
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    if (voice) u.voice = voice;
+    u.lang = voice ? voice.lang : 'en-GB';
+    u.rate = currentRate;
+    u.pitch = 1;
+    u.onend = onend || null;
+    u.onerror = onend || null;
+    flash(el);
+    setStatus('正在播放：' + ((el && el.dataset.status) || text));
+    speechSynthesis.speak(u);
+  }
+
+  // 直接绑定事件，避免依赖事件委托导致部分浏览器点击无响应。
+  document.querySelectorAll('.speak-control').forEach(function (button) {
+    button.addEventListener('click', function () {
+      if (button.dataset.phoneme) {
+        playPhonemeAudio(button.dataset.phoneme, button);
+        return;
+      }
+      if (button.dataset.audioWord) {
+        playWordAudio(button.dataset.audioWord, button);
+        return;
+      }
+      speak(button.dataset.speak || button.textContent.trim(), button);
+    });
+    button.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      if (button.dataset.phoneme) {
+        playPhonemeAudio(button.dataset.phoneme, button);
+        return;
+      }
+      if (button.dataset.audioWord) {
+        playWordAudio(button.dataset.audioWord, button);
+        return;
+      }
+      speak(button.dataset.speak || button.textContent.trim(), button);
+    });
+  });
+
+  document.querySelectorAll('.word-table td.word').forEach(function (wordTd) {
+    wordTd.addEventListener('click', function () {
+      speak(wordTd.textContent.trim(), wordTd);
+    });
+  });
+
+  // 速度切换 & 停止
+  var bar = document.getElementById('ttsBar');
+  bar.querySelectorAll('button[data-rate]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      currentRate = parseFloat(btn.dataset.rate);
+      bar.querySelectorAll('button[data-rate]').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+  document.getElementById('ttsStop').addEventListener('click', function () {
+    speechSynthesis.cancel();
+    setStatus('已停止播放');
+  });
+})();
+</script>
+</body>
+</html>
