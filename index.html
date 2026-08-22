@@ -52,7 +52,11 @@
     border: 1px solid #e0e0e0;
     transition: all 0.2s;
   }
-  .nav a:hover { background: #667eea; color: #fff; border-color: #667eea; }
+  .nav a:hover, .nav a.active {
+    background: #667eea;
+    color: #fff;
+    border-color: #667eea;
+  }
 
   /* Unit Section */
   .unit-section { padding: 30px; border-bottom: 1px solid #f0f0f0; }
@@ -465,10 +469,18 @@
     .phonics-table th, .phonics-table td { padding: 8px 10px; }
     .word-table {
       display: block;
-      min-width: 760px;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
       font-size: 13px;
+    }
+    .word-table > tbody {
+      display: table;
+      width: 100%;
+      min-width: 760px;
     }
     .word-table th, .word-table td { padding: 7px 8px; }
     .word-table .example { font-size: 12px; min-width: 140px; }
@@ -496,7 +508,7 @@
 
 <!-- Navigation -->
 <div class="nav">
-  <a href="#u1">Unit 1 I love sports!</a>
+  <a href="#u1" class="active">Unit 1 I love sports!</a>
   <a href="#u2">Unit 2 In town</a>
   <a href="#u3">Unit 3 Cool jobs</a>
   <a href="#u4">Unit 4 Let's shop!</a>
@@ -1406,6 +1418,23 @@
 
 <script>
 (function () {
+  var navLinks = document.querySelectorAll('.nav a[href^="#"]');
+
+  function setActiveNav(link) {
+    navLinks.forEach(function (item) {
+      item.classList.toggle('active', item === link);
+    });
+  }
+
+  var initialNav = null;
+  navLinks.forEach(function (link) {
+    if (link.getAttribute('href') === window.location.hash) initialNav = link;
+    link.addEventListener('click', function () {
+      setActiveNav(link);
+    });
+  });
+  setActiveNav(initialNav || navLinks[0]);
+
   if (!('speechSynthesis' in window)) {
     var bar = document.getElementById('ttsBar');
     if (bar) bar.innerHTML = '<span>⚠️ 当前浏览器不支持语音朗读，请使用 Edge 或 Chrome 打开</span>';
