@@ -464,16 +464,26 @@
     .unit-topic { padding-left: 12px; margin-bottom: 16px; }
     .phonics-box {
       padding: 14px 12px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      overflow-x: hidden;
     }
     .phonics-box h3 { font-size: 15px; }
     .phonics-table {
       display: table;
-      min-width: 520px;
+      width: 100%;
+      min-width: 0;
+      table-layout: fixed;
       font-size: 12px;
     }
-    .phonics-table th, .phonics-table td { padding: 8px 10px; }
+    .phonics-table th, .phonics-table td {
+      padding: 8px 6px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      vertical-align: top;
+    }
+    .phonics-table th:nth-child(1), .phonics-table td:nth-child(1) { width: 24%; }
+    .phonics-table th:nth-child(2), .phonics-table td:nth-child(2) { width: 22%; }
+    .phonics-table th:nth-child(3), .phonics-table td:nth-child(3) { width: 54%; }
     .word-table {
       display: table;
       width: 100%;
