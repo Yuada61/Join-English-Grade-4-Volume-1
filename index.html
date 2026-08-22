@@ -84,10 +84,17 @@
   .phonics-table tr:nth-child(even) td { background: #fafafa; }
 
   /* Word Table */
+  .word-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 25px;
+  }
   .word-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 25px;
+    margin-bottom: 0;
     font-size: 14px;
   }
   .word-table th {
@@ -468,19 +475,16 @@
     }
     .phonics-table th, .phonics-table td { padding: 8px 10px; }
     .word-table {
-      display: block;
-      width: 100%;
-      min-width: 0;
-      max-width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior-x: contain;
+      display: table;
+      width: 760px;
+      min-width: 760px;
+      overflow: visible;
       font-size: 13px;
     }
     .word-table > tbody {
-      display: table;
-      width: 100%;
-      min-width: 760px;
+      display: table-row-group;
+      width: auto;
+      min-width: 0;
     }
     .word-table th, .word-table td { padding: 7px 8px; }
     .word-table .example { font-size: 12px; min-width: 140px; }
@@ -541,6 +545,7 @@
   </div>
 
   <!-- Words -->
+  <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
     <tr><td class="word">star</td><td class="phonetic">/stɑː(r)/</td><td class="pos">n.</td><td class="meaning">明星，名角</td><td class="example">Toby is a ball game star. 托比是球类运动明星。</td></tr>
@@ -571,6 +576,7 @@
     <tr><td class="word">football</td><td class="phonetic">/ˈfʊtbɔːl/</td><td class="pos">n.</td><td class="meaning">足球</td><td class="example">He can play football. 他会踢足球。</td></tr>
     <tr><td class="word">basketball</td><td class="phonetic">/ˈbɑːskɪtbɔːl/</td><td class="pos">n.</td><td class="meaning">篮球</td><td class="example">I can play basketball. 我会打篮球。</td></tr>
   </table>
+  </div>
 
   <!-- Phrases -->
   <div class="phrases-box">
@@ -672,6 +678,7 @@
   </div>
 
   <!-- Words -->
+  <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
     <tr><td class="word">town</td><td class="phonetic">/taʊn/</td><td class="pos">n.</td><td class="meaning">镇，城镇，市镇</td><td class="example">This is a map of our town. 这是我们镇的地图。</td></tr>
@@ -705,6 +712,7 @@
     <tr><td class="word">our</td><td class="phonetic">/ˈaʊə(r)/</td><td class="pos">pron.</td><td class="meaning">我们的</td><td class="example">This is our town. 这是我们的城镇。</td></tr>
     <tr><td class="word">thanks</td><td class="phonetic">/θæŋks/</td><td class="pos">excl.</td><td class="meaning">谢谢你，多谢</td><td class="example">Thanks for your help. 谢谢你的帮助。</td></tr>
   </table>
+  </div>
 
   <!-- Phrases -->
   <div class="phrases-box">
@@ -784,6 +792,7 @@
   </div>
 
   <!-- Words -->
+  <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
     <tr><td class="word">teacher</td><td class="phonetic">/ˈtiːtʃə(r)/</td><td class="pos">n.</td><td class="meaning">教师</td><td class="example">She is a teacher. 她是一名教师。</td></tr>
@@ -829,6 +838,7 @@
     <tr><td class="word">hard</td><td class="phonetic">/hɑːd/</td><td class="pos">adv.</td><td class="meaning">费劲地；费力地</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
     <tr><td class="word">around</td><td class="phonetic">/əˈraʊnd/</td><td class="pos">adv.</td><td class="meaning">到处，四处</td><td class="example">I like driving people around. 我喜欢开车送人到处走。</td></tr>
   </table>
+  </div>
 
   <!-- Phrases -->
   <div class="phrases-box">
@@ -929,6 +939,7 @@
   </div>
 
   <!-- Words -->
+  <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
     <tr><td class="word">money</td><td class="phonetic">/ˈmʌni/</td><td class="pos">n.</td><td class="meaning">钱</td><td class="example">Now I have the money to buy that skateboard. 现在我有钱买那个滑板了。</td></tr>
@@ -970,6 +981,7 @@
     <tr><td class="word">should</td><td class="phonetic">/ʃʊd/</td><td class="pos">v.</td><td class="meaning">应当，应该</td><td class="example">We should make good use of money. 我们应该好好使用钱。</td></tr>
     <tr><td class="word">early</td><td class="phonetic">/ˈɜːli/</td><td class="pos">adv.</td><td class="meaning">在早期，在初期</td><td class="example">I get up early. 我起得早。</td></tr>
   </table>
+  </div>
 
   <!-- Phrases -->
   <div class="phrases-box">
@@ -1067,6 +1079,7 @@
   </div>
 
   <!-- Words -->
+  <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
     <tr><td class="word">circle</td><td class="phonetic">/ˈsɜːkl/</td><td class="pos">n.</td><td class="meaning">圆（形）</td><td class="example">Its eyes are circles. 它的眼睛是圆形。</td></tr>
@@ -1083,6 +1096,7 @@
     <tr><td class="word">yummy</td><td class="phonetic">/ˈjʌmi/</td><td class="pos">adj.</td><td class="meaning">美味的</td><td class="example">Chocolate... yummy! 巧克力……美味！</td></tr>
     <tr><td class="word">a lot</td><td class="phonetic">/ə lɒt/</td><td class="pos">phr.</td><td class="meaning">大量，许多</td><td class="example">I know a lot about shapes. 我知道很多形状。</td></tr>
   </table>
+  </div>
 
   <!-- Phrases -->
   <div class="phrases-box">
@@ -1166,6 +1180,7 @@
   </div>
 
   <!-- Words -->
+  <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
     <tr><td class="word">pig</td><td class="phonetic">/pɪɡ/</td><td class="pos">n.</td><td class="meaning">猪</td><td class="example">The pig is on the farm. 猪在农场里。</td></tr>
@@ -1195,6 +1210,7 @@
     <tr><td class="word">climb</td><td class="phonetic">/klaɪm/</td><td class="pos">v.</td><td class="meaning">攀登，爬</td><td class="example">It can't climb trees. 它不会爬树。</td></tr>
     <tr><td class="word">catch</td><td class="phonetic">/kætʃ/</td><td class="pos">v.</td><td class="meaning">接住；接（球等）</td><td class="example">Stormy, catch the ball! 斯托米，接球！</td></tr>
   </table>
+  </div>
 
   <!-- Phrases -->
   <div class="phrases-box">
@@ -1288,6 +1304,7 @@
   <div class="unit-topic">话题：课本故事/剧本部分词汇（拓展阅读）</div>
 
   <!-- Words -->
+  <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
     <tr><td class="word">city</td><td class="phonetic">/ˈsɪti/</td><td class="pos">n.</td><td class="meaning">城市，都市</td><td class="example">I live in a big city. 我住在大城市。</td></tr>
@@ -1308,6 +1325,7 @@
     <tr><td class="word">bag</td><td class="phonetic">/bæɡ/</td><td class="pos">n.</td><td class="meaning">袋；包；囊</td><td class="example">Put it in the bag. 把它放进袋子里。</td></tr>
     <tr><td class="word">life</td><td class="phonetic">/laɪf/</td><td class="pos">n.</td><td class="meaning">生命</td><td class="example">They saved his life. 他们救了他的命。</td></tr>
   </table>
+  </div>
 
   <div class="phrases-box">
     <h3>重点短语</h3>
