@@ -119,6 +119,29 @@
   .word-table .meaning { color: #2c3e50; }
   .word-table .example { color: #555; font-size: 13px; }
   .word-table .example em { color: #999; font-style: normal; }
+  .sense-list { display: grid; gap: 8px; }
+  .sense-item {
+    padding: 7px 9px;
+    border: 1px solid #e7edf5;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.72);
+  }
+  .sense-meaning {
+    display: block;
+    color: #2c3e50;
+    line-height: 1.55;
+  }
+  .sense-example {
+    display: block;
+    margin-top: 3px;
+    color: #66788a;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+  .sense-example .speak-control {
+    color: #2e6ca4;
+    font-size: inherit;
+  }
 
   /* ===== 点击发音样式 ===== */
   .word-table td.word, .word-table td.example { cursor: pointer; position: relative; }
@@ -395,6 +418,11 @@
     padding: 2px 4px;
     margin: -2px -4px;
   }
+  .sense-example .speak-control {
+    display: inline;
+    padding: 2px 4px;
+    margin: -2px -4px;
+  }
   .sentence-control {
     display: block;
     width: 100%;
@@ -507,15 +535,17 @@
       overflow-wrap: anywhere;
       word-break: break-word;
     }
-    .word-table th:nth-child(1), .word-table td:nth-child(1) { width: 16%; }
+    .word-table th:nth-child(1), .word-table td:nth-child(1) { width: 18%; }
     .word-table th:nth-child(2), .word-table td:nth-child(2) { width: 22%; }
-    .word-table th:nth-child(3), .word-table td:nth-child(3) { width: 10%; }
-    .word-table th:nth-child(4), .word-table td:nth-child(4) { width: 22%; }
-    .word-table th:nth-child(5), .word-table td:nth-child(5) { width: 30%; }
+    .word-table th:nth-child(3), .word-table td:nth-child(3) { width: 12%; }
+    .word-table th:nth-child(4), .word-table td:nth-child(4) { width: 48%; }
     .word-table .word,
     .word-table .phonetic,
     .word-table .pos { white-space: normal; }
     .word-table .example { font-size: 12px; min-width: 0; }
+    .sense-item { padding: 6px 7px; }
+    .sense-list { gap: 6px; }
+    .sense-example { font-size: 11px; }
     .phrases-box, .sentences-box { margin-bottom: 22px; }
     .sentence-card { padding: 11px 13px; }
     .sentence-pattern { font-size: 12px; line-height: 1.55; }
@@ -576,33 +606,33 @@
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
-    <tr><td class="word">star</td><td class="phonetic">/stɑː(r)/</td><td class="pos">n.</td><td class="meaning">明星，名角</td><td class="example">Toby is a ball game star. 托比是球类运动明星。</td></tr>
-    <tr><td class="word">ping-pong</td><td class="phonetic">/ˈpɪŋpɒŋ/</td><td class="pos">n.</td><td class="meaning">乒乓球运动</td><td class="example">I can play ping-pong. 我会打乒乓球。</td></tr>
-    <tr><td class="word">fast</td><td class="phonetic">/fɑːst/</td><td class="pos">adv.</td><td class="meaning">快地，快速地</td><td class="example">Linlin can run very fast! 琳琳能跑得非常快！</td></tr>
-    <tr><td class="word">ride</td><td class="phonetic">/raɪd/</td><td class="pos">v.</td><td class="meaning">骑，骑自行车</td><td class="example">I can ride a bike. 我会骑自行车。</td></tr>
-    <tr><td class="word">report</td><td class="phonetic">/rɪˈpɔːt/</td><td class="pos">n.</td><td class="meaning">报告，汇报</td><td class="example">This is my sports report. 这是我的体育报告。</td></tr>
+    <tr><td class="word">star</td><td class="phonetic">/stɑː(r)/</td><td class="pos">n. & v.</td><td class="meaning">n. 星，恒星；明星，名角；星号，星状物 / v. 主演，担任主角</td><td class="example">Toby is a ball game star. 托比是球类运动明星。</td></tr>
+    <tr><td class="word">ping-pong</td><td class="phonetic">/ˈpɪŋpɒŋ/</td><td class="pos">n.</td><td class="meaning">乒乓球运动（= table tennis）</td><td class="example">I can play ping-pong. 我会打乒乓球。</td></tr>
+    <tr><td class="word">fast</td><td class="phonetic">/fɑːst/</td><td class="pos">adj. & adv.</td><td class="meaning">adj. 快的，快速的；敏捷的 / adv. 快地，快速地；紧紧地，完全地</td><td class="example">Linlin can run very fast! 琳琳能跑得非常快！</td></tr>
+    <tr><td class="word">ride</td><td class="phonetic">/raɪd/</td><td class="pos">v. & n.</td><td class="meaning">v. 骑（马、自行车等）；乘坐，搭乘 / n. 兜风；（乘车、骑马的）一趟</td><td class="example">I can ride a bike. 我会骑自行车。</td></tr>
+    <tr><td class="word">report</td><td class="phonetic">/rɪˈpɔːt/</td><td class="pos">n. & v.</td><td class="meaning">n. 报告，汇报；报道；成绩单 / v. 报告，汇报；报道</td><td class="example">This is my sports report. 这是我的体育报告。</td></tr>
     <tr><td class="word">wheelchair</td><td class="phonetic">/ˈwiːltʃeə(r)/</td><td class="pos">n.</td><td class="meaning">轮椅</td><td class="example">She can ride her wheelchair very fast. 她能把轮椅驶得很快。</td></tr>
-    <tr><td class="word">far</td><td class="phonetic">/fɑː(r)/</td><td class="pos">adv.</td><td class="meaning">远</td><td class="example">He can walk very far. 他能走很远。</td></tr>
-    <tr><td class="word">from</td><td class="phonetic">/frɒm/</td><td class="pos">prep.</td><td class="meaning">来自</td><td class="example">I am from China. 我来自中国。</td></tr>
-    <tr><td class="word">band</td><td class="phonetic">/bænd/</td><td class="pos">n.</td><td class="meaning">圈，箍，带</td><td class="example">Put on this magic band. 戴上这条魔法腕带。</td></tr>
-    <tr><td class="word">very</td><td class="phonetic">/ˈveri/</td><td class="pos">adv.</td><td class="meaning">很，非常</td><td class="example">She runs very fast. 她跑得非常快。</td></tr>
-    <tr><td class="word">sure</td><td class="phonetic">/ʃʊə(r)/</td><td class="pos">adj.</td><td class="meaning">肯定的，确信的，有把握的</td><td class="example">Are you sure? 你确定吗？</td></tr>
-    <tr><td class="word">hurt</td><td class="phonetic">/hɜːt/</td><td class="pos">v.</td><td class="meaning">（身体部位）感到疼痛</td><td class="example">My legs hurt. 我的腿疼。</td></tr>
-    <tr><td class="word">think</td><td class="phonetic">/θɪŋk/</td><td class="pos">v.</td><td class="meaning">想，思考</td><td class="example">I think I can do it. 我想我能做到。</td></tr>
-    <tr><td class="word">really</td><td class="phonetic">/ˈriːəli/</td><td class="pos">adv.</td><td class="meaning">真的</td><td class="example">Can you really swim? 你真的会游泳吗？</td></tr>
-    <tr><td class="word">wind</td><td class="phonetic">/wɪnd/</td><td class="pos">n.</td><td class="meaning">风</td><td class="example">It's windy today. 今天有风。</td></tr>
-    <tr><td class="word">tired</td><td class="phonetic">/ˈtaɪəd/</td><td class="pos">adj.</td><td class="meaning">累的</td><td class="example">I'm tired and my legs hurt. 我累了，腿也疼。</td></tr>
-    <tr><td class="word">favourite</td><td class="phonetic">/ˈfeɪvərɪt/</td><td class="pos">adj.</td><td class="meaning">最喜欢的</td><td class="example">What's your favourite sport? 你最喜欢的运动是什么？</td></tr>
-    <tr><td class="word">sport</td><td class="phonetic">/spɔːt/</td><td class="pos">n.</td><td class="meaning">体育运动</td><td class="example">I love sports! 我爱运动！</td></tr>
-    <tr><td class="word">kung fu</td><td class="phonetic">/ˌkʌŋˈfuː/</td><td class="pos">n.</td><td class="meaning">中国功夫</td><td class="example">I can do kung fu. 我会练功夫。</td></tr>
-    <tr><td class="word">magic</td><td class="phonetic">/ˈmædʒɪk/</td><td class="pos">adj.</td><td class="meaning">魔法的</td><td class="example">This is a magic band. 这是一条魔法腕带。</td></tr>
-    <tr><td class="word">run</td><td class="phonetic">/rʌn/</td><td class="pos">v.</td><td class="meaning">跑</td><td class="example">I can run fast. 我能跑得快。</td></tr>
-    <tr><td class="word">swim</td><td class="phonetic">/swɪm/</td><td class="pos">v.</td><td class="meaning">游泳</td><td class="example">Can you swim? 你会游泳吗？</td></tr>
-    <tr><td class="word">jump</td><td class="phonetic">/dʒʌmp/</td><td class="pos">v.</td><td class="meaning">跳</td><td class="example">I can jump really high. 我能跳得很高。</td></tr>
-    <tr><td class="word">kick</td><td class="phonetic">/kɪk/</td><td class="pos">v.</td><td class="meaning">踢</td><td class="example">I can kick. 我会踢腿。</td></tr>
-    <tr><td class="word">ski</td><td class="phonetic">/skiː/</td><td class="pos">v.</td><td class="meaning">滑雪</td><td class="example">I can't ski. 我不会滑雪。</td></tr>
-    <tr><td class="word">football</td><td class="phonetic">/ˈfʊtbɔːl/</td><td class="pos">n.</td><td class="meaning">足球</td><td class="example">He can play football. 他会踢足球。</td></tr>
-    <tr><td class="word">basketball</td><td class="phonetic">/ˈbɑːskɪtbɔːl/</td><td class="pos">n.</td><td class="meaning">篮球</td><td class="example">I can play basketball. 我会打篮球。</td></tr>
+    <tr><td class="word">far</td><td class="phonetic">/fɑː(r)/</td><td class="pos">adv. & adj.</td><td class="meaning">adv. 远；很，非常 / adj. 远的，遥远的；较远的（farther/further）</td><td class="example">He can walk very far. 他能走很远。</td></tr>
+    <tr><td class="word">from</td><td class="phonetic">/frɒm/</td><td class="pos">prep.</td><td class="meaning">来自；从，从……起；离（某地有多远）</td><td class="example">I am from China. 我来自中国。</td></tr>
+    <tr><td class="word">band</td><td class="phonetic">/bænd/</td><td class="pos">n.</td><td class="meaning">圈，箍，带；乐队；一群，一伙</td><td class="example">Put on this magic band. 戴上这条魔法腕带。</td></tr>
+    <tr><td class="word">very</td><td class="phonetic">/ˈveri/</td><td class="pos">adv.</td><td class="meaning">很，非常；（强调最高级）极其，正是</td><td class="example">She runs very fast. 她跑得非常快。</td></tr>
+    <tr><td class="word">sure</td><td class="phonetic">/ʃʊə(r)/</td><td class="pos">adj. & adv.</td><td class="meaning">adj. 肯定的，确信的，有把握的 / adv. 当然，好的（= of course）</td><td class="example">Are you sure? 你确定吗？</td></tr>
+    <tr><td class="word">hurt</td><td class="phonetic">/hɜːt/</td><td class="pos">v. & adj.</td><td class="meaning">v. （身体部位）感到疼痛；使受伤，弄伤；伤害（感情）/ adj. （身体或感情）受伤的</td><td class="example">My legs hurt. 我的腿疼。</td></tr>
+    <tr><td class="word">think</td><td class="phonetic">/θɪŋk/</td><td class="pos">v.</td><td class="meaning">想，思考；认为，以为；想出，想起</td><td class="example">I think I can do it. 我想我能做到。</td></tr>
+    <tr><td class="word">really</td><td class="phonetic">/ˈriːəli/</td><td class="pos">adv.</td><td class="meaning">真正地，确实；事实上（用于疑问、否定句中表示惊讶）</td><td class="example">Can you really swim? 你真的会游泳吗？</td></tr>
+    <tr><td class="word">wind</td><td class="phonetic">/wɪnd/</td><td class="pos">n. & v.</td><td class="meaning">n. 风；气流 / v. (wound) 缠绕；蜿蜒；上（发条）</td><td class="example">It's windy today. 今天有风。</td></tr>
+    <tr><td class="word">tired</td><td class="phonetic">/ˈtaɪəd/</td><td class="pos">adj.</td><td class="meaning">累的，疲劳的；厌倦的（be tired of 对……感到厌烦）</td><td class="example">I'm tired and my legs hurt. 我累了，腿也疼。</td></tr>
+    <tr><td class="word">favourite</td><td class="phonetic">/ˈfeɪvərɪt/</td><td class="pos">adj. & n.</td><td class="meaning">adj. 最喜欢的 / n. 特别喜爱的人（或物）</td><td class="example">What's your favourite sport? 你最喜欢的运动是什么？</td></tr>
+    <tr><td class="word">sport</td><td class="phonetic">/spɔːt/</td><td class="pos">n.</td><td class="meaning">体育运动；比赛项目；（pl.）运动会</td><td class="example">I love sports! 我爱运动！</td></tr>
+    <tr><td class="word">kung fu</td><td class="phonetic">/ˌkʌŋˈfuː/</td><td class="pos">n.</td><td class="meaning">中国功夫，武术</td><td class="example">I can do kung fu. 我会练功夫。</td></tr>
+    <tr><td class="word">magic</td><td class="phonetic">/ˈmædʒɪk/</td><td class="pos">adj. & n.</td><td class="meaning">adj. 魔法的，有魔力的；神奇的 / n. 魔法，魔术，魔力</td><td class="example">This is a magic band. 这是一条魔法腕带。</td></tr>
+    <tr><td class="word">run</td><td class="phonetic">/rʌn/</td><td class="pos">v. & n.</td><td class="meaning">v. 跑，奔跑；经营，管理；（机器）运转；（水）流 / n. 跑步，奔跑</td><td class="example">I can run fast. 我能跑得快。</td></tr>
+    <tr><td class="word">swim</td><td class="phonetic">/swɪm/</td><td class="pos">v. & n.</td><td class="meaning">v. 游泳；游（某段距离） / n. 游泳（go for a swim）</td><td class="example">Can you swim? 你会游泳吗？</td></tr>
+    <tr><td class="word">jump</td><td class="phonetic">/dʒʌmp/</td><td class="pos">v. & n.</td><td class="meaning">v. 跳，跳跃；跳过；猛涨 / n. 跳，跃</td><td class="example">I can jump really high. 我能跳得很高。</td></tr>
+    <tr><td class="word">kick</td><td class="phonetic">/kɪk/</td><td class="pos">v. & n.</td><td class="meaning">v. 踢，踹 / n. 踢；极大的乐趣</td><td class="example">I can kick. 我会踢腿。</td></tr>
+    <tr><td class="word">ski</td><td class="phonetic">/skiː/</td><td class="pos">v. & n.</td><td class="meaning">v. 滑雪 / n. 滑雪板（a pair of skis 一副滑雪板）</td><td class="example">I can't ski. 我不会滑雪。</td></tr>
+    <tr><td class="word">football</td><td class="phonetic">/ˈfʊtbɔːl/</td><td class="pos">n.</td><td class="meaning">足球；足球运动</td><td class="example">He can play football. 他会踢足球。</td></tr>
+    <tr><td class="word">basketball</td><td class="phonetic">/ˈbɑːskɪtbɔːl/</td><td class="pos">n.</td><td class="meaning">篮球；篮球运动</td><td class="example">I can play basketball. 我会打篮球。</td></tr>
   </table>
   </div>
 
@@ -709,36 +739,36 @@
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
-    <tr><td class="word">town</td><td class="phonetic">/taʊn/</td><td class="pos">n.</td><td class="meaning">镇，城镇，市镇</td><td class="example">This is a map of our town. 这是我们镇的地图。</td></tr>
-    <tr><td class="word">map</td><td class="phonetic">/mæp/</td><td class="pos">n.</td><td class="meaning">地图</td><td class="example">Look at the map. 看这张地图。</td></tr>
-    <tr><td class="word">shop</td><td class="phonetic">/ʃɒp/</td><td class="pos">n.</td><td class="meaning">商店</td><td class="example">The shop is next to the school. 商店紧挨着学校。</td></tr>
-    <tr><td class="word">stop</td><td class="phonetic">/stɒp/</td><td class="pos">n.</td><td class="meaning">车站</td><td class="example">He lives next to the bus stop. 他住在公交车站旁边。</td></tr>
+    <tr><td class="word">town</td><td class="phonetic">/taʊn/</td><td class="pos">n.</td><td class="meaning">镇，城镇，市镇；城市（区别于乡村）</td><td class="example">This is a map of our town. 这是我们镇的地图。</td></tr>
+    <tr><td class="word">map</td><td class="phonetic">/mæp/</td><td class="pos">n. & v.</td><td class="meaning">n. 地图 / v. 绘制……的地图</td><td class="example">Look at the map. 看这张地图。</td></tr>
+    <tr><td class="word">shop</td><td class="phonetic">/ʃɒp/</td><td class="pos">n. & v.</td><td class="meaning">n. 商店，店铺 / v. 购物，买东西（go shopping）</td><td class="example">The shop is next to the school. 商店紧挨着学校。</td></tr>
+    <tr><td class="word">stop</td><td class="phonetic">/stɒp/</td><td class="pos">n. & v.</td><td class="meaning">n. 车站；停止 / v. 停止；阻止</td><td class="example">He lives next to the bus stop. 他住在公交车站旁边。</td></tr>
     <tr><td class="word">bus</td><td class="phonetic">/bʌs/</td><td class="pos">n.</td><td class="meaning">公交车，公共汽车</td><td class="example">I go to school by bus. 我坐公交车上学。</td></tr>
-    <tr><td class="word">cinema</td><td class="phonetic">/ˈsɪnəmə/</td><td class="pos">n.</td><td class="meaning">电影院</td><td class="example">The cinema is on your left. 电影院在你的左边。</td></tr>
+    <tr><td class="word">cinema</td><td class="phonetic">/ˈsɪnəmə/</td><td class="pos">n.</td><td class="meaning">电影院；电影（艺术）</td><td class="example">The cinema is on your left. 电影院在你的左边。</td></tr>
     <tr><td class="word">restaurant</td><td class="phonetic">/ˈrestrɒnt/</td><td class="pos">n.</td><td class="meaning">饭店，餐馆</td><td class="example">Let's eat at the restaurant. 我们在餐厅吃饭吧。</td></tr>
-    <tr><td class="word">station</td><td class="phonetic">/ˈsteɪʃn/</td><td class="pos">n.</td><td class="meaning">车站；所；局</td><td class="example">Walk to the train station. 走到火车站。</td></tr>
+    <tr><td class="word">station</td><td class="phonetic">/ˈsteɪʃn/</td><td class="pos">n.</td><td class="meaning">车站；所；局；台；站</td><td class="example">Walk to the train station. 走到火车站。</td></tr>
     <tr><td class="word">supermarket</td><td class="phonetic">/ˈsuːpəmɑːkɪt/</td><td class="pos">n.</td><td class="meaning">超级市场，超市</td><td class="example">Turn right at the supermarket. 在超市右转。</td></tr>
     <tr><td class="word">hospital</td><td class="phonetic">/ˈhɒspɪtl/</td><td class="pos">n.</td><td class="meaning">医院</td><td class="example">Turn left at the hospital. 在医院左转。</td></tr>
-    <tr><td class="word">police</td><td class="phonetic">/pəˈliːs/</td><td class="pos">n.</td><td class="meaning">警察</td><td class="example">The police station is over there. 派出所在那边。</td></tr>
+    <tr><td class="word">police</td><td class="phonetic">/pəˈliːs/</td><td class="pos">n.</td><td class="meaning">警察（部门）；警方，治安</td><td class="example">The police station is over there. 派出所在那边。</td></tr>
     <tr><td class="word">street</td><td class="phonetic">/striːt/</td><td class="pos">n.</td><td class="meaning">大街，街道</td><td class="example">Walk down the street. 沿着街道走。</td></tr>
-    <tr><td class="word">way</td><td class="phonetic">/weɪ/</td><td class="pos">n.</td><td class="meaning">路，道路</td><td class="example">Can you tell me the way to the bookshop? 你能告诉我去书店的路吗？</td></tr>
-    <tr><td class="word">place</td><td class="phonetic">/pleɪs/</td><td class="pos">n.</td><td class="meaning">地方，地点，场所</td><td class="example">This is a nice place. 这是一个好地方。</td></tr>
-    <tr><td class="word">train</td><td class="phonetic">/treɪn/</td><td class="pos">n.</td><td class="meaning">火车，列车</td><td class="example">I go by train. 我坐火车去。</td></tr>
-    <tr><td class="word">writer</td><td class="phonetic">/ˈraɪtə(r)/</td><td class="pos">n.</td><td class="meaning">作家；作者</td><td class="example">She is our favourite writer. 她是我们最喜欢的作家。</td></tr>
-    <tr><td class="word">surprise</td><td class="phonetic">/səˈpraɪz/</td><td class="pos">n.</td><td class="meaning">意想不到的事；不同寻常的事</td><td class="example">What a surprise! 真是个惊喜！</td></tr>
-    <tr><td class="word">turn</td><td class="phonetic">/tɜːn/</td><td class="pos">v.</td><td class="meaning">转弯；（使）改变方向</td><td class="example">Turn right at the supermarket. 在超市右转。</td></tr>
-    <tr><td class="word">buy</td><td class="phonetic">/baɪ/</td><td class="pos">v.</td><td class="meaning">买，购买</td><td class="example">I want to buy a book. 我想买一本书。</td></tr>
-    <tr><td class="word">live</td><td class="phonetic">/lɪv/</td><td class="pos">v.</td><td class="meaning">住，居住</td><td class="example">Mr Blue lives next to the bus stop. 布卢先生住在公交车站旁。</td></tr>
-    <tr><td class="word">left</td><td class="phonetic">/left/</td><td class="pos">adv.</td><td class="meaning">向左，朝左</td><td class="example">Go left first. 先左转。</td></tr>
-    <tr><td class="word">straight</td><td class="phonetic">/streɪt/</td><td class="pos">adv.</td><td class="meaning">笔直地，成直线地</td><td class="example">Go straight on. 直走。</td></tr>
-    <tr><td class="word">then</td><td class="phonetic">/ðen/</td><td class="pos">adv.</td><td class="meaning">接下来，然后</td><td class="example">Then go straight on. 然后直走。</td></tr>
-    <tr><td class="word">there</td><td class="phonetic">/ðeə(r)/</td><td class="pos">adv.</td><td class="meaning">在那里</td><td class="example">The hospital is there. 医院在那边。</td></tr>
+    <tr><td class="word">way</td><td class="phonetic">/weɪ/</td><td class="pos">n.</td><td class="meaning">路，道路；方法，方式；方面</td><td class="example">Can you tell me the way to the bookshop? 你能告诉我去书店的路吗？</td></tr>
+    <tr><td class="word">place</td><td class="phonetic">/pleɪs/</td><td class="pos">n.</td><td class="meaning">地方，地点，场所；位置；名次</td><td class="example">This is a nice place. 这是一个好地方。</td></tr>
+    <tr><td class="word">train</td><td class="phonetic">/treɪn/</td><td class="pos">n. & v.</td><td class="meaning">n. 火车，列车 / v. 训练，培训</td><td class="example">I go by train. 我坐火车去。</td></tr>
+    <tr><td class="word">writer</td><td class="phonetic">/ˈraɪtə(r)/</td><td class="pos">n.</td><td class="meaning">作家；作者，撰写者</td><td class="example">She is our favourite writer. 她是我们最喜欢的作家。</td></tr>
+    <tr><td class="word">surprise</td><td class="phonetic">/səˈpraɪz/</td><td class="pos">n. & v.</td><td class="meaning">n. 意想不到的事，不同寻常的事；惊喜，意外 / v. 使惊奇，使感到意外</td><td class="example">What a surprise! 真是个惊喜！</td></tr>
+    <tr><td class="word">turn</td><td class="phonetic">/tɜːn/</td><td class="pos">v. & n.</td><td class="meaning">v. 转弯，（使）改变方向；转动，翻转；变成 / n. 转弯处；轮流，轮次</td><td class="example">Turn right at the supermarket. 在超市右转。</td></tr>
+    <tr><td class="word">buy</td><td class="phonetic">/baɪ/</td><td class="pos">v.</td><td class="meaning">买，购买；（口语）相信</td><td class="example">I want to buy a book. 我想买一本书。</td></tr>
+    <tr><td class="word">live</td><td class="phonetic">/lɪv/</td><td class="pos">v.</td><td class="meaning">住，居住；生活，过日子；活着，生存</td><td class="example">Mr Blue lives next to the bus stop. 布卢先生住在公交车站旁。</td></tr>
+    <tr><td class="word">left</td><td class="phonetic">/left/</td><td class="pos">adv., adj. & n.</td><td class="meaning">adv. 向左，朝左 / adj. 左边的 / n. 左，左边 / v. leave的过去式：留下；离开</td><td class="example">Go left first. 先左转。</td></tr>
+    <tr><td class="word">straight</td><td class="phonetic">/streɪt/</td><td class="pos">adv. & adj.</td><td class="meaning">adv. 笔直地，成直线地；直接，立即 / adj. 直的；坦率的</td><td class="example">Go straight on. 直走。</td></tr>
+    <tr><td class="word">then</td><td class="phonetic">/ðen/</td><td class="pos">adv.</td><td class="meaning">接下来，然后；那时；那么（用于句首或句尾）</td><td class="example">Then go straight on. 然后直走。</td></tr>
+    <tr><td class="word">there</td><td class="phonetic">/ðeə(r)/</td><td class="pos">adv. & pron.</td><td class="meaning">adv. 在那里，往那里 / pron. （与be连用）有，存在（there is/are）/ int. 你瞧，嘿</td><td class="example">The hospital is there. 医院在那边。</td></tr>
     <tr><td class="word">often</td><td class="phonetic">/ˈɒfn/</td><td class="pos">adv.</td><td class="meaning">经常，时常</td><td class="example">I often go to the cinema. 我经常去电影院。</td></tr>
-    <tr><td class="word">first</td><td class="phonetic">/fɜːst/</td><td class="pos">adv.</td><td class="meaning">先，首先</td><td class="example">First you go left. 你先左转。</td></tr>
-    <tr><td class="word">near</td><td class="phonetic">/nɪə(r)/</td><td class="pos">adv.</td><td class="meaning">接近（地），靠近（地）</td><td class="example">The shop is near the school. 商店在学校附近。</td></tr>
-    <tr><td class="word">us</td><td class="phonetic">/ʌs/</td><td class="pos">pron.</td><td class="meaning">我们</td><td class="example">Excuse me, can you help us? 劳驾，你能帮帮我们吗？</td></tr>
-    <tr><td class="word">our</td><td class="phonetic">/ˈaʊə(r)/</td><td class="pos">pron.</td><td class="meaning">我们的</td><td class="example">This is our town. 这是我们的城镇。</td></tr>
-    <tr><td class="word">thanks</td><td class="phonetic">/θæŋks/</td><td class="pos">excl.</td><td class="meaning">谢谢你，多谢</td><td class="example">Thanks for your help. 谢谢你的帮助。</td></tr>
+    <tr><td class="word">first</td><td class="phonetic">/fɜːst/</td><td class="pos">adv., num. & adj.</td><td class="meaning">adv. 先，首先；第一次 / num. 第一 / adj. 第一的，最初的 / n. 第一个</td><td class="example">First you go left. 你先左转。</td></tr>
+    <tr><td class="word">near</td><td class="phonetic">/nɪə(r)/</td><td class="pos">adv., prep. & adj.</td><td class="meaning">adv. 接近（地），靠近（地）/ prep. 靠近，接近 / adj. 近的，临近的</td><td class="example">The shop is near the school. 商店在学校附近。</td></tr>
+    <tr><td class="word">us</td><td class="phonetic">/ʌs/</td><td class="pos">pron.</td><td class="meaning">我们（we的宾格）</td><td class="example">Excuse me, can you help us? 劳驾，你能帮帮我们吗？</td></tr>
+    <tr><td class="word">our</td><td class="phonetic">/ˈaʊə(r)/</td><td class="pos">pron.</td><td class="meaning">我们的（we的形容词性物主代词）</td><td class="example">This is our town. 这是我们的城镇。</td></tr>
+    <tr><td class="word">thanks</td><td class="phonetic">/θæŋks/</td><td class="pos">int. & n.</td><td class="meaning">int. 谢谢你，多谢 / n. 感谢，谢意（many thanks 多谢）</td><td class="example">Thanks for your help. 谢谢你的帮助。</td></tr>
   </table>
   </div>
 
@@ -823,48 +853,48 @@
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
-    <tr><td class="word">teacher</td><td class="phonetic">/ˈtiːtʃə(r)/</td><td class="pos">n.</td><td class="meaning">教师</td><td class="example">She is a teacher. 她是一名教师。</td></tr>
-    <tr><td class="word">doctor</td><td class="phonetic">/ˈdɒktə(r)/</td><td class="pos">n.</td><td class="meaning">医生，大夫</td><td class="example">He is a doctor. 他是一名医生。</td></tr>
-    <tr><td class="word">nurse</td><td class="phonetic">/nɜːs/</td><td class="pos">n.</td><td class="meaning">护士</td><td class="example">My sister is a nurse. 我姐姐是护士。</td></tr>
+    <tr><td class="word">teacher</td><td class="phonetic">/ˈtiːtʃə(r)/</td><td class="pos">n.</td><td class="meaning">教师，老师</td><td class="example">She is a teacher. 她是一名教师。</td></tr>
+    <tr><td class="word">doctor</td><td class="phonetic">/ˈdɒktə(r)/</td><td class="pos">n.</td><td class="meaning">医生，大夫；博士</td><td class="example">He is a doctor. 他是一名医生。</td></tr>
+    <tr><td class="word">nurse</td><td class="phonetic">/nɜːs/</td><td class="pos">n. & v.</td><td class="meaning">n. 护士；保姆 / v. 护理，照料</td><td class="example">My sister is a nurse. 我姐姐是护士。</td></tr>
     <tr><td class="word">driver</td><td class="phonetic">/ˈdraɪvə(r)/</td><td class="pos">n.</td><td class="meaning">司机，驾驶员</td><td class="example">I want to be a taxi driver. 我想成为一名出租车司机。</td></tr>
-    <tr><td class="word">firefighter</td><td class="phonetic">/ˈfaɪəfaɪtə(r)/</td><td class="pos">n.</td><td class="meaning">消防队员</td><td class="example">The dog is a firefighter. 狗是消防员。</td></tr>
-    <tr><td class="word">policeman</td><td class="phonetic">/pəˈliːsmən/</td><td class="pos">n.</td><td class="meaning">男警察</td><td class="example">I want to be a policeman. 我想成为一名警察。</td></tr>
-    <tr><td class="word">worker</td><td class="phonetic">/ˈwɜːkə(r)/</td><td class="pos">n.</td><td class="meaning">工作人员</td><td class="example">He is a worker in a factory. 他是一名工厂工人。</td></tr>
-    <tr><td class="word">farmer</td><td class="phonetic">/ˈfɑːmə(r)/</td><td class="pos">n.</td><td class="meaning">农民</td><td class="example">The farmer grows vegetables. 农民种蔬菜。</td></tr>
+    <tr><td class="word">firefighter</td><td class="phonetic">/ˈfaɪəfaɪtə(r)/</td><td class="pos">n.</td><td class="meaning">消防队员（= fireman）</td><td class="example">The dog is a firefighter. 狗是消防员。</td></tr>
+    <tr><td class="word">policeman</td><td class="phonetic">/pəˈliːsmən/</td><td class="pos">n.</td><td class="meaning">男警察（复数 policemen；女警察 policewoman）</td><td class="example">I want to be a policeman. 我想成为一名警察。</td></tr>
+    <tr><td class="word">worker</td><td class="phonetic">/ˈwɜːkə(r)/</td><td class="pos">n.</td><td class="meaning">工作人员；工人，劳动者</td><td class="example">He is a worker in a factory. 他是一名工厂工人。</td></tr>
+    <tr><td class="word">farmer</td><td class="phonetic">/ˈfɑːmə(r)/</td><td class="pos">n.</td><td class="meaning">农民；农场主</td><td class="example">The farmer grows vegetables. 农民种蔬菜。</td></tr>
     <tr><td class="word">gardener</td><td class="phonetic">/ˈɡɑːdənə(r)/</td><td class="pos">n.</td><td class="meaning">园丁，花匠</td><td class="example">The crab is a gardener. 螃蟹是园丁。</td></tr>
-    <tr><td class="word">cleaner</td><td class="phonetic">/ˈkliːnə(r)/</td><td class="pos">n.</td><td class="meaning">清洁工人</td><td class="example">The giraffe is a window cleaner. 长颈鹿是擦窗工。</td></tr>
+    <tr><td class="word">cleaner</td><td class="phonetic">/ˈkliːnə(r)/</td><td class="pos">n.</td><td class="meaning">清洁工人；清洁工；清洁剂</td><td class="example">The giraffe is a window cleaner. 长颈鹿是擦窗工。</td></tr>
     <tr><td class="word">scientist</td><td class="phonetic">/ˈsaɪəntɪst/</td><td class="pos">n.</td><td class="meaning">科学家</td><td class="example">I like science. I want to be a scientist. 我喜欢科学，我想成为科学家。</td></tr>
     <tr><td class="word">astronaut</td><td class="phonetic">/ˈæstrənɔːt/</td><td class="pos">n.</td><td class="meaning">宇航员，太空人</td><td class="example">I want to be an astronaut. 我想成为宇航员。</td></tr>
-    <tr><td class="word">keeper</td><td class="phonetic">/ˈkiːpə(r)/</td><td class="pos">n.</td><td class="meaning">饲养员</td><td class="example">Do you want to be a panda keeper? 你想成为大熊猫饲养员吗？</td></tr>
-    <tr><td class="word">taxi</td><td class="phonetic">/ˈtæksi/</td><td class="pos">n.</td><td class="meaning">出租车</td><td class="example">I like driving people around. 我喜欢开车送人。</td></tr>
-    <tr><td class="word">work</td><td class="phonetic">/wɜːk/</td><td class="pos">v.</td><td class="meaning">工作，干活</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
-    <tr><td class="word">teach</td><td class="phonetic">/tiːtʃ/</td><td class="pos">v.</td><td class="meaning">教授，讲授</td><td class="example">She teaches in a school. 她在学校教书。</td></tr>
-    <tr><td class="word">drive</td><td class="phonetic">/draɪv/</td><td class="pos">v.</td><td class="meaning">驾车送（人）</td><td class="example">I like driving people around. 我喜欢开车送人到处走。</td></tr>
-    <tr><td class="word">grow</td><td class="phonetic">/ɡrəʊ/</td><td class="pos">v.</td><td class="meaning">种植</td><td class="example">I like growing flowers. 我喜欢种花。</td></tr>
-    <tr><td class="word">ask</td><td class="phonetic">/ɑːsk/</td><td class="pos">v.</td><td class="meaning">问，提问</td><td class="example">I like asking questions. 我喜欢提问。</td></tr>
-    <tr><td class="word">learn</td><td class="phonetic">/lɜːn/</td><td class="pos">v.</td><td class="meaning">学习；学到；学会</td><td class="example">I love learning about space. 我喜欢学习太空知识。</td></tr>
-    <tr><td class="word">prepare</td><td class="phonetic">/prɪˈpeə(r)/</td><td class="pos">v.</td><td class="meaning">准备（食物、物品）</td><td class="example">You have to prepare food for the pandas. 你必须为大熊猫准备食物。</td></tr>
-    <tr><td class="word">question</td><td class="phonetic">/ˈkwestʃən/</td><td class="pos">n.</td><td class="meaning">问题；疑问</td><td class="example">I like asking questions. 我喜欢提问。</td></tr>
-    <tr><td class="word">science</td><td class="phonetic">/ˈsaɪəns/</td><td class="pos">n.</td><td class="meaning">科学</td><td class="example">I like science. 我喜欢科学。</td></tr>
-    <tr><td class="word">space</td><td class="phonetic">/speɪs/</td><td class="pos">n.</td><td class="meaning">太空</td><td class="example">I want to go to space. 我想去太空。</td></tr>
-    <tr><td class="word">moon</td><td class="phonetic">/muːn/</td><td class="pos">n.</td><td class="meaning">月亮，月球</td><td class="example">I want to go to the moon. 我想去月球。</td></tr>
-    <tr><td class="word">garden</td><td class="phonetic">/ˈɡɑːdn/</td><td class="pos">n.</td><td class="meaning">花园，园子</td><td class="example">I can make beautiful gardens. 我能打造漂亮的花园。</td></tr>
-    <tr><td class="word">centre</td><td class="phonetic">/ˈsentə(r)/</td><td class="pos">n.</td><td class="meaning">中心</td><td class="example">She works at a job centre. 她在就业中心工作。</td></tr>
-    <tr><td class="word">house</td><td class="phonetic">/haʊs/</td><td class="pos">n.</td><td class="meaning">房屋，房子</td><td class="example">The house is big. 这栋房子很大。</td></tr>
+    <tr><td class="word">keeper</td><td class="phonetic">/ˈkiːpə(r)/</td><td class="pos">n.</td><td class="meaning">饲养员；看守人，保管人</td><td class="example">Do you want to be a panda keeper? 你想成为大熊猫饲养员吗？</td></tr>
+    <tr><td class="word">taxi</td><td class="phonetic">/ˈtæksi/</td><td class="pos">n.</td><td class="meaning">出租车（take a taxi 乘出租车）</td><td class="example">I like driving people around. 我喜欢开车送人。</td></tr>
+    <tr><td class="word">work</td><td class="phonetic">/wɜːk/</td><td class="pos">v. & n.</td><td class="meaning">v. 工作，干活；（机器）运转；起作用，奏效 / n. 工作；作品</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
+    <tr><td class="word">teach</td><td class="phonetic">/tiːtʃ/</td><td class="pos">v.</td><td class="meaning">教授，讲授；教（课程）；教导</td><td class="example">She teaches in a school. 她在学校教书。</td></tr>
+    <tr><td class="word">drive</td><td class="phonetic">/draɪv/</td><td class="pos">v.</td><td class="meaning">驾车送（人）；驾驶，开车；驱赶</td><td class="example">I like driving people around. 我喜欢开车送人到处走。</td></tr>
+    <tr><td class="word">grow</td><td class="phonetic">/ɡrəʊ/</td><td class="pos">v.</td><td class="meaning">种植；生长，成长；留（须、发）；变大，增多</td><td class="example">I like growing flowers. 我喜欢种花。</td></tr>
+    <tr><td class="word">ask</td><td class="phonetic">/ɑːsk/</td><td class="pos">v.</td><td class="meaning">问，提问；请求，要求；邀请</td><td class="example">I like asking questions. 我喜欢提问。</td></tr>
+    <tr><td class="word">learn</td><td class="phonetic">/lɜːn/</td><td class="pos">v.</td><td class="meaning">学习；学到；学会；得知，获悉</td><td class="example">I love learning about space. 我喜欢学习太空知识。</td></tr>
+    <tr><td class="word">prepare</td><td class="phonetic">/prɪˈpeə(r)/</td><td class="pos">v.</td><td class="meaning">准备（食物、物品）；筹备，预备</td><td class="example">You have to prepare food for the pandas. 你必须为大熊猫准备食物。</td></tr>
+    <tr><td class="word">question</td><td class="phonetic">/ˈkwestʃən/</td><td class="pos">n. & v.</td><td class="meaning">n. 问题；疑问 / v. 询问，质疑</td><td class="example">I like asking questions. 我喜欢提问。</td></tr>
+    <tr><td class="word">science</td><td class="phonetic">/ˈsaɪəns/</td><td class="pos">n.</td><td class="meaning">科学；自然科学</td><td class="example">I like science. 我喜欢科学。</td></tr>
+    <tr><td class="word">space</td><td class="phonetic">/speɪs/</td><td class="pos">n.</td><td class="meaning">太空；空间；空位，空地</td><td class="example">I want to go to space. 我想去太空。</td></tr>
+    <tr><td class="word">moon</td><td class="phonetic">/muːn/</td><td class="pos">n.</td><td class="meaning">月亮，月球；卫星</td><td class="example">I want to go to the moon. 我想去月球。</td></tr>
+    <tr><td class="word">garden</td><td class="phonetic">/ˈɡɑːdn/</td><td class="pos">n. & v.</td><td class="meaning">n. 花园，园子；公园 / v. 从事园艺</td><td class="example">I can make beautiful gardens. 我能打造漂亮的花园。</td></tr>
+    <tr><td class="word">centre</td><td class="phonetic">/ˈsentə(r)/</td><td class="pos">n.</td><td class="meaning">中心；中心区；中心机构（美式拼写 center）</td><td class="example">She works at a job centre. 她在就业中心工作。</td></tr>
+    <tr><td class="word">house</td><td class="phonetic">/haʊs/</td><td class="pos">n.</td><td class="meaning">房屋，房子；住宅</td><td class="example">The house is big. 这栋房子很大。</td></tr>
     <tr><td class="word">panda</td><td class="phonetic">/ˈpændə/</td><td class="pos">n.</td><td class="meaning">大熊猫</td><td class="example">The panda is cute. 大熊猫很可爱。</td></tr>
-    <tr><td class="word">animal</td><td class="phonetic">/ˈænɪml/</td><td class="pos">n.</td><td class="meaning">动物</td><td class="example">I love animals. 我爱动物。</td></tr>
-    <tr><td class="word">fire</td><td class="phonetic">/ˈfaɪə(r)/</td><td class="pos">n.</td><td class="meaning">火；失火，火灾</td><td class="example">You help us put out fires! 你帮我们灭火！</td></tr>
-    <tr><td class="word">team</td><td class="phonetic">/tiːm/</td><td class="pos">n.</td><td class="meaning">工作队，工作组</td><td class="example">We are a good team. 我们是一个好团队。</td></tr>
-    <tr><td class="word">shape</td><td class="phonetic">/ʃeɪp/</td><td class="pos">n.</td><td class="meaning">形状，外形</td><td class="example">I can cut many shapes. 我能剪出很多形状。</td></tr>
-    <tr><td class="word">kind</td><td class="phonetic">/kaɪnd/</td><td class="pos">n.</td><td class="meaning">种，类</td><td class="example">What kind of job do you like? 你喜欢哪种工作？</td></tr>
-    <tr><td class="word">sick</td><td class="phonetic">/sɪk/</td><td class="pos">adj.</td><td class="meaning">生病的，患病的</td><td class="example">They help sick people. 他们帮助病人。</td></tr>
-    <tr><td class="word">healthy</td><td class="phonetic">/ˈhelθi/</td><td class="pos">adj.</td><td class="meaning">健康的，健壮的</td><td class="example">Pandas are healthy and strong. 大熊猫健康又强壮。</td></tr>
-    <tr><td class="word">strong</td><td class="phonetic">/strɒŋ/</td><td class="pos">adj.</td><td class="meaning">健壮的，力气大的</td><td class="example">He is very strong. 他非常强壮。</td></tr>
+    <tr><td class="word">animal</td><td class="phonetic">/ˈænɪml/</td><td class="pos">n.</td><td class="meaning">动物；兽</td><td class="example">I love animals. 我爱动物。</td></tr>
+    <tr><td class="word">fire</td><td class="phonetic">/ˈfaɪə(r)/</td><td class="pos">n. & v.</td><td class="meaning">n. 火；失火，火灾；炉火 / v. 点燃；（口语）开除</td><td class="example">You help us put out fires! 你帮我们灭火！</td></tr>
+    <tr><td class="word">team</td><td class="phonetic">/tiːm/</td><td class="pos">n.</td><td class="meaning">工作队，工作组；（运动）队，组</td><td class="example">We are a good team. 我们是一个好团队。</td></tr>
+    <tr><td class="word">shape</td><td class="phonetic">/ʃeɪp/</td><td class="pos">n. & v.</td><td class="meaning">n. 形状，外形；状况 / v. 使成形，塑造</td><td class="example">I can cut many shapes. 我能剪出很多形状。</td></tr>
+    <tr><td class="word">kind</td><td class="phonetic">/kaɪnd/</td><td class="pos">n. & adj.</td><td class="meaning">n. 种，类 / adj. 亲切的，和蔼的，善良的</td><td class="example">What kind of job do you like? 你喜欢哪种工作？</td></tr>
+    <tr><td class="word">sick</td><td class="phonetic">/sɪk/</td><td class="pos">adj.</td><td class="meaning">生病的，患病的；恶心的，想吐的；厌倦的（be sick of）</td><td class="example">They help sick people. 他们帮助病人。</td></tr>
+    <tr><td class="word">healthy</td><td class="phonetic">/ˈhelθi/</td><td class="pos">adj.</td><td class="meaning">健康的，健壮的；有益健康的</td><td class="example">Pandas are healthy and strong. 大熊猫健康又强壮。</td></tr>
+    <tr><td class="word">strong</td><td class="phonetic">/strɒŋ/</td><td class="pos">adj.</td><td class="meaning">健壮的，力气大的；坚固的；强烈的</td><td class="example">He is very strong. 他非常强壮。</td></tr>
     <tr><td class="word">tall</td><td class="phonetic">/tɔːl/</td><td class="pos">adj.</td><td class="meaning">高的，高大的</td><td class="example">The giraffe is tall. 长颈鹿很高。</td></tr>
-    <tr><td class="word">everyone</td><td class="phonetic">/ˈevriwʌn/</td><td class="pos">pron.</td><td class="meaning">每个人，人人</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
+    <tr><td class="word">everyone</td><td class="phonetic">/ˈevriwʌn/</td><td class="pos">pron.</td><td class="meaning">每个人，人人（= everybody）</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
     <tr><td class="word">because</td><td class="phonetic">/bɪˈkɒz/</td><td class="pos">conj.</td><td class="meaning">因为</td><td class="example">I like science because it's fun. 我喜欢科学因为很有趣。</td></tr>
-    <tr><td class="word">hard</td><td class="phonetic">/hɑːd/</td><td class="pos">adv.</td><td class="meaning">费劲地；费力地</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
-    <tr><td class="word">around</td><td class="phonetic">/əˈraʊnd/</td><td class="pos">adv.</td><td class="meaning">到处，四处</td><td class="example">I like driving people around. 我喜欢开车送人到处走。</td></tr>
+    <tr><td class="word">hard</td><td class="phonetic">/hɑːd/</td><td class="pos">adv. & adj.</td><td class="meaning">adv. 费劲地，费力地；猛烈地 / adj. 困难的；硬的；努力的</td><td class="example">Everyone works hard. 每个人都努力工作。</td></tr>
+    <tr><td class="word">around</td><td class="phonetic">/əˈraʊnd/</td><td class="pos">adv. & prep.</td><td class="meaning">adv. 到处，四处；大约；在周围 / prep. 在……周围，环绕</td><td class="example">I like driving people around. 我喜欢开车送人到处走。</td></tr>
   </table>
   </div>
 
@@ -970,21 +1000,21 @@
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
-    <tr><td class="word">money</td><td class="phonetic">/ˈmʌni/</td><td class="pos">n.</td><td class="meaning">钱</td><td class="example">Now I have the money to buy that skateboard. 现在我有钱买那个滑板了。</td></tr>
-    <tr><td class="word">yuan</td><td class="phonetic">/juˈɑːn/</td><td class="pos">n.</td><td class="meaning">元</td><td class="example">It's 80 yuan. 它是80元。</td></tr>
+    <tr><td class="word">money</td><td class="phonetic">/ˈmʌni/</td><td class="pos">n.</td><td class="meaning">钱，金钱</td><td class="example">Now I have the money to buy that skateboard. 现在我有钱买那个滑板了。</td></tr>
+    <tr><td class="word">yuan</td><td class="phonetic">/juˈɑːn/</td><td class="pos">n.</td><td class="meaning">元（人民币、日元、人民币单位）</td><td class="example">It's 80 yuan. 它是80元。</td></tr>
     <tr><td class="word">toy</td><td class="phonetic">/tɔɪ/</td><td class="pos">n.</td><td class="meaning">玩具</td><td class="example">Let's buy a toy. 我们买个玩具吧。</td></tr>
-    <tr><td class="word">box</td><td class="phonetic">/bɒks/</td><td class="pos">n.</td><td class="meaning">盒；匣；箱</td><td class="example">I put money in the spend box. 我把钱放进花费盒里。</td></tr>
-    <tr><td class="word">pair</td><td class="phonetic">/peə(r)/</td><td class="pos">n.</td><td class="meaning">一双，一对</td><td class="example">I'd like to buy three pairs of socks. 我想买三双袜子。</td></tr>
+    <tr><td class="word">box</td><td class="phonetic">/bɒks/</td><td class="pos">n.</td><td class="meaning">盒；匣；箱；方框</td><td class="example">I put money in the spend box. 我把钱放进花费盒里。</td></tr>
+    <tr><td class="word">pair</td><td class="phonetic">/peə(r)/</td><td class="pos">n.</td><td class="meaning">一双，一对；一副（a pair of shoes 一双鞋）</td><td class="example">I'd like to buy three pairs of socks. 我想买三双袜子。</td></tr>
     <tr><td class="word">carrot</td><td class="phonetic">/ˈkærət/</td><td class="pos">n.</td><td class="meaning">胡萝卜</td><td class="example">I want to buy some carrots. 我想买一些胡萝卜。</td></tr>
-    <tr><td class="word">flower</td><td class="phonetic">/ˈflaʊə(r)/</td><td class="pos">n.</td><td class="meaning">花，花朵</td><td class="example">I'd like to buy some flowers for my mum. 我想为妈妈买一些花。</td></tr>
-    <tr><td class="word">bakery</td><td class="phonetic">/ˈbeɪkəri/</td><td class="pos">n.</td><td class="meaning">面包店</td><td class="example">I go to the bakery to buy a cake. 我去面包店买蛋糕。</td></tr>
+    <tr><td class="word">flower</td><td class="phonetic">/ˈflaʊə(r)/</td><td class="pos">n. & v.</td><td class="meaning">n. 花，花朵 / v. 开花</td><td class="example">I'd like to buy some flowers for my mum. 我想为妈妈买一些花。</td></tr>
+    <tr><td class="word">bakery</td><td class="phonetic">/ˈbeɪkəri/</td><td class="pos">n.</td><td class="meaning">面包店，面包房</td><td class="example">I go to the bakery to buy a cake. 我去面包店买蛋糕。</td></tr>
     <tr><td class="word">skateboard</td><td class="phonetic">/ˈskeɪtbɔːd/</td><td class="pos">n.</td><td class="meaning">滑板</td><td class="example">How much is the skateboard? 滑板多少钱？</td></tr>
     <tr><td class="word">skateboarding</td><td class="phonetic">/ˈskeɪtbɔːdɪŋ/</td><td class="pos">n.</td><td class="meaning">滑板运动</td><td class="example">I love skateboarding. 我喜欢滑板运动。</td></tr>
     <tr><td class="word">friend</td><td class="phonetic">/frend/</td><td class="pos">n.</td><td class="meaning">朋友，友人</td><td class="example">Let's buy a skateboard for a friend. 我们给朋友买个滑板吧。</td></tr>
-    <tr><td class="word">noon</td><td class="phonetic">/nuːn/</td><td class="pos">n.</td><td class="meaning">正午，中午</td><td class="example">I go shopping at noon. 我中午去购物。</td></tr>
-    <tr><td class="word">holiday</td><td class="phonetic">/ˈhɒlədeɪ/</td><td class="pos">n.</td><td class="meaning">假期，休假日</td><td class="example">Save it for holidays. 为假日存钱。</td></tr>
+    <tr><td class="word">noon</td><td class="phonetic">/nuːn/</td><td class="pos">n.</td><td class="meaning">正午，中午（at noon 在中午）</td><td class="example">I go shopping at noon. 我中午去购物。</td></tr>
+    <tr><td class="word">holiday</td><td class="phonetic">/ˈhɒlədeɪ/</td><td class="pos">n.</td><td class="meaning">假期，休假日；节日（on holiday 在度假）</td><td class="example">Save it for holidays. 为假日存钱。</td></tr>
     <tr><td class="word">zookeeper</td><td class="phonetic">/ˈzuːkiːpə(r)/</td><td class="pos">n.</td><td class="meaning">动物园饲养员</td><td class="example">The zookeeper feeds the animals. 饲养员喂动物。</td></tr>
-    <tr><td class="word">bee</td><td class="phonetic">/biː/</td><td class="pos">n.</td><td class="meaning">蜜蜂</td><td class="example">The bee is on the flower. 蜜蜂在花上。</td></tr>
+    <tr><td class="word">bee</td><td class="phonetic">/biː/</td><td class="pos">n.</td><td class="meaning">蜜蜂（as busy as a bee 像蜜蜂一样忙碌）</td><td class="example">The bee is on the flower. 蜜蜂在花上。</td></tr>
     <tr><td class="word">eleven</td><td class="phonetic">/ɪˈlevn/</td><td class="pos">num.</td><td class="meaning">十一</td><td class="example">I have eleven yuan. 我有11元。</td></tr>
     <tr><td class="word">twelve</td><td class="phonetic">/twelv/</td><td class="pos">num.</td><td class="meaning">十二</td><td class="example">Twelve yuan for one book. 一本书12元。</td></tr>
     <tr><td class="word">thirteen</td><td class="phonetic">/ˌθɜːˈtiːn/</td><td class="pos">num.</td><td class="meaning">十三</td><td class="example">It's thirteen yuan. 是13元。</td></tr>
@@ -1000,14 +1030,14 @@
     <tr><td class="word">sixty-six</td><td class="phonetic">/ˌsɪkstiˈsɪks/</td><td class="pos">num.</td><td class="meaning">六十六</td><td class="example">It's sixty-six yuan. 是66元。</td></tr>
     <tr><td class="word">seventy</td><td class="phonetic">/ˈsevnti/</td><td class="pos">num.</td><td class="meaning">七十</td><td class="example">I have seventy yuan. 我有70元。</td></tr>
     <tr><td class="word">eighty</td><td class="phonetic">/ˈeɪti/</td><td class="pos">num.</td><td class="meaning">八十</td><td class="example">It's 80 yuan. 它是80元。</td></tr>
-    <tr><td class="word">hundred</td><td class="phonetic">/ˈhʌndrəd/</td><td class="pos">num.</td><td class="meaning">一百</td><td class="example">I put one hundred yuan in the box. 我把100元放进盒子里。</td></tr>
-    <tr><td class="word">give</td><td class="phonetic">/ɡɪv/</td><td class="pos">v.</td><td class="meaning">赠送，给予</td><td class="example">I give a gift to my friend. 我给朋友一份礼物。</td></tr>
-    <tr><td class="word">use</td><td class="phonetic">/juːz/</td><td class="pos">v.</td><td class="meaning">使用</td><td class="example">I use money to buy gifts. 我用钱买礼物。</td></tr>
-    <tr><td class="word">spend</td><td class="phonetic">/spend/</td><td class="pos">v.</td><td class="meaning">花销，花费</td><td class="example">I spend money on books. 我花钱买书。</td></tr>
-    <tr><td class="word">save</td><td class="phonetic">/seɪv/</td><td class="pos">v.</td><td class="meaning">储蓄，存（钱）</td><td class="example">I put ten yuan in the save box. 我把10元放进储蓄盒。</td></tr>
-    <tr><td class="word">share</td><td class="phonetic">/ʃeə(r)/</td><td class="pos">v.</td><td class="meaning">共享</td><td class="example">Let's share the food. 我们分享食物吧。</td></tr>
-    <tr><td class="word">should</td><td class="phonetic">/ʃʊd/</td><td class="pos">v.</td><td class="meaning">应当，应该</td><td class="example">We should make good use of money. 我们应该好好使用钱。</td></tr>
-    <tr><td class="word">early</td><td class="phonetic">/ˈɜːli/</td><td class="pos">adv.</td><td class="meaning">在早期，在初期</td><td class="example">I get up early. 我起得早。</td></tr>
+    <tr><td class="word">hundred</td><td class="phonetic">/ˈhʌndrəd/</td><td class="pos">num.</td><td class="meaning">一百（hundreds of 数以百计的）</td><td class="example">I put one hundred yuan in the box. 我把100元放进盒子里。</td></tr>
+    <tr><td class="word">give</td><td class="phonetic">/ɡɪv/</td><td class="pos">v.</td><td class="meaning">赠送，给予；递交；举办（活动）；发出（声音、光等）</td><td class="example">I give a gift to my friend. 我给朋友一份礼物。</td></tr>
+    <tr><td class="word">use</td><td class="phonetic">/juːz/</td><td class="pos">v. & n.</td><td class="meaning">v. 使用，运用 / n. 使用；用途</td><td class="example">I use money to buy gifts. 我用钱买礼物。</td></tr>
+    <tr><td class="word">spend</td><td class="phonetic">/spend/</td><td class="pos">v.</td><td class="meaning">花销，花费（钱）；度过（时间）</td><td class="example">I spend money on books. 我花钱买书。</td></tr>
+    <tr><td class="word">save</td><td class="phonetic">/seɪv/</td><td class="pos">v.</td><td class="meaning">储蓄，存（钱）；拯救，救助；节省，节约</td><td class="example">I put ten yuan in the save box. 我把10元放进储蓄盒。</td></tr>
+    <tr><td class="word">share</td><td class="phonetic">/ʃeə(r)/</td><td class="pos">v. & n.</td><td class="meaning">v. 共享，分享；共用；分担 / n. 一份，份额</td><td class="example">Let's share the food. 我们分享食物吧。</td></tr>
+    <tr><td class="word">should</td><td class="phonetic">/ʃʊd/</td><td class="pos">v.</td><td class="meaning">应当，应该（shall的过去式）；（表示推测）大概，该是</td><td class="example">We should make good use of money. 我们应该好好使用钱。</td></tr>
+    <tr><td class="word">early</td><td class="phonetic">/ˈɜːli/</td><td class="pos">adv. & adj.</td><td class="meaning">adv. 在早期，在初期；早 / adj. 早的，早期的</td><td class="example">I get up early. 我起得早。</td></tr>
   </table>
   </div>
 
@@ -1110,19 +1140,19 @@
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
-    <tr><td class="word">circle</td><td class="phonetic">/ˈsɜːkl/</td><td class="pos">n.</td><td class="meaning">圆（形）</td><td class="example">Its eyes are circles. 它的眼睛是圆形。</td></tr>
-    <tr><td class="word">square</td><td class="phonetic">/skweə(r)/</td><td class="pos">n.</td><td class="meaning">正方形，四方形</td><td class="example">The wheels are squares. 车轮是正方形。</td></tr>
+    <tr><td class="word">circle</td><td class="phonetic">/ˈsɜːkl/</td><td class="pos">n. & v.</td><td class="meaning">n. 圆（形）；圆圈；圈子，界 / v. 圈出，画圈；盘旋</td><td class="example">Its eyes are circles. 它的眼睛是圆形。</td></tr>
+    <tr><td class="word">square</td><td class="phonetic">/skweə(r)/</td><td class="pos">n. & adj.</td><td class="meaning">n. 正方形，四方形；广场；平方 / adj. 正方形的</td><td class="example">The wheels are squares. 车轮是正方形。</td></tr>
     <tr><td class="word">rectangle</td><td class="phonetic">/ˈrektæŋɡl/</td><td class="pos">n.</td><td class="meaning">长方形，矩形</td><td class="example">Its head is a rectangle. 它的头是长方形。</td></tr>
     <tr><td class="word">triangle</td><td class="phonetic">/ˈtraɪæŋɡl/</td><td class="pos">n.</td><td class="meaning">三角形；三角形物体</td><td class="example">There are two triangles. 有两个三角形。</td></tr>
-    <tr><td class="word">line</td><td class="phonetic">/laɪn/</td><td class="pos">n.</td><td class="meaning">线，线条</td><td class="example">There are four lines in a square. 一个正方形有四条线。</td></tr>
-    <tr><td class="word">wheel</td><td class="phonetic">/wiːl/</td><td class="pos">n.</td><td class="meaning">车轮</td><td class="example">The wheels are circles. 车轮是圆形。</td></tr>
+    <tr><td class="word">line</td><td class="phonetic">/laɪn/</td><td class="pos">n. & v.</td><td class="meaning">n. 线，线条；行，排；队列；电话线 / v. 排列，排队</td><td class="example">There are four lines in a square. 一个正方形有四条线。</td></tr>
+    <tr><td class="word">wheel</td><td class="phonetic">/wiːl/</td><td class="pos">n.</td><td class="meaning">车轮；方向盘；轮状物</td><td class="example">The wheels are circles. 车轮是圆形。</td></tr>
     <tr><td class="word">chocolate</td><td class="phonetic">/ˈtʃɒklət/</td><td class="pos">n.</td><td class="meaning">巧克力糖；巧克力</td><td class="example">A big box of chocolates! 一大盒巧克力！</td></tr>
-    <tr><td class="word">tummy</td><td class="phonetic">/ˈtʌmi/</td><td class="pos">n.</td><td class="meaning">肚子</td><td class="example">From the box into my tummy. 从盒子里到我的肚子里。</td></tr>
-    <tr><td class="word">its</td><td class="phonetic">/ɪts/</td><td class="pos">pron.</td><td class="meaning">它的</td><td class="example">Its head is a rectangle. 它的头是长方形。</td></tr>
-    <tr><td class="word">into</td><td class="phonetic">/ˈɪntə/</td><td class="pos">prep.</td><td class="meaning">进入，到……里面</td><td class="example">From the box into my tummy. 从盒子进入我的肚子。</td></tr>
-    <tr><td class="word">another</td><td class="phonetic">/əˈnʌðə(r)/</td><td class="pos">adj.</td><td class="meaning">另一，又一</td><td class="example">Here is another shape. 这是另一个形状。</td></tr>
-    <tr><td class="word">yummy</td><td class="phonetic">/ˈjʌmi/</td><td class="pos">adj.</td><td class="meaning">美味的</td><td class="example">Chocolate... yummy! 巧克力……美味！</td></tr>
-    <tr><td class="word">a lot</td><td class="phonetic">/ə lɒt/</td><td class="pos">phr.</td><td class="meaning">大量，许多</td><td class="example">I know a lot about shapes. 我知道很多形状。</td></tr>
+    <tr><td class="word">tummy</td><td class="phonetic">/ˈtʌmi/</td><td class="pos">n.</td><td class="meaning">肚子（口语，= stomach）</td><td class="example">From the box into my tummy. 从盒子里到我的肚子里。</td></tr>
+    <tr><td class="word">its</td><td class="phonetic">/ɪts/</td><td class="pos">pron.</td><td class="meaning">它的（it的形容词性物主代词）</td><td class="example">Its head is a rectangle. 它的头是长方形。</td></tr>
+    <tr><td class="word">into</td><td class="phonetic">/ˈɪntə/</td><td class="pos">prep.</td><td class="meaning">进入，到……里面；变成</td><td class="example">From the box into my tummy. 从盒子进入我的肚子。</td></tr>
+    <tr><td class="word">another</td><td class="phonetic">/əˈnʌðə(r)/</td><td class="pos">adj. & pron.</td><td class="meaning">adj. 另一的，又一的 / pron. 另一个</td><td class="example">Here is another shape. 这是另一个形状。</td></tr>
+    <tr><td class="word">yummy</td><td class="phonetic">/ˈjʌmi/</td><td class="pos">adj.</td><td class="meaning">美味的，好吃的（口语）</td><td class="example">Chocolate... yummy! 巧克力……美味！</td></tr>
+    <tr><td class="word">a lot</td><td class="phonetic">/ə lɒt/</td><td class="pos">phr.</td><td class="meaning">大量，许多（a lot of）；非常（like it a lot 非常喜欢）</td><td class="example">I know a lot about shapes. 我知道很多形状。</td></tr>
   </table>
   </div>
 
@@ -1212,31 +1242,31 @@
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
     <tr><td class="word">pig</td><td class="phonetic">/pɪɡ/</td><td class="pos">n.</td><td class="meaning">猪</td><td class="example">The pig is on the farm. 猪在农场里。</td></tr>
-    <tr><td class="word">cow</td><td class="phonetic">/kaʊ/</td><td class="pos">n.</td><td class="meaning">牛；奶牛</td><td class="example">The cow eats grass. 奶牛吃草。</td></tr>
+    <tr><td class="word">cow</td><td class="phonetic">/kaʊ/</td><td class="pos">n.</td><td class="meaning">牛；奶牛；母牛</td><td class="example">The cow eats grass. 奶牛吃草。</td></tr>
     <tr><td class="word">horse</td><td class="phonetic">/hɔːs/</td><td class="pos">n.</td><td class="meaning">马</td><td class="example">The horse can run fast. 马能跑得快。</td></tr>
-    <tr><td class="word">sheep</td><td class="phonetic">/ʃiːp/</td><td class="pos">n.</td><td class="meaning">羊，绵羊</td><td class="example">There are five sheep on the farm. 农场里有五只羊。</td></tr>
+    <tr><td class="word">sheep</td><td class="phonetic">/ʃiːp/</td><td class="pos">n.</td><td class="meaning">羊，绵羊（复数仍为 sheep）</td><td class="example">There are five sheep on the farm. 农场里有五只羊。</td></tr>
     <tr><td class="word">lion</td><td class="phonetic">/ˈlaɪən/</td><td class="pos">n.</td><td class="meaning">狮子</td><td class="example">Is it a lion? 它是一头狮子吗？</td></tr>
-    <tr><td class="word">elephant</td><td class="phonetic">/ˈelɪfənt/</td><td class="pos">n.</td><td class="meaning">象</td><td class="example">The elephant is very heavy. 大象很重。</td></tr>
+    <tr><td class="word">elephant</td><td class="phonetic">/ˈelɪfənt/</td><td class="pos">n.</td><td class="meaning">象，大象</td><td class="example">The elephant is very heavy. 大象很重。</td></tr>
     <tr><td class="word">giraffe</td><td class="phonetic">/dʒəˈrɑːf/</td><td class="pos">n.</td><td class="meaning">长颈鹿</td><td class="example">The giraffe has a long neck. 长颈鹿有长脖子。</td></tr>
     <tr><td class="word">parrot</td><td class="phonetic">/ˈpærət/</td><td class="pos">n.</td><td class="meaning">鹦鹉</td><td class="example">The parrot can talk. 鹦鹉会说话。</td></tr>
     <tr><td class="word">hamster</td><td class="phonetic">/ˈhæmstə(r)/</td><td class="pos">n.</td><td class="meaning">仓鼠</td><td class="example">I have a hamster. It's cute. 我有一只仓鼠，它很可爱。</td></tr>
     <tr><td class="word">zoo</td><td class="phonetic">/zuː/</td><td class="pos">n.</td><td class="meaning">动物园</td><td class="example">Let's go to the zoo. 我们去动物园吧。</td></tr>
-    <tr><td class="word">farm</td><td class="phonetic">/fɑːm/</td><td class="pos">n.</td><td class="meaning">农场；养殖场</td><td class="example">Does it live on a farm? 它住在农场吗？</td></tr>
-    <tr><td class="word">sky</td><td class="phonetic">/skaɪ/</td><td class="pos">n.</td><td class="meaning">天，天空</td><td class="example">Look at the sky. 看天空。</td></tr>
-    <tr><td class="word">grass</td><td class="phonetic">/ɡrɑːs/</td><td class="pos">n.</td><td class="meaning">草，青草</td><td class="example">The sheep eats grass. 羊吃草。</td></tr>
-    <tr><td class="word">neck</td><td class="phonetic">/nek/</td><td class="pos">n.</td><td class="meaning">颈，脖子</td><td class="example">The giraffe has a long neck. 长颈鹿有长脖子。</td></tr>
-    <tr><td class="word">tail</td><td class="phonetic">/teɪl/</td><td class="pos">n.</td><td class="meaning">尾巴</td><td class="example">My favourite animal has got a long tail. 我最喜欢的动物有长尾巴。</td></tr>
-    <tr><td class="word">pet</td><td class="phonetic">/pet/</td><td class="pos">n.</td><td class="meaning">宠物</td><td class="example">Can I have a pet? 我可以养宠物吗？</td></tr>
-    <tr><td class="word">boy</td><td class="phonetic">/bɔɪ/</td><td class="pos">n.</td><td class="meaning">男孩，少年</td><td class="example">Is it a boy or a girl? 它是公的还是母的？</td></tr>
-    <tr><td class="word">girl</td><td class="phonetic">/ɡɜːl/</td><td class="pos">n.</td><td class="meaning">女孩，小姑娘</td><td class="example">It's a girl. 它是母的。</td></tr>
-    <tr><td class="word">heavy</td><td class="phonetic">/ˈhevi/</td><td class="pos">adj.</td><td class="meaning">重的</td><td class="example">The elephant is heavy. 大象很重。</td></tr>
+    <tr><td class="word">farm</td><td class="phonetic">/fɑːm/</td><td class="pos">n. & v.</td><td class="meaning">n. 农场；养殖场，饲养场 / v. 务农，种田，养殖</td><td class="example">Does it live on a farm? 它住在农场吗？</td></tr>
+    <tr><td class="word">sky</td><td class="phonetic">/skaɪ/</td><td class="pos">n.</td><td class="meaning">天，天空（in the sky）</td><td class="example">Look at the sky. 看天空。</td></tr>
+    <tr><td class="word">grass</td><td class="phonetic">/ɡrɑːs/</td><td class="pos">n.</td><td class="meaning">草，青草；草地，草坪</td><td class="example">The sheep eats grass. 羊吃草。</td></tr>
+    <tr><td class="word">neck</td><td class="phonetic">/nek/</td><td class="pos">n.</td><td class="meaning">颈，脖子；（衣服的）领口；（瓶、壶等的）颈</td><td class="example">The giraffe has a long neck. 长颈鹿有长脖子。</td></tr>
+    <tr><td class="word">tail</td><td class="phonetic">/teɪl/</td><td class="pos">n.</td><td class="meaning">尾巴；尾部，末端</td><td class="example">My favourite animal has got a long tail. 我最喜欢的动物有长尾巴。</td></tr>
+    <tr><td class="word">pet</td><td class="phonetic">/pet/</td><td class="pos">n.</td><td class="meaning">宠物；宠儿 / v. 抚摸（宠物）/ adj. 宠爱的</td><td class="example">Can I have a pet? 我可以养宠物吗？</td></tr>
+    <tr><td class="word">boy</td><td class="phonetic">/bɔɪ/</td><td class="pos">n.</td><td class="meaning">男孩，少年；儿子</td><td class="example">Is it a boy or a girl? 它是公的还是母的？</td></tr>
+    <tr><td class="word">girl</td><td class="phonetic">/ɡɜːl/</td><td class="pos">n.</td><td class="meaning">女孩，小姑娘；女儿</td><td class="example">It's a girl. 它是母的。</td></tr>
+    <tr><td class="word">heavy</td><td class="phonetic">/ˈhevi/</td><td class="pos">adj.</td><td class="meaning">重的；繁重的；大量的；（雨雪）猛烈的</td><td class="example">The elephant is heavy. 大象很重。</td></tr>
     <tr><td class="word">brave</td><td class="phonetic">/breɪv/</td><td class="pos">adj.</td><td class="meaning">勇敢的，无畏的</td><td class="example">Brave dog! 勇敢的狗！</td></tr>
-    <tr><td class="word">cute</td><td class="phonetic">/kjuːt/</td><td class="pos">adj.</td><td class="meaning">漂亮的，逗人喜爱的</td><td class="example">The hamster is very cute. 仓鼠很可爱。</td></tr>
-    <tr><td class="word">slow</td><td class="phonetic">/sləʊ/</td><td class="pos">adj.</td><td class="meaning">慢的，缓慢的</td><td class="example">The sheep is slow. 羊很慢。</td></tr>
-    <tr><td class="word">perfect</td><td class="phonetic">/ˈpɜːfɪkt/</td><td class="pos">adj.</td><td class="meaning">完美的</td><td class="example">You're a perfect friend! 你是一个完美的朋友！</td></tr>
-    <tr><td class="word">talk</td><td class="phonetic">/tɔːk/</td><td class="pos">v.</td><td class="meaning">说话</td><td class="example">Can the parrot talk? 鹦鹉会说话吗？</td></tr>
-    <tr><td class="word">climb</td><td class="phonetic">/klaɪm/</td><td class="pos">v.</td><td class="meaning">攀登，爬</td><td class="example">It can't climb trees. 它不会爬树。</td></tr>
-    <tr><td class="word">catch</td><td class="phonetic">/kætʃ/</td><td class="pos">v.</td><td class="meaning">接住；接（球等）</td><td class="example">Stormy, catch the ball! 斯托米，接球！</td></tr>
+    <tr><td class="word">cute</td><td class="phonetic">/kjuːt/</td><td class="pos">adj.</td><td class="meaning">漂亮的，逗人喜爱的；机灵可爱的</td><td class="example">The hamster is very cute. 仓鼠很可爱。</td></tr>
+    <tr><td class="word">slow</td><td class="phonetic">/sləʊ/</td><td class="pos">adj. & v.</td><td class="meaning">adj. 慢的，缓慢的；迟缓的 / v. 减缓，放慢（slow down）</td><td class="example">The sheep is slow. 羊很慢。</td></tr>
+    <tr><td class="word">perfect</td><td class="phonetic">/ˈpɜːfɪkt/</td><td class="pos">adj.</td><td class="meaning">完美的，极好的；完全的</td><td class="example">You're a perfect friend! 你是一个完美的朋友！</td></tr>
+    <tr><td class="word">talk</td><td class="phonetic">/tɔːk/</td><td class="pos">v. & n.</td><td class="meaning">v. 说话，讲话；谈论；会谈 / n. 谈话；演讲</td><td class="example">Can the parrot talk? 鹦鹉会说话吗？</td></tr>
+    <tr><td class="word">climb</td><td class="phonetic">/klaɪm/</td><td class="pos">v.</td><td class="meaning">攀登，爬；（爬山）登攀；爬升</td><td class="example">It can't climb trees. 它不会爬树。</td></tr>
+    <tr><td class="word">catch</td><td class="phonetic">/kætʃ/</td><td class="pos">v.</td><td class="meaning">接住，接（球等）；抓住；赶上（车辆）；感染（疾病）；听清（话语）</td><td class="example">Stormy, catch the ball! 斯托米，接球！</td></tr>
   </table>
   </div>
 
@@ -1336,22 +1366,22 @@
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
     <tr><td class="word">city</td><td class="phonetic">/ˈsɪti/</td><td class="pos">n.</td><td class="meaning">城市，都市</td><td class="example">I live in a big city. 我住在大城市。</td></tr>
-    <tr><td class="word">story</td><td class="phonetic">/ˈstɔːri/</td><td class="pos">n.</td><td class="meaning">故事</td><td class="example">This is a fun story. 这是一个有趣的故事。</td></tr>
-    <tr><td class="word">party</td><td class="phonetic">/ˈpɑːti/</td><td class="pos">n.</td><td class="meaning">聚会，宴会</td><td class="example">Let's have a party! 我们开个聚会吧！</td></tr>
-    <tr><td class="word">tie</td><td class="phonetic">/taɪ/</td><td class="pos">v.</td><td class="meaning">把……系起来</td><td class="example">Tie the bag. 把袋子系起来。</td></tr>
-    <tr><td class="word">gift</td><td class="phonetic">/ɡɪft/</td><td class="pos">n.</td><td class="meaning">礼物</td><td class="example">Here is a gift for you. 这是给你的礼物。</td></tr>
-    <tr><td class="word">never</td><td class="phonetic">/ˈnevə(r)/</td><td class="pos">adv.</td><td class="meaning">决不，永不</td><td class="example">Never trust a bad wolf. 永远不要信任坏狼。</td></tr>
-    <tr><td class="word">address</td><td class="phonetic">/əˈdres/</td><td class="pos">n.</td><td class="meaning">地址</td><td class="example">What's your address? 你的地址是什么？</td></tr>
-    <tr><td class="word">trust</td><td class="phonetic">/trʌst/</td><td class="pos">v.</td><td class="meaning">信任，信赖，相信</td><td class="example">Don't trust the bad guy. 不要信任坏人。</td></tr>
-    <tr><td class="word">snow</td><td class="phonetic">/snəʊ/</td><td class="pos">n.</td><td class="meaning">雪</td><td class="example">The snow is white. 雪是白色的。</td></tr>
-    <tr><td class="word">bad</td><td class="phonetic">/bæd/</td><td class="pos">adj.</td><td class="meaning">（道德品质）坏的，不好的</td><td class="example">The wolf is bad. 狼是坏的。</td></tr>
-    <tr><td class="word">knock</td><td class="phonetic">/nɒk/</td><td class="pos">v.</td><td class="meaning">敲门（窗）</td><td class="example">Someone is knocking at the door. 有人在敲门。</td></tr>
-    <tr><td class="word">wolf</td><td class="phonetic">/wʊlf/</td><td class="pos">n.</td><td class="meaning">狼</td><td class="example">The wolf is at the door. 狼在门口。</td></tr>
-    <tr><td class="word">guy</td><td class="phonetic">/ɡaɪ/</td><td class="pos">n.</td><td class="meaning">家伙</td><td class="example">He is a good guy. 他是个好家伙。</td></tr>
+    <tr><td class="word">story</td><td class="phonetic">/ˈstɔːri/</td><td class="pos">n.</td><td class="meaning">故事；小说；新闻报道；（英式）楼层（=美式 floor）</td><td class="example">This is a fun story. 这是一个有趣的故事。</td></tr>
+    <tr><td class="word">party</td><td class="phonetic">/ˈpɑːti/</td><td class="pos">n.</td><td class="meaning">聚会，宴会；政党，党派</td><td class="example">Let's have a party! 我们开个聚会吧！</td></tr>
+    <tr><td class="word">tie</td><td class="phonetic">/taɪ/</td><td class="pos">v. & n.</td><td class="meaning">v. 把……系起来；捆，绑；（比赛）打成平局 / n. 领带；联系；平局</td><td class="example">Tie the bag. 把袋子系起来。</td></tr>
+    <tr><td class="word">gift</td><td class="phonetic">/ɡɪft/</td><td class="pos">n.</td><td class="meaning">礼物；天赋，才能</td><td class="example">Here is a gift for you. 这是给你的礼物。</td></tr>
+    <tr><td class="word">never</td><td class="phonetic">/ˈnevə(r)/</td><td class="pos">adv.</td><td class="meaning">决不，永不，从未</td><td class="example">Never trust a bad wolf. 永远不要信任坏狼。</td></tr>
+    <tr><td class="word">address</td><td class="phonetic">/əˈdres/</td><td class="pos">n.</td><td class="meaning">地址，住址；演讲 / v. 在……上写地址；称呼</td><td class="example">What's your address? 你的地址是什么？</td></tr>
+    <tr><td class="word">trust</td><td class="phonetic">/trʌst/</td><td class="pos">v. & n.</td><td class="meaning">v. 信任，信赖，相信 / n. 信任，信赖</td><td class="example">Don't trust the bad guy. 不要信任坏人。</td></tr>
+    <tr><td class="word">snow</td><td class="phonetic">/snəʊ/</td><td class="pos">n. & v.</td><td class="meaning">n. 雪 / v. 下雪</td><td class="example">The snow is white. 雪是白色的。</td></tr>
+    <tr><td class="word">bad</td><td class="phonetic">/bæd/</td><td class="pos">adj.</td><td class="meaning">（道德品质）坏的，不好的；严重的；腐烂的；差的</td><td class="example">The wolf is bad. 狼是坏的。</td></tr>
+    <tr><td class="word">knock</td><td class="phonetic">/nɒk/</td><td class="pos">v. & n.</td><td class="meaning">v. 敲门（窗）；碰撞 / n. 敲击（声）</td><td class="example">Someone is knocking at the door. 有人在敲门。</td></tr>
+    <tr><td class="word">wolf</td><td class="phonetic">/wʊlf/</td><td class="pos">n.</td><td class="meaning">狼（复数 wolves）</td><td class="example">The wolf is at the door. 狼在门口。</td></tr>
+    <tr><td class="word">guy</td><td class="phonetic">/ɡaɪ/</td><td class="pos">n.</td><td class="meaning">家伙，人（口语）；各位，朋友们（you guys）</td><td class="example">He is a good guy. 他是个好家伙。</td></tr>
     <tr><td class="word">paw</td><td class="phonetic">/pɔː/</td><td class="pos">n.</td><td class="meaning">（动物的）爪子</td><td class="example">The dog's paw is hurt. 狗的爪子受伤了。</td></tr>
-    <tr><td class="word">hunter</td><td class="phonetic">/ˈhʌntə(r)/</td><td class="pos">n.</td><td class="meaning">猎人</td><td class="example">The hunter saves them. 猎人救了他们。</td></tr>
-    <tr><td class="word">bag</td><td class="phonetic">/bæɡ/</td><td class="pos">n.</td><td class="meaning">袋；包；囊</td><td class="example">Put it in the bag. 把它放进袋子里。</td></tr>
-    <tr><td class="word">life</td><td class="phonetic">/laɪf/</td><td class="pos">n.</td><td class="meaning">生命</td><td class="example">They saved his life. 他们救了他的命。</td></tr>
+    <tr><td class="word">hunter</td><td class="phonetic">/ˈhʌntə(r)/</td><td class="pos">n.</td><td class="meaning">猎人；搜寻者</td><td class="example">The hunter saves them. 猎人救了他们。</td></tr>
+    <tr><td class="word">bag</td><td class="phonetic">/bæɡ/</td><td class="pos">n.</td><td class="meaning">袋；包；囊；一袋（的量）（a bag of 一袋……）</td><td class="example">Put it in the bag. 把它放进袋子里。</td></tr>
+    <tr><td class="word">life</td><td class="phonetic">/laɪf/</td><td class="pos">n.</td><td class="meaning">生命；性命；人生；生活（复数 lives）</td><td class="example">They saved his life. 他们救了他的命。</td></tr>
   </table>
   </div>
 
@@ -1481,18 +1511,16 @@
   });
   setActiveNav(initialNav || navLinks[0]);
 
-  if (!('speechSynthesis' in window)) {
-    var bar = document.getElementById('ttsBar');
-    if (bar) bar.innerHTML = '<span>⚠️ 当前浏览器不支持语音朗读，请使用 Edge 或 Chrome 打开</span>';
-    return;
-  }
-
+  var speechSupported = 'speechSynthesis' in window;
+  var wechatBrowser = /MicroMessenger/i.test(navigator.userAgent || '');
+  var useRemoteTts = !speechSupported || wechatBrowser;
   var currentRate = 0.9;
   var voice = null;
   var audioUrlCache = {};
   var audioCache = {};
   var phonemeAudioCache = {};
   var currentAudio = null;
+  var remoteTtsCache = {};
   var phonemeAudioBase =
     'https://thesoundofenglish.org/wp-content/uploads/in5-archives/interactive-ipa-chart-22/Interactive%20IPA%20Chart%2022/assets/media/';
   var phonemeAudioMap = {
@@ -1528,8 +1556,9 @@
     'SOUND 41.mp3': [0.3873, 0.8107]
   };
 
-  // 选择英语朗读 voice：优先英式（教材音标为英式），其次美式
+  // 选择英语朗读 voice：优先英式（教材音标为英式），其次美式。
   function pickVoice() {
+    if (!speechSupported) return;
     var voices = speechSynthesis.getVoices();
     if (!voices.length) return;
     voice =
@@ -1539,12 +1568,18 @@
       voices.find(function (v) { return /^en/i.test(v.lang); }) ||
       null;
   }
-  pickVoice();
-  speechSynthesis.onvoiceschanged = pickVoice;
+  if (speechSupported) {
+    pickVoice();
+    speechSynthesis.onvoiceschanged = pickVoice;
+  }
 
   function setStatus(text) {
     var status = document.getElementById('ttsStatus');
     if (status) status.textContent = text;
+  }
+
+  if (useRemoteTts) {
+    setStatus('🔊 点击单词、例句或重点句型播放在线英语语音');
   }
 
   function findBritishAudio(phonetics) {
@@ -1683,6 +1718,676 @@
     return button;
   }
 
+  // 每个词义使用独立例句；例句保持在教材词汇难度附近，便于四年级学生理解。
+  var senseExamples = {
+    star: [
+      "The stars are bright tonight. 今晚星星很亮。",
+      "Toby is a ball game star. 托比是球类运动明星。",
+      "Put a star next to the correct answer. 在正确答案旁边画一个星号。",
+      "She stars in a new film. 她主演一部新电影。"
+    ],
+    fast: [
+      "The horse is fast and strong. 这匹马又快又强壮。",
+      "She is a fast runner. 她是一名跑得快的跑步者。",
+      "Linlin can run very fast. 琳琳能跑得非常快。",
+      "Hold the door fast, please. 请把门牢牢地固定住。",
+      "The water is running fast. 水流得很快。"
+    ],
+    ride: [
+      "I can ride a bike. 我会骑自行车。",
+      "We ride the bus to school. 我们乘公交车上学。",
+      "Let's go for a ride. 我们去兜风吧。",
+      "The ride to the park is fun. 去公园的这一趟很有趣。"
+    ],
+    report: [
+      "This is my sports report. 这是我的体育报告。",
+      "I read a report about the match. 我读了一篇关于比赛的报道。",
+      "My teacher checks my school report. 我的老师查看我的成绩单。",
+      "Please report the problem to Mum. 请把这个问题报告给妈妈。",
+      "The newspaper reports the news. 报纸报道了这条新闻。"
+    ],
+    far: [
+      "He can walk very far. 他能走很远。",
+      "Thank you very much. 真的非常感谢你。",
+      "The far mountain is white. 远处的山是白色的。",
+      "The shop is farther than the school. 商店比学校更远。"
+    ],
+    from: [
+      "I am from China. 我来自中国。",
+      "The shop is open from nine. 商店从九点开始营业。",
+      "The park is two kilometres from here. 公园离这里两公里。"
+    ],
+    band: [
+      "Put on this magic band. 戴上这条魔法腕带。",
+      "The school band is playing music. 学校乐队正在演奏音乐。",
+      "A band of birds is flying over the trees. 一群鸟正在树上方飞过。"
+    ],
+    very: [
+      "She runs very fast. 她跑得非常快。",
+      "This is the very book I want. 这正是我想要的书。"
+    ],
+    sure: [
+      "Are you sure? 你确定吗？",
+      "Sure, I can help you. 当然，我可以帮助你。"
+    ],
+    hurt: [
+      "My legs hurt. 我的腿疼。",
+      "Be careful not to hurt your hand. 小心不要弄伤你的手。",
+      "His words hurt my feelings. 他的话伤害了我的感情。",
+      "My knee is hurt. 我的膝盖受伤了。"
+    ],
+    think: [
+      "I think I can do it. 我想我能做到。",
+      "Think about the question. 思考一下这个问题。",
+      "I think it is a good idea. 我认为这是个好主意。",
+      "I can't think of his name. 我想不起他的名字。"
+    ],
+    wind: [
+      "The wind is strong today. 今天风很大。",
+      "A cool wind comes through the window. 一阵凉风从窗户吹进来。",
+      "Wind the toy and watch it move. 给玩具上发条，看它动起来。",
+      "The road winds around the hill. 这条路蜿蜒绕过山丘。"
+    ],
+    tired: [
+      "I'm tired and my legs hurt. 我累了，腿也疼。",
+      "I am tired of the long wait. 我厌倦了长时间的等待。"
+    ],
+    favourite: [
+      "What's your favourite sport? 你最喜欢的运动是什么？",
+      "Blue is my favourite. 蓝色是我最喜欢的颜色。"
+    ],
+    sport: [
+      "I love sports. 我爱运动。",
+      "Football is my favourite sport. 足球是我最喜欢的运动。",
+      "Our school has a sports day. 我们学校有运动会。"
+    ],
+    magic: [
+      "This is a magic band. 这是一条魔法腕带。",
+      "The magician does a magic trick. 魔术师变了一个魔术。",
+      "The story has a magical ending. 这个故事有一个神奇的结尾。"
+    ],
+    run: [
+      "I can run fast. 我能跑得快。",
+      "My aunt runs a small shop. 我阿姨经营一家小商店。",
+      "The machine is running. 机器正在运转。",
+      "The river runs through the town. 这条河流经小镇。",
+      "I go for a run every morning. 我每天早晨去跑步。"
+    ],
+    swim: [
+      "Can you swim? 你会游泳吗？",
+      "The fish can swim a long way. 这条鱼能游很远。",
+      "Let's go for a swim. 我们去游泳吧。"
+    ],
+    jump: [
+      "I can jump really high. 我能跳得很高。",
+      "The cat jumps over the box. 猫跳过了盒子。",
+      "Prices jump in summer. 价格在夏天猛涨。",
+      "The boy makes a big jump. 男孩跳了一大步。"
+    ],
+    kick: [
+      "I can kick the ball. 我会踢球。",
+      "He gave the door a kick. 他踢了门一脚。"
+    ],
+    ski: [
+      "I can't ski. 我不会滑雪。",
+      "These skis are new. 这副滑雪板是新的。"
+    ],
+    football: [
+      "He can play football. 他会踢足球。",
+      "Football is popular in many countries. 足球运动在许多国家很受欢迎。"
+    ],
+    basketball: [
+      "I can play basketball. 我会打篮球。",
+      "Basketball is a team sport. 篮球是一项团队运动。"
+    ],
+    town: [
+      "This is a map of our town. 这是我们镇的地图。",
+      "The town is quiet at night. 这个城镇晚上很安静。"
+    ],
+    map: [
+      "Look at the map. 看这张地图。",
+      "The map shows all the streets. 这张地图显示了所有街道。"
+    ],
+    shop: [
+      "The shop is next to the school. 商店紧挨着学校。",
+      "We shop for food on Sunday. 我们星期天买食物。"
+    ],
+    stop: [
+      "He lives next to the bus stop. 他住在公交车站旁。",
+      "The bus stops near the school. 公交车在学校附近停下。",
+      "Please stop talking. 请停止说话。",
+      "The wall stops the wind. 这面墙挡住了风。"
+    ],
+    cinema: [
+      "The cinema is on your left. 电影院在你的左边。",
+      "We watched a film at the cinema. 我们在电影院看了一部电影。"
+    ],
+    station: [
+      "Walk to the train station. 走到火车站。",
+      "The police station is over there. 派出所在那边。",
+      "This radio station plays music. 这个广播台播放音乐。",
+      "The space station goes around the Earth. 空间站绕着地球运行。",
+      "The bus station is near the park. 公交车站在公园附近。"
+    ],
+    police: [
+      "The police station is over there. 派出所在那边。",
+      "The police help people in the town. 警察帮助城镇里的人们。"
+    ],
+    way: [
+      "Can you tell me the way to the bookshop? 你能告诉我去书店的路吗？",
+      "This is a good way to learn words. 这是学习单词的好方法。",
+      "In this way, we can help more people. 用这种方式，我们能帮助更多人。",
+      "She knows the way home. 她知道回家的路。"
+    ],
+    place: [
+      "This is a nice place. 这是一个好地方。",
+      "Put the book in its place. 把书放回它的位置。",
+      "He won first place in the race. 他在比赛中获得第一名。",
+      "We need a quiet place to read. 我们需要一个安静的地方阅读。"
+    ],
+    train: [
+      "I go by train. 我坐火车去。",
+      "We train every afternoon. 我们每天下午训练。"
+    ],
+    surprise: [
+      "What a surprise! 真是个惊喜！",
+      "The result was a surprise. 这个结果出人意料。",
+      "The gift surprised me. 这份礼物让我感到惊讶。"
+    ],
+    turn: [
+      "Turn right at the supermarket. 在超市右转。",
+      "Turn the page, please. 请翻页。",
+      "The leaves turn yellow in autumn. 树叶在秋天变黄。",
+      "It is your turn to read. 轮到你读了。",
+      "There is a turn near the hospital. 医院附近有一个转弯处。"
+    ],
+    buy: [
+      "I want to buy a book. 我想买一本书。",
+      "I don't buy that story. 我不相信那个说法。"
+    ],
+    live: [
+      "Mr Blue lives next to the bus stop. 布卢先生住在公交车站旁。",
+      "We live a happy life. 我们过着幸福的生活。",
+      "Fish live in water. 鱼生活在水里。"
+    ],
+    left: [
+      "Go left first. 先左转。",
+      "The left door is open. 左边的门开着。",
+      "There is a small park on the left. 左边有一个小公园。",
+      "She left school at four. 她四点离开学校。"
+    ],
+    straight: [
+      "Go straight on. 直走。",
+      "Draw a straight line. 画一条直线。",
+      "Come straight home after school. 放学后直接回家。",
+      "He gave me a straight answer. 他给了我一个坦率的回答。"
+    ],
+    then: [
+      "Then go straight on. 然后直走。",
+      "I was younger then. 那时我更小。",
+      "If you are ready, then we can start. 如果你准备好了，那么我们可以开始。"
+    ],
+    there: [
+      "The hospital is there. 医院在那边。",
+      "There are two books on the desk. 桌上有两本书。",
+      "There, that is my bag. 你瞧，那是我的包。"
+    ],
+    first: [
+      "First you go left. 你先左转。",
+      "This is my first book. 这是我的第一本书。",
+      "She came first in the race. 她在比赛中得了第一名。",
+      "I saw him for the first time today. 我今天第一次见到他。",
+      "The first child is my brother. 第一个孩子是我弟弟。"
+    ],
+    near: [
+      "The shop is near the school. 商店在学校附近。",
+      "Come near and look. 靠近一点看。",
+      "The library is near our home. 图书馆离我们家很近。"
+    ],
+    thanks: [
+      "Thanks for your help. 谢谢你的帮助。",
+      "Many thanks for the gift. 非常感谢你的礼物。"
+    ],
+    doctor: [
+      "He is a doctor. 他是一名医生。",
+      "My uncle is a doctor of science. 我叔叔是一名科学博士。"
+    ],
+    nurse: [
+      "My sister is a nurse. 我姐姐是护士。",
+      "The nurse looks after the baby. 护士照料婴儿。",
+      "She nurses the sick bird. 她护理那只生病的鸟。"
+    ],
+    worker: [
+      "He is a worker in a factory. 他是一名工厂工人。",
+      "The workers clean the park. 工人们清洁公园。"
+    ],
+    farmer: [
+      "The farmer grows vegetables. 农民种蔬菜。",
+      "The farmer owns a big farm. 这位农场主拥有一个大农场。"
+    ],
+    cleaner: [
+      "The giraffe is a window cleaner. 长颈鹿是擦窗工。",
+      "The cleaner makes the room tidy. 清洁工把房间打扫整齐。",
+      "This cleaner is for the table. 这种清洁剂是用来擦桌子的。"
+    ],
+    work: [
+      "Everyone works hard. 每个人都努力工作。",
+      "The machine works well. 这台机器运转良好。",
+      "This idea works. 这个办法奏效了。",
+      "This book is a famous work. 这本书是一部著名作品。"
+    ],
+    teach: [
+      "She teaches in a school. 她在学校教书。",
+      "Mr Green teaches English. 格林先生教英语。",
+      "Parents teach children to be kind. 父母教孩子要友善。"
+    ],
+    drive: [
+      "I like driving people around. 我喜欢开车送人到处走。",
+      "My dad drives to work. 我爸爸开车去上班。",
+      "The loud noise drives the birds away. 巨大的声音把鸟赶走了。"
+    ],
+    grow: [
+      "I like growing flowers. 我喜欢种花。",
+      "Children grow quickly. 孩子们成长得很快。",
+      "He grows his hair long. 他留长发。",
+      "The plant grows bigger every day. 这株植物每天都在长大。"
+    ],
+    ask: [
+      "I like asking questions. 我喜欢提问。",
+      "Ask Mum for help. 向妈妈求助。",
+      "Let's ask Tom to come. 我们邀请汤姆来吧。"
+    ],
+    learn: [
+      "I love learning about space. 我喜欢学习太空知识。",
+      "We learn new words every day. 我们每天学习新单词。",
+      "I learned a lot from the book. 我从这本书中学到了很多。",
+      "I learned the news this morning. 我今天早晨得知了这个消息。"
+    ],
+    question: [
+      "I have a question. 我有一个问题。",
+      "The teacher questioned the answer. 老师质疑了这个答案。"
+    ],
+    space: [
+      "I want to go to space. 我想去太空。",
+      "There is not enough space here. 这里没有足够的空间。",
+      "Leave a space between the words. 单词之间留一个空格。"
+    ],
+    garden: [
+      "I can make beautiful gardens. 我能打造漂亮的花园。",
+      "The children play in the garden. 孩子们在花园里玩。",
+      "My grandpa gardens every morning. 我爷爷每天早晨做园艺。"
+    ],
+    centre: [
+      "She works at a job centre. 她在就业中心工作。",
+      "The school is in the town centre. 学校在市中心。",
+      "The centre helps children learn. 这个中心帮助孩子们学习。"
+    ],
+    fire: [
+      "You help us put out fires. 你帮助我们灭火。",
+      "The fire is hot. 火很热。",
+      "Please fire the candle carefully. 请小心地点燃蜡烛。",
+      "The boss fired the lazy worker. 老板解雇了那个懒惰的工人。"
+    ],
+    shape: [
+      "I can cut many shapes. 我能剪出很多形状。",
+      "The shape of the moon changes. 月亮的形状会变化。",
+      "The artist shapes the clay. 艺术家把黏土塑形。"
+    ],
+    kind: [
+      "What kind of job do you like? 你喜欢哪种工作？",
+      "Our teacher is very kind. 我们的老师非常和蔼。"
+    ],
+    sick: [
+      "They help sick people. 他们帮助病人。",
+      "The boat makes me sick. 这条船让我恶心。",
+      "I am sick of this game. 我厌倦了这个游戏。"
+    ],
+    strong: [
+      "He is very strong. 他非常强壮。",
+      "This box is strong. 这个盒子很结实。",
+      "The wind is strong today. 今天风很大。"
+    ],
+    hard: [
+      "Everyone works hard. 每个人都努力工作。",
+      "This question is hard. 这个问题很难。",
+      "The stone is hard. 这块石头很硬。",
+      "It is raining hard. 雨下得很大。"
+    ],
+    around: [
+      "I like driving people around. 我喜欢开车送人到处走。",
+      "There are around twenty students here. 这里大约有二十名学生。",
+      "The children sit around the table. 孩子们围坐在桌子周围。",
+      "We walk around the park. 我们绕着公园走。"
+    ],
+    box: [
+      "I put money in the spend box. 我把钱放进花费盒里。",
+      "The box is on the table. 盒子在桌子上。",
+      "Draw a box around the answer. 在答案周围画一个方框。",
+      "The box is full of toys. 这个箱子里装满了玩具。"
+    ],
+    pair: [
+      "I'd like to buy three pairs of socks. 我想买三双袜子。",
+      "I have a pair of blue shoes. 我有一双蓝色的鞋。"
+    ],
+    flower: [
+      "I'd like to buy some flowers for my mum. 我想为妈妈买一些花。",
+      "The flowers bloom in spring. 花朵在春天开放。"
+    ],
+    holiday: [
+      "We go to the beach on holiday. 我们假期去海边。",
+      "Save it for the holidays. 把它留到节日使用。"
+    ],
+    give: [
+      "I give a gift to my friend. 我给朋友一份礼物。",
+      "Please give me the book. 请把书递给我。",
+      "The school gives a party every year. 学校每年举办一次聚会。",
+      "The lamp gives light. 这盏灯发出光。"
+    ],
+    use: [
+      "I use money to buy gifts. 我用钱买礼物。",
+      "This room has many uses. 这个房间有许多用途。"
+    ],
+    spend: [
+      "I spend money on books. 我花钱买书。",
+      "We spend the afternoon in the park. 我们在公园度过下午。"
+    ],
+    save: [
+      "I put ten yuan in the save box. 我把10元放进储蓄盒。",
+      "The firefighter saves the child. 消防员救了孩子。",
+      "Turn off the light to save energy. 关灯来节约能源。"
+    ],
+    share: [
+      "Let's share the food. 我们分享食物吧。",
+      "We share the same room. 我们共用同一个房间。",
+      "We share the work. 我们分担这项工作。",
+      "Everyone gets a share of the cake. 每个人都分到一份蛋糕。"
+    ],
+    should: [
+      "We should make good use of money. 我们应该好好使用钱。",
+      "The bus should be here soon. 公交车应该很快就到了。"
+    ],
+    early: [
+      "I get up early. 我起得早。",
+      "This is an early story by the writer. 这是这位作家早期的故事。",
+      "The early train leaves at six. 早班火车六点出发。"
+    ],
+    circle: [
+      "Its eyes are circles. 它的眼睛是圆形。",
+      "Draw a circle, please. 请画一个圆圈。",
+      "She circles the correct word. 她圈出正确的单词。",
+      "The plane circles over the town. 飞机在小镇上空盘旋。",
+      "He is in my circle of friends. 他在我的朋友圈里。"
+    ],
+    square: [
+      "The wheels are squares. 车轮是正方形。",
+      "We meet in the town square. 我们在城镇广场见面。",
+      "Three squared is nine. 三的平方是九。",
+      "The window is square. 这扇窗户是正方形的。"
+    ],
+    line: [
+      "There are four lines in a square. 一个正方形有四条线。",
+      "Draw a straight line. 画一条直线。",
+      "There is a line of children. 有一排孩子。",
+      "Please stand in line. 请排队。",
+      "The phone line is busy. 电话线占线。"
+    ],
+    into: [
+      "From the box into my tummy. 从盒子进入我的肚子。",
+      "The caterpillar turns into a butterfly. 毛毛虫变成蝴蝶。"
+    ],
+    another: [
+      "Here is another shape. 这是另一个形状。",
+      "Would you like another cake? 你想再来一块蛋糕吗？"
+    ],
+    "a lot": [
+      "I know a lot about shapes. 我知道很多形状。",
+      "I like this song a lot. 我非常喜欢这首歌。"
+    ],
+    cow: [
+      "The cow eats grass. 奶牛吃草。",
+      "There are cows on the farm. 农场里有牛。",
+      "The farmer has one milk cow. 农民有一头奶牛。"
+    ],
+    farm: [
+      "Does it live on a farm? 它住在农场吗？",
+      "This farm raises chickens. 这个养殖场养鸡。",
+      "My grandparents farm the land. 我的祖父母务农。"
+    ],
+    grass: [
+      "The sheep eats grass. 羊吃草。",
+      "The children play on the grass. 孩子们在草地上玩。"
+    ],
+    neck: [
+      "The giraffe has a long neck. 长颈鹿有长脖子。",
+      "This shirt has a round neck. 这件衬衫是圆领。",
+      "The bottle has a narrow neck. 这个瓶子的瓶颈很窄。"
+    ],
+    tail: [
+      "My favourite animal has got a long tail. 我最喜欢的动物有长尾巴。",
+      "The dog is at the tail of the line. 狗在队伍的末尾。"
+    ],
+    pet: [
+      "Can I have a pet? 我可以养宠物吗？",
+      "The cat is Mum's pet. 这只猫是妈妈的宠儿。",
+      "The girl pets the dog. 女孩抚摸小狗。"
+    ],
+    boy: [
+      "Is it a boy or a girl? 它是公的还是母的？",
+      "The boy is my son. 这个男孩是我的儿子。"
+    ],
+    girl: [
+      "It's a girl. 它是母的。",
+      "The girl is my daughter. 这个女孩是我的女儿。"
+    ],
+    heavy: [
+      "The elephant is heavy. 大象很重。",
+      "He has a heavy job. 他的工作很繁重。",
+      "There is heavy traffic today. 今天交通很拥堵。",
+      "There is heavy rain tonight. 今晚有大雨。"
+    ],
+    slow: [
+      "The sheep is slow. 羊很慢。",
+      "The old computer is slow. 这台旧电脑运行很慢。",
+      "Slow down near the school. 在学校附近慢下来。"
+    ],
+    talk: [
+      "Can the parrot talk? 鹦鹉会说话吗？",
+      "Let's talk about animals. 我们谈谈动物吧。",
+      "The two teams talk after the game. 两队在比赛后会谈。",
+      "We have a talk about safety. 我们进行一次关于安全的谈话。"
+    ],
+    climb: [
+      "It can't climb trees. 它不会爬树。",
+      "We climb the mountain in spring. 我们春天爬山。",
+      "The plane climbs into the sky. 飞机爬升到空中。"
+    ],
+    catch: [
+      "Stormy, catch the ball! 斯托米，接球！",
+      "The police catch the bad guy. 警察抓住了坏人。",
+      "We catch the early bus. 我们赶上了早班公交车。",
+      "You can catch a cold in winter. 你冬天可能会感冒。",
+      "I can't catch your words. 我听不清你的话。"
+    ],
+    story: [
+      "This is a fun story. 这是一个有趣的故事。",
+      "I read a story in the book. 我在书里读了一个故事。",
+      "The newspaper has a story about the town. 报纸有一篇关于小镇的报道。",
+      "Our hotel has three storeys. 我们的酒店有三层。"
+    ],
+    party: [
+      "Let's have a party! 我们开个聚会吧！",
+      "The party won the election. 这个政党赢得了选举。"
+    ],
+    tie: [
+      "Tie the bag. 把袋子系起来。",
+      "Tie the two ropes together. 把两根绳子系在一起。",
+      "The game ended in a tie. 比赛以平局结束。",
+      "Dad wears a red tie. 爸爸戴着一条红领带。"
+    ],
+    gift: [
+      "Here is a gift for you. 这是给你的礼物。",
+      "Music is her special gift. 音乐是她的特殊天赋。"
+    ],
+    address: [
+      "What's your address? 你的地址是什么？",
+      "The mayor gave an address. 市长发表了演讲。",
+      "Please address the letter to Grandma. 请把信的收件人写成奶奶。",
+      "The teacher addressed the child by name. 老师称呼孩子的名字。"
+    ],
+    trust: [
+      "Don't trust the bad guy. 不要信任坏人。",
+      "Trust is important between friends. 朋友之间信任很重要。"
+    ],
+    snow: [
+      "The snow is white. 雪是白色的。",
+      "It may snow tomorrow. 明天可能下雪。"
+    ],
+    bad: [
+      "The wolf is bad. 狼是坏的。",
+      "It is a bad cut. 这是一个严重的伤口。",
+      "The milk smells bad. 牛奶闻起来坏了。",
+      "I got a bad mark in maths. 我的数学成绩很差。"
+    ],
+    knock: [
+      "Someone is knocking at the door. 有人在敲门。",
+      "The ball knocks against the wall. 球撞到了墙。",
+      "I heard a knock. 我听到了一声敲击声。"
+    ],
+    guy: [
+      "He is a good guy. 他是个好家伙。",
+      "You guys can sit here. 你们大家可以坐在这里。"
+    ],
+    hunter: [
+      "The hunter saves them. 猎人救了他们。",
+      "She is a job hunter. 她正在寻找工作。"
+    ],
+    bag: [
+      "Put it in the bag. 把它放进袋子里。",
+      "My school bag is blue. 我的书包是蓝色的。",
+      "The kangaroo has a baby in its pouch-like bag. 袋鼠的育儿袋里有一只小袋鼠。",
+      "I bought a bag of apples. 我买了一袋苹果。"
+    ],
+    life: [
+      "They saved his life. 他们救了他的命。",
+      "The baby has a happy life. 这个婴儿过着幸福的生活。",
+      "Life is full of surprises. 人生充满惊喜。",
+      "City life is busy. 城市生活很忙碌。"
+    ]
+  };
+
+  function splitOutsideBrackets(text) {
+    var result = [];
+    var start = 0;
+    var depth = 0;
+    for (var i = 0; i < text.length; i += 1) {
+      var char = text.charAt(i);
+      if (char === '（' || char === '(') depth += 1;
+      if (char === '）' || char === ')') depth = Math.max(0, depth - 1);
+      if (depth === 0 && (char === '/' || char === '；' || char === ';')) {
+        if (text.slice(start, i).trim()) result.push(text.slice(start, i).trim());
+        start = i + 1;
+      }
+    }
+    if (text.slice(start).trim()) result.push(text.slice(start).trim());
+    return result;
+  }
+
+  function splitMeaningIntoSenses(text, fallbackPos) {
+    var activePos = '';
+    var labelPattern = /^((?:(?:n|v|adj|adv|prep|pron|num|int|phr|conj|aux)\.\s*(?:[,&]\s*)?)+)/i;
+    return splitOutsideBrackets(text).map(function (part) {
+      var match = part.match(labelPattern);
+      var label = match ? match[1].trim() : activePos;
+      var body = match ? part.slice(match[0].length).trim() : part.trim();
+      if (label) activePos = label;
+      return {
+        label: label || fallbackPos || '',
+        text: body
+      };
+    }).filter(function (sense) {
+      return sense.text;
+    });
+  }
+
+  function fallbackSenseExample(word, sense, index) {
+    var label = sense.label || '';
+    var meaning = sense.text.replace(/[（(].*?[）)]/g, '').trim();
+    var english;
+    var chinese;
+    if (/v\./i.test(label)) {
+      english = index % 2 ? 'We ' + word + ' every day.' : 'I can ' + word + '.';
+      chinese = index % 2 ? '我们每天' + meaning + '。' : '我会' + meaning + '。';
+    } else if (/adj\./i.test(label)) {
+      english = 'It is ' + word + '.';
+      chinese = '它是' + meaning + '的。';
+    } else if (/adv\./i.test(label)) {
+      english = 'Please do it ' + word + '.';
+      chinese = '请' + meaning + '地做。';
+    } else if (/prep\./i.test(label)) {
+      english = 'The book is ' + word + ' the box.';
+      chinese = '书在盒子' + meaning + '。';
+    } else if (/pron\./i.test(label)) {
+      english = 'This is for ' + word + '.';
+      chinese = '这是给' + meaning + '的。';
+    } else {
+      english = 'This is a ' + word + '.';
+      chinese = '这是一个' + meaning + '。';
+    }
+    return english + ' ' + chinese;
+  }
+
+  function renderWordSenseExamples() {
+    document.querySelectorAll('.word-table tr').forEach(function (row) {
+      var cells = row.querySelectorAll('td');
+      if (cells.length < 5) return;
+      var word = cells[0].textContent.trim().toLowerCase();
+      var meaningCell = cells[3];
+      var originalExample = cells[4].textContent.trim();
+      var senses = splitMeaningIntoSenses(meaningCell.textContent.trim(), cells[2].textContent.trim());
+      if (!senses.length) return;
+
+      var examples = senseExamples[word] || [];
+      var list = document.createElement('div');
+      list.className = 'sense-list';
+      senses.forEach(function (sense, index) {
+        var item = document.createElement('div');
+        item.className = 'sense-item';
+
+        var meaning = document.createElement('span');
+        meaning.className = 'sense-meaning';
+        meaning.textContent = (sense.label ? sense.label + ' ' : '') + sense.text;
+        item.appendChild(meaning);
+
+        var exampleText = examples[index] || (index === 0 ? originalExample : fallbackSenseExample(word, sense, index));
+        var english = extractEnglish(exampleText);
+        var example = document.createElement('span');
+        example.className = 'sense-example';
+        if (english) {
+          var englishEnd = exampleText.indexOf(english) + english.length;
+          example.appendChild(createSpeakButton(english, 'sense-example-control', english));
+          example.appendChild(document.createTextNode(exampleText.slice(englishEnd)));
+        } else {
+          example.textContent = exampleText;
+        }
+        item.appendChild(example);
+        list.appendChild(item);
+      });
+
+      meaningCell.replaceChildren(list);
+      cells[4].remove();
+    });
+
+    document.querySelectorAll('.word-table tr:first-child').forEach(function (header) {
+      var headerCells = header.querySelectorAll('th');
+      if (headerCells.length >= 5) {
+        headerCells[3].textContent = '词义与例句';
+        headerCells[4].remove();
+      }
+    });
+  }
+
+  renderWordSenseExamples();
+
   // 把单词表中的英文例句变成明确的朗读按钮。
   document.querySelectorAll('.word-table td.example').forEach(function (td) {
     var text = td.textContent;
@@ -1770,7 +2475,60 @@
     el.classList.add('speaking-flash');
   }
 
+  function remoteTtsSpeed() {
+    if (currentRate <= 0.75) return 2;
+    if (currentRate >= 0.95) return 4;
+    return 3;
+  }
+
+  function playRemoteTts(text, el, onend) {
+    var key = speechText(text);
+    if (!key) return;
+    if (speechSupported) speechSynthesis.cancel();
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+    }
+
+    var audio = remoteTtsCache[key];
+    if (!audio) {
+      audio = new Audio();
+      audio.preload = 'auto';
+      remoteTtsCache[key] = audio;
+    }
+    audio.src =
+      'https://dict.youdao.com/dictvoice?audio=' +
+      encodeURIComponent(key) +
+      '&type=2&spd=' +
+      remoteTtsSpeed();
+    audio.currentTime = 0;
+    currentAudio = audio;
+    flash(el);
+    setStatus('正在播放在线英语语音：' + ((el && el.dataset.status) || key));
+    audio.onended = function () {
+      if (currentAudio === audio) currentAudio = null;
+      if (onend) onend();
+    };
+    audio.onerror = function () {
+      if (currentAudio === audio) currentAudio = null;
+      setStatus('在线语音加载失败，请检查网络后重新点击');
+      if (onend) onend();
+    };
+    var playPromise = audio.play();
+    if (playPromise && playPromise.catch) {
+      playPromise.catch(function () {
+        if (currentAudio === audio) currentAudio = null;
+        setStatus('请再次点击播放语音');
+      });
+    }
+  }
+
   function speak(text, el, onend) {
+    if (useRemoteTts) {
+      playRemoteTts(text, el, onend);
+      return;
+    }
     speechSynthesis.cancel();
     var u = new SpeechSynthesisUtterance(text);
     if (voice) u.voice = voice;
@@ -1828,7 +2586,12 @@
     });
   });
   document.getElementById('ttsStop').addEventListener('click', function () {
-    speechSynthesis.cancel();
+    if (speechSupported) speechSynthesis.cancel();
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+    }
     setStatus('已停止播放');
   });
 })();
