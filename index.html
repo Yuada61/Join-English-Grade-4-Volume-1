@@ -643,6 +643,9 @@
   </div>
 
   <!-- Words -->
+  <div class="unit-audio-controls">
+    <button type="button" class="continuous-read-button" data-continuous-unit="u1">▶ 连续朗读本单元单词和例句</button>
+  </div>
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
@@ -776,6 +779,9 @@
   </div>
 
   <!-- Words -->
+  <div class="unit-audio-controls">
+    <button type="button" class="continuous-read-button" data-continuous-unit="u2">▶ 连续朗读本单元单词和例句</button>
+  </div>
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
@@ -890,6 +896,9 @@
   </div>
 
   <!-- Words -->
+  <div class="unit-audio-controls">
+    <button type="button" class="continuous-read-button" data-continuous-unit="u3">▶ 连续朗读本单元单词和例句</button>
+  </div>
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
@@ -1037,6 +1046,9 @@
   </div>
 
   <!-- Words -->
+  <div class="unit-audio-controls">
+    <button type="button" class="continuous-read-button" data-continuous-unit="u4">▶ 连续朗读本单元单词和例句</button>
+  </div>
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
@@ -1177,6 +1189,9 @@
   </div>
 
   <!-- Words -->
+  <div class="unit-audio-controls">
+    <button type="button" class="continuous-read-button" data-continuous-unit="u5">▶ 连续朗读本单元单词和例句</button>
+  </div>
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
@@ -1278,6 +1293,9 @@
   </div>
 
   <!-- Words -->
+  <div class="unit-audio-controls">
+    <button type="button" class="continuous-read-button" data-continuous-unit="u6">▶ 连续朗读本单元单词和例句</button>
+  </div>
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
@@ -1402,6 +1420,9 @@
   <div class="unit-topic">话题：课本故事/剧本部分词汇（拓展阅读）</div>
 
   <!-- Words -->
+  <div class="unit-audio-controls">
+    <button type="button" class="continuous-read-button" data-continuous-unit="plays">▶ 连续朗读本单元单词和例句</button>
+  </div>
   <div class="word-table-scroll">
   <table class="word-table">
     <tr><th>单词</th><th>音标</th><th>词性</th><th>词义</th><th>例句</th></tr>
@@ -2668,19 +2689,27 @@
     document.querySelectorAll('.unit-section').forEach(function (unit) {
       var tableScroll = unit.querySelector('.word-table-scroll');
       var table = unit.querySelector('.word-table');
-      if (!tableScroll || !table || unit.querySelector('.unit-audio-controls')) return;
+      if (!tableScroll || !table) return;
 
-      var controls = document.createElement('div');
-      controls.className = 'unit-audio-controls';
-      var button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'continuous-read-button';
+      var controls = unit.querySelector('.unit-audio-controls');
+      var button = controls && controls.querySelector('.continuous-read-button');
+      if (!controls) {
+        controls = document.createElement('div');
+        controls.className = 'unit-audio-controls';
+        tableScroll.parentNode.insertBefore(controls, tableScroll);
+      }
+      if (!button) {
+        button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'continuous-read-button';
+        controls.appendChild(button);
+      }
       button.dataset.idleLabel = '▶ 连续朗读本单元单词和例句';
       button.textContent = button.dataset.idleLabel;
       button.title = '按顺序朗读本单元的单词和例句';
       button.setAttribute('aria-label', button.dataset.idleLabel);
-      controls.appendChild(button);
-      tableScroll.parentNode.insertBefore(controls, tableScroll);
+      if (button.dataset.continuousBound === 'true') return;
+      button.dataset.continuousBound = 'true';
       button.addEventListener('click', function () {
         toggleContinuousReading(button, unit);
       });
