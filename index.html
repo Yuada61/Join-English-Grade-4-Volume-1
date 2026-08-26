@@ -153,6 +153,44 @@
   .speak-hint {
     display: inline-block; margin-left: 6px; font-size: 12px; opacity: 0.55; font-weight: normal;
   }
+  .unit-audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0 0 12px;
+  }
+  .continuous-read-button {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #9fc8e5;
+    border-radius: 7px;
+    padding: 7px 12px;
+    background: #edf6ff;
+    color: #245d8e;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .18s, color .18s, border-color .18s, transform .18s;
+  }
+  .continuous-read-button:hover,
+  .continuous-read-button:focus-visible {
+    background: #dceeff;
+    border-color: #6da8d4;
+    outline: none;
+  }
+  .continuous-read-button:active { transform: translateY(1px); }
+  .continuous-read-button.is-playing {
+    background: #fff3ef;
+    border-color: #efb09f;
+    color: #b34d35;
+  }
+  .continuous-read-button.is-paused {
+    background: #fff8df;
+    border-color: #e4c86e;
+    color: #8b6d12;
+  }
   .speaking-flash { animation: speakFlash 0.9s ease; }
   @keyframes speakFlash {
     0% { background: #ffe9b8; } 100% { background: transparent; }
@@ -546,6 +584,8 @@
     .sense-item { padding: 6px 7px; }
     .sense-list { gap: 6px; }
     .sense-example { font-size: 11px; }
+    .unit-audio-controls { margin-bottom: 10px; }
+    .continuous-read-button { width: 100%; padding: 8px 10px; font-size: 12px; }
     .phrases-box, .sentences-box { margin-bottom: 22px; }
     .sentence-card { padding: 11px 13px; }
     .sentence-pattern { font-size: 12px; line-height: 1.55; }
@@ -1506,6 +1546,7 @@
   navLinks.forEach(function (link) {
     if (link.getAttribute('href') === window.location.hash) initialNav = link;
     link.addEventListener('click', function () {
+      stopContinuousReading();
       setActiveNav(link);
     });
   });
@@ -2468,6 +2509,186 @@
     item.replaceWith(button);
   });
 
+  var continuousSession = null;
+
+  function setContinuousButtonState(button, state) {
+    if (!button) return;
+    button.classList.toggle('is-playing', state === 'playing');
+    button.classList.toggle('is-paused', state === 'paused');
+    if (state === 'playing') {
+      button.textContent = '⏸ 暂停连续朗读';
+      button.setAttribute('aria-label', '暂停连续朗读');
+    } else if (state === 'paused') {
+      button.textContent = '▶ 继续连续朗读';
+      button.setAttribute('aria-label', '继续连续朗读');
+    } else {
+      button.textContent = button.dataset.idleLabel || '▶ 连续朗读本单元单词和例句';
+      button.setAttribute('aria-label', button.textContent);
+    }
+  }
+
+  function stopContinuousReading() {
+    var session = continuousSession;
+    if (!session) return;
+    session.active = false;
+    if (session.timer) {
+      clearTimeout(session.timer);
+      session.timer = null;
+    }
+    if (speechSupported) speechSynthesis.cancel();
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+    }
+    setContinuousButtonState(session.button, 'idle');
+    continuousSession = null;
+  }
+
+  function finishContinuousReading(session) {
+    if (!session.active || continuousSession !== session) return;
+    session.active = false;
+    if (session.timer) clearTimeout(session.timer);
+    setContinuousButtonState(session.button, 'idle');
+    continuousSession = null;
+    setStatus('本单元单词和例句已连续朗读完毕');
+  }
+
+  function scheduleContinuousNext(session) {
+    if (!session.active || session.paused) return;
+    session.waiting = true;
+    session.timer = setTimeout(function () {
+      session.timer = null;
+      session.waiting = false;
+      playContinuousNext(session);
+    }, 350);
+  }
+
+  function playContinuousNext(session) {
+    if (!session.active || session.paused) return;
+    if (session.index >= session.items.length) {
+      finishContinuousReading(session);
+      return;
+    }
+    var item = session.items[session.index++];
+    setStatus('连续朗读：' + item.label);
+    speak(item.text, item.element, function () {
+      if (!session.active) return;
+      scheduleContinuousNext(session);
+    }, session.audio);
+  }
+
+  function getContinuousReadItems(unit) {
+    var items = [];
+    unit.querySelectorAll('.word-table tr').forEach(function (row) {
+      var wordCell = row.querySelector('td.word');
+      if (!wordCell) return;
+      var word = wordCell.textContent.trim();
+      if (!word) return;
+      items.push({ text: word, label: word, element: wordCell });
+      row.querySelectorAll('.sense-example-control').forEach(function (example) {
+        var text = example.dataset.speak || example.textContent.trim();
+        if (!text) return;
+        items.push({
+          text: text,
+          label: word + '：' + text,
+          element: example
+        });
+      });
+    });
+    return items;
+  }
+
+  function toggleContinuousReading(button, unit) {
+    if (continuousSession && continuousSession.button === button) {
+      var session = continuousSession;
+      if (session.paused) {
+        session.paused = false;
+        setContinuousButtonState(button, 'playing');
+        setStatus('继续连续朗读');
+        if (session.waiting) {
+          session.waiting = false;
+          playContinuousNext(session);
+        } else if (useRemoteTts && currentAudio === session.audio) {
+          var playPromise = session.audio.play();
+          if (playPromise && playPromise.catch) {
+            playPromise.catch(function () {
+              setStatus('请再次点击“继续连续朗读”');
+            });
+          }
+        } else if (speechSupported && !useRemoteTts) {
+          speechSynthesis.resume();
+        } else {
+          playContinuousNext(session);
+        }
+      } else {
+        session.paused = true;
+        if (session.timer) {
+          clearTimeout(session.timer);
+          session.timer = null;
+        }
+        if (useRemoteTts && currentAudio === session.audio) {
+          session.audio.pause();
+        } else if (speechSupported && !useRemoteTts) {
+          speechSynthesis.pause();
+        }
+        setContinuousButtonState(button, 'paused');
+        setStatus('已暂停连续朗读');
+      }
+      return;
+    }
+
+    if (continuousSession) stopContinuousReading();
+    var items = getContinuousReadItems(unit);
+    if (!items.length) {
+      setStatus('本单元暂时没有可朗读的单词');
+      return;
+    }
+    var session = {
+      button: button,
+      items: items,
+      index: 0,
+      active: true,
+      paused: false,
+      waiting: false,
+      timer: null,
+      audio: null
+    };
+    if (useRemoteTts) {
+      session.audio = new Audio();
+      session.audio.preload = 'auto';
+    }
+    continuousSession = session;
+    setContinuousButtonState(button, 'playing');
+    setStatus('开始连续朗读本单元，共 ' + items.length + ' 项');
+    playContinuousNext(session);
+  }
+
+  function addContinuousReadControls() {
+    document.querySelectorAll('.unit-section').forEach(function (unit) {
+      var tableScroll = unit.querySelector('.word-table-scroll');
+      var table = unit.querySelector('.word-table');
+      if (!tableScroll || !table || unit.querySelector('.unit-audio-controls')) return;
+
+      var controls = document.createElement('div');
+      controls.className = 'unit-audio-controls';
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'continuous-read-button';
+      button.dataset.idleLabel = '▶ 连续朗读本单元单词和例句';
+      button.textContent = button.dataset.idleLabel;
+      button.title = '按顺序朗读本单元的单词和例句';
+      button.setAttribute('aria-label', button.dataset.idleLabel);
+      controls.appendChild(button);
+      tableScroll.parentNode.insertBefore(controls, tableScroll);
+      button.addEventListener('click', function () {
+        toggleContinuousReading(button, unit);
+      });
+    });
+  }
+
+  addContinuousReadControls();
+
   function flash(el) {
     if (!el) return;
     el.classList.remove('speaking-flash');
@@ -2481,21 +2702,23 @@
     return 3;
   }
 
-  function playRemoteTts(text, el, onend) {
+  function playRemoteTts(text, el, onend, audioOverride) {
     var key = speechText(text);
     if (!key) return;
     if (speechSupported) speechSynthesis.cancel();
+    var audio = audioOverride || remoteTtsCache[key];
     if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
+      if (currentAudio !== audio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
       currentAudio = null;
     }
 
-    var audio = remoteTtsCache[key];
     if (!audio) {
       audio = new Audio();
       audio.preload = 'auto';
-      remoteTtsCache[key] = audio;
+      if (!audioOverride) remoteTtsCache[key] = audio;
     }
     audio.src =
       'https://dict.youdao.com/dictvoice?audio=' +
@@ -2506,27 +2729,32 @@
     currentAudio = audio;
     flash(el);
     setStatus('正在播放在线英语语音：' + ((el && el.dataset.status) || key));
-    audio.onended = function () {
+    var audioFinished = false;
+    function finishAudio() {
+      if (audioFinished) return;
+      audioFinished = true;
       if (currentAudio === audio) currentAudio = null;
       if (onend) onend();
+    }
+    audio.onended = function () {
+      finishAudio();
     };
     audio.onerror = function () {
-      if (currentAudio === audio) currentAudio = null;
       setStatus('在线语音加载失败，请检查网络后重新点击');
-      if (onend) onend();
+      finishAudio();
     };
     var playPromise = audio.play();
     if (playPromise && playPromise.catch) {
       playPromise.catch(function () {
-        if (currentAudio === audio) currentAudio = null;
         setStatus('请再次点击播放语音');
+        finishAudio();
       });
     }
   }
 
-  function speak(text, el, onend) {
+  function speak(text, el, onend, audioOverride) {
     if (useRemoteTts) {
-      playRemoteTts(text, el, onend);
+      playRemoteTts(text, el, onend, audioOverride);
       return;
     }
     speechSynthesis.cancel();
@@ -2545,6 +2773,7 @@
   // 直接绑定事件，避免依赖事件委托导致部分浏览器点击无响应。
   document.querySelectorAll('.speak-control').forEach(function (button) {
     button.addEventListener('click', function () {
+      stopContinuousReading();
       if (button.dataset.phoneme) {
         playPhonemeAudio(button.dataset.phoneme, button);
         return;
@@ -2558,6 +2787,7 @@
     button.addEventListener('keydown', function (e) {
       if (e.key !== 'Enter' && e.key !== ' ') return;
       e.preventDefault();
+      stopContinuousReading();
       if (button.dataset.phoneme) {
         playPhonemeAudio(button.dataset.phoneme, button);
         return;
@@ -2572,6 +2802,7 @@
 
   document.querySelectorAll('.word-table td.word').forEach(function (wordTd) {
     wordTd.addEventListener('click', function () {
+      stopContinuousReading();
       speak(wordTd.textContent.trim(), wordTd);
     });
   });
@@ -2586,6 +2817,7 @@
     });
   });
   document.getElementById('ttsStop').addEventListener('click', function () {
+    stopContinuousReading();
     if (speechSupported) speechSynthesis.cancel();
     if (currentAudio) {
       currentAudio.pause();
