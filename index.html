@@ -221,6 +221,73 @@
     font-size: 13px;
   }
 
+  /* Chinese Summary */
+  .chinese-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .chinese-summary-card {
+    border: 1px solid var(--line, #e8e8e8);
+    border-radius: 8px;
+    background: #f8fbfe;
+    padding: 14px 16px;
+  }
+  .chinese-summary-card h3 {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 16px;
+  }
+  .chinese-summary-card h3 span {
+    flex: 0 0 auto;
+    color: #6d8194;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .chinese-summary-list {
+    list-style: none;
+    display: grid;
+    gap: 6px;
+    counter-reset: chinese-summary;
+  }
+  .chinese-summary-list li {
+    counter-increment: chinese-summary;
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr) minmax(120px, 0.42fr);
+    gap: 8px;
+    align-items: end;
+    padding: 6px 0;
+    border-bottom: 1px dashed #dbe7f0;
+    line-height: 1.55;
+  }
+  .chinese-summary-list li::before {
+    content: counter(chinese-summary) ".";
+    color: #8aa0b4;
+    font-size: 12px;
+  }
+  .chinese-summary-list li:last-child { border-bottom: 0; }
+  .chinese-word {
+    display: none;
+  }
+  .english-dictation-word {
+    color: var(--blue-dark, #245d8e);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+  .chinese-meaning {
+    color: #34495e;
+    overflow-wrap: anywhere;
+  }
+  .dictation-line {
+    display: block;
+    min-height: 1.4em;
+    border-bottom: 1px solid #9fb1c3;
+  }
+
   /* Sentences */
   .sentences-box { margin-bottom: 15px; }
   .sentences-box h3 { font-size: 16px; color: #555; margin-bottom: 10px; }
@@ -306,6 +373,7 @@
     border: 1px solid #d9e3ec;
     border-radius: 14px;
     box-shadow: 0 18px 48px rgba(22, 50, 79, 0.12);
+    overflow: visible;
   }
   .header {
     background: var(--ink);
@@ -500,6 +568,32 @@
   }
   .tts-bar button.active { background: var(--blue); color: #fff; border-color: var(--blue); }
   .tts-status { white-space: nowrap; }
+  .back-to-unit1 {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 98;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid #b9d2e5;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--blue-dark);
+    box-shadow: 0 8px 24px rgba(22, 50, 79, 0.16);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .back-to-unit1:hover,
+  .back-to-unit1:focus-visible {
+    background: var(--blue);
+    color: #fff;
+    border-color: var(--blue);
+    outline: none;
+  }
 
   /* ===== 手机端适配 ===== */
   @media (max-width: 640px) {
@@ -586,6 +680,18 @@
     .sense-example { font-size: 11px; }
     .unit-audio-controls { margin-bottom: 10px; }
     .continuous-read-button { width: 100%; padding: 8px 10px; font-size: 12px; }
+    .chinese-summary-grid { grid-template-columns: 1fr; gap: 12px; }
+    .chinese-summary-card { padding: 12px; }
+    .chinese-summary-list li {
+      grid-template-columns: 26px minmax(0, 1fr);
+      gap: 7px;
+      font-size: 12px;
+    }
+    .dictation-line {
+      grid-column: 2;
+      width: 100%;
+      margin-top: 2px;
+    }
     .phrases-box, .sentences-box { margin-bottom: 22px; }
     .sentence-card { padding: 11px 13px; }
     .sentence-pattern { font-size: 12px; line-height: 1.55; }
@@ -595,6 +701,16 @@
     .tts-bar { left: 8px; right: 8px; bottom: 8px; justify-content: center; flex-wrap: nowrap; font-size: 11px; padding: 7px 8px; gap: 7px; }
     .tts-status { width: auto; max-width: 150px; white-space: normal; text-align: left; line-height: 1.3; }
     .tts-bar button { padding: 5px 7px; }
+    .back-to-unit1 {
+      left: 10px;
+      bottom: 64px;
+      min-height: 36px;
+      padding: 0 11px;
+      font-size: 12px;
+    }
+  }
+  @media print {
+    .back-to-unit1 { display: none; }
   }
 </style>
 </head>
@@ -617,6 +733,8 @@
   <a href="#u5">Unit 5 Shapes are fun!</a>
   <a href="#u6">Unit 6 Our animal friends</a>
   <a href="#plays">Plays 故事词汇</a>
+  <a href="#chinese-summary">中文默写</a>
+  <a href="#english-summary">英语默写</a>
   <a href="#writing">写作金句</a>
 </div>
 
@@ -1458,6 +1576,491 @@
   </div>
 </div>
 
+<!-- ===================== 每单元单词默写汇总 ===================== -->
+<div class="unit-section chinese-summary-section" id="chinese-summary">
+  <div class="unit-title"><span class="unit-badge">默写</span>每单元中文默写</div>
+  <div class="unit-topic">只显示主要中文释义，孩子可以看中文提示默写英文单词。</div>
+
+  <div class="chinese-summary-grid">
+  <div class="chinese-summary-card">
+    <h3>Unit 1 I love sports! <span>27个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="chinese-meaning">星，恒星</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">乒乓球运动</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">快的，快速的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">骑</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">报告，汇报</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">轮椅</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">远</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">来自</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">圈，箍，带</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">很，非常</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">肯定的，确信的，有把握的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">感到疼痛</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">想，思考</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">真正地，确实</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">风</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">累的，疲劳的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">最喜欢的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">体育运动</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">中国功夫，武术</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">魔法的，有魔力的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">跑，奔跑</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">游泳</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">跳，跳跃</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">踢，踹</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">滑雪</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">足球</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">篮球</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 2 In town <span>30个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="chinese-meaning">镇，城镇，市镇</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">地图</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">商店，店铺</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">车站</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">公交车，公共汽车</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">电影院</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">饭店，餐馆</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">车站</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">超级市场，超市</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">医院</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">警察</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">大街，街道</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">路，道路</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">地方，地点，场所</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">火车，列车</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">作家</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">意想不到的事，不同寻常的事</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">转弯，改变方向</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">买，购买</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">住，居住</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">向左，朝左</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">笔直地，成直线地</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">接下来，然后</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">在那里，往那里</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">经常，时常</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">先，首先</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">接近，靠近</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">我们</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">我们的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">谢谢你，多谢</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 3 Cool jobs <span>42个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="chinese-meaning">教师，老师</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">医生，大夫</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">护士</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">司机，驾驶员</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">消防队员</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">男警察</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">工作人员</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">农民</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">园丁，花匠</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">清洁工人</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">科学家</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">宇航员，太空人</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">饲养员</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">出租车</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">工作，干活</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">教授，讲授</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">驾车送</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">种植</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">问，提问</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">学习</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">准备</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">问题</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">科学</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">太空</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">月亮，月球</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">花园，园子</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">中心</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">房屋，房子</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">大熊猫</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">动物</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">火</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">工作队，工作组</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">形状，外形</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">种，类</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">生病的，患病的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">健康的，健壮的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">健壮的，力气大的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">高的，高大的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">每个人，人人</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">因为</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">费劲地，费力地</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">到处，四处</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 4 Let's shop! <span>38个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="chinese-meaning">钱，金钱</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">元</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">玩具</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">盒</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">一双，一对</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">胡萝卜</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">花，花朵</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">面包店，面包房</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">滑板</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">滑板运动</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">朋友，友人</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">正午，中午</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">假期，休假日</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">动物园饲养员</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">蜜蜂</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">十一</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">十二</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">十三</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">十六</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">十八</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">十九</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">二十</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">三十</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">三十三</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">四十三</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">四十四</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">五十</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">六十六</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">七十</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">八十</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">一百</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">赠送，给予</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">使用，运用</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">花销，花费</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">储蓄，存</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">共享，分享</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">应当，应该</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">在早期，在初期</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 5 Shapes are fun! <span>13个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="chinese-meaning">圆</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">正方形，四方形</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">长方形，矩形</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">三角形</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">线，线条</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">车轮</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">巧克力糖</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">肚子</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">它的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">进入，到……里面</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">另一的，又一的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">美味的，好吃的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">大量，许多</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 6 Our animal friends <span>26个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="chinese-meaning">猪</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">牛</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">马</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">羊，绵羊</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">狮子</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">象，大象</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">长颈鹿</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">鹦鹉</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">仓鼠</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">动物园</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">农场</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">天，天空</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">草，青草</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">颈，脖子</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">尾巴</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">宠物</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">男孩，少年</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">女孩，小姑娘</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">重的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">勇敢的，无畏的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">漂亮的，逗人喜爱的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">慢的，缓慢的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">完美的，极好的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">说话，讲话</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">攀登，爬</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">接住，接</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Plays 故事词汇 <span>17个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="chinese-meaning">城市，都市</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">故事</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">聚会，宴会</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">把……系起来</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">礼物</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">决不，永不，从未</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">地址，住址</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">信任，信赖，相信</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">雪</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">坏的，不好的</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">敲门</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">狼</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">家伙，人</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">爪子</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">猎人</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">袋</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="chinese-meaning">生命</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+  </div>
+</div>
+
+<div class="unit-section chinese-summary-section" id="english-summary">
+  <div class="unit-title"><span class="unit-badge">默写</span>每单元英语默写</div>
+  <div class="unit-topic">显示英文单词，孩子可以写出或说出对应中文意思。</div>
+
+  <div class="chinese-summary-grid">
+  <div class="chinese-summary-card">
+    <h3>Unit 1 I love sports! <span>27个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="english-dictation-word">star</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">ping-pong</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">fast</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">ride</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">report</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">wheelchair</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">far</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">from</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">band</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">very</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">sure</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">hurt</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">think</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">really</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">wind</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">tired</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">favourite</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">sport</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">kung fu</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">magic</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">run</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">swim</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">jump</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">kick</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">ski</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">football</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">basketball</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 2 In town <span>30个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="english-dictation-word">town</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">map</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">shop</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">stop</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">bus</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">cinema</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">restaurant</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">station</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">supermarket</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">hospital</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">police</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">street</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">way</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">place</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">train</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">writer</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">surprise</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">turn</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">buy</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">live</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">left</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">straight</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">then</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">there</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">often</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">first</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">near</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">us</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">our</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">thanks</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 3 Cool jobs <span>42个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="english-dictation-word">teacher</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">doctor</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">nurse</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">driver</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">firefighter</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">policeman</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">worker</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">farmer</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">gardener</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">cleaner</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">scientist</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">astronaut</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">keeper</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">taxi</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">work</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">teach</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">drive</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">grow</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">ask</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">learn</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">prepare</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">question</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">science</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">space</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">moon</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">garden</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">centre</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">house</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">panda</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">animal</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">fire</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">team</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">shape</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">kind</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">sick</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">healthy</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">strong</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">tall</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">everyone</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">because</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">hard</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">around</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 4 Let's shop! <span>38个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="english-dictation-word">money</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">yuan</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">toy</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">box</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">pair</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">carrot</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">flower</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">bakery</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">skateboard</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">skateboarding</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">friend</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">noon</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">holiday</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">zookeeper</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">bee</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">eleven</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">twelve</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">thirteen</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">sixteen</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">eighteen</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">nineteen</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">twenty</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">thirty</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">thirty-three</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">forty-three</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">forty-four</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">fifty</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">sixty-six</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">seventy</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">eighty</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">hundred</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">give</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">use</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">spend</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">save</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">share</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">should</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">early</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 5 Shapes are fun! <span>13个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="english-dictation-word">circle</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">square</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">rectangle</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">triangle</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">line</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">wheel</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">chocolate</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">tummy</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">its</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">into</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">another</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">yummy</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">a lot</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Unit 6 Our animal friends <span>26个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="english-dictation-word">pig</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">cow</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">horse</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">sheep</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">lion</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">elephant</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">giraffe</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">parrot</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">hamster</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">zoo</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">farm</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">sky</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">grass</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">neck</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">tail</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">pet</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">boy</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">girl</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">heavy</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">brave</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">cute</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">slow</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">perfect</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">talk</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">climb</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">catch</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+
+  <div class="chinese-summary-card">
+    <h3>Plays 故事词汇 <span>17个单词</span></h3>
+    <ol class="chinese-summary-list">
+      <li><span class="english-dictation-word">city</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">story</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">party</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">tie</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">gift</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">never</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">address</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">trust</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">snow</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">bad</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">knock</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">wolf</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">guy</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">paw</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">hunter</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">bag</span><span class="dictation-line" aria-hidden="true"></span></li>
+      <li><span class="english-dictation-word">life</span><span class="dictation-line" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+  </div>
+</div>
+
 <!-- ===================== 书面表达金句 ===================== -->
 <div class="unit-section" id="writing">
   <div class="unit-title"><span class="unit-badge">拓展</span>书面表达高分金句（按话题整理）</div>
@@ -1552,6 +2155,7 @@
   <button data-rate="0.9" class="active" title="正常速度朗读">正常</button>
   <button id="ttsStop" title="停止朗读">停止</button>
 </div>
+<a class="back-to-unit1" href="#u1">回到 Unit 1</a>
 
 <script>
 (function () {
@@ -1571,6 +2175,14 @@
       setActiveNav(link);
     });
   });
+  var backToUnitOne = document.querySelector('.back-to-unit1');
+  if (backToUnitOne) {
+    backToUnitOne.addEventListener('click', function () {
+      stopContinuousReading();
+      var firstUnitLink = document.querySelector('.nav a[href="#u1"]');
+      if (firstUnitLink) setActiveNav(firstUnitLink);
+    });
+  }
   setActiveNav(initialNav || navLinks[0]);
 
   var speechSupported = 'speechSynthesis' in window;
